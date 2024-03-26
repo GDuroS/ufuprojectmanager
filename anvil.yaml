@@ -1,4 +1,7 @@
-dependencies: []
+dependencies:
+- dep_id: dep_oehtqjxaysba4u
+  version: {dev: false}
+  resolution_hints: {app_id: OANIXGELFYRDP4VV, name: OruDataCore, package_name: OruData}
 services:
 - source: /runtime/services/tables.yml
   client_config: {}
