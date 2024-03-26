@@ -1,7 +1,9 @@
 unique_ids:
   forms:
     Form1: 5JOWT26QHIPWACYRAKJHH3GI2PQ266YH
-  modules: {}
+  modules:
+    Main: '1711492639832197412797806.662'
+    MenuBuildUtils: '1711493555493568070709220.8593'
   server_modules: {}
   assets:
     standard-page.html: YHSNTYLVFX2LFH2G7RUQF4VEGFDXLEBT

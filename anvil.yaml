@@ -7,14 +7,116 @@ services:
   client_config: {}
   server_config: {}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: true, use_email: true,
-    confirm_email: true}
+  client_config: {allow_signup: true, enable_automatically: true, use_email: false,
+    confirm_email: false, require_secure_passwords: true, use_google: true}
   server_config: {user_table: users}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+startup: {type: module, module: Main}
 package_name: ProjectManager
 allow_embedding: false
 name: ProjectManager
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {title: Project Manager, description: 'Administrador de Histórias de Usuário,
     Tarefas, Sprints e Releases'}
-startup_form: Form1
+startup_form: null
+db_schema:
+  tarefa:
+    client: none
+    server: full
+    columns:
+    - name: Titulo
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Descricao
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Prioridade
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: Tipo
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: Pontos
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Limite
+      admin_ui: {width: 200, order: 5}
+      type: date
+    - name: UserStory
+      admin_ui: {width: 200, order: 6}
+      type: link_single
+      target: tarefa
+    - name: Criador
+      admin_ui: {order: 1.5, width: 200}
+      type: link_single
+      target: users
+    - name: Sprint
+      admin_ui: {width: 200, order: 7}
+      type: link_single
+      target: sprint
+    - name: Desenvolvedor
+      admin_ui: {width: 200, order: 8}
+      type: link_single
+      target: users
+    title: Tarefa
+  sprint:
+    client: none
+    server: full
+    columns:
+    - name: Nome
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Inicio
+      admin_ui: {width: 200, order: 1}
+      type: datetime
+    - name: Termino
+      admin_ui: {width: 200, order: 2}
+      type: datetime
+    - name: Release
+      admin_ui: {width: 200, order: 3}
+      type: link_single
+      target: release
+    title: Sprint
+  release:
+    client: none
+    server: full
+    columns:
+    - name: Codigo
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Inicio
+      admin_ui: {width: 200, order: 1}
+      type: datetime
+    - name: Termino
+      admin_ui: {width: 200, order: 2}
+      type: datetime
+    title: Release
+  users:
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {order: 1, width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {order: 2, width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {order: 4, width: 200}
+      type: number
+    - name: confirmed_email
+      admin_ui: {order: 5, width: 200}
+      type: bool
+    - name: signed_up
+      admin_ui: {order: 6, width: 200}
+      type: datetime
+    title: Users
 renamed: true
