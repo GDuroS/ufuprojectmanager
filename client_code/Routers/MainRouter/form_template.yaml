@@ -14,8 +14,9 @@ components:
   layout_properties: {slot: nav-right}
   components:
   - name: navbar_links_component
-    properties: {}
+    properties: {always_hide_text: true}
     type: form:dep_oehtqjxaysba4u:NavbarLinksComponent
+    layout_properties: {}
 - name: headline
   properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
     visible: true, text: (mvp) Project Manager, font_size: null, font: '', spacing_above: small,
