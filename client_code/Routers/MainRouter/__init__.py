@@ -4,12 +4,11 @@ from anvil import *
 from OruData.Utils import RoutingUtils
 
 """Possible Routes"""
-from OruData.Views import NoRoute
-
+from OruData.Views import NoRoute, LoginForm
+# Home
 from ...Views.Home import Home
 # UserStories
-from ...Views.UserStories.UserStoryBusca import UserStoryBusca
-from ...Views.UserStories.UserStoryCadastro import UserStoryCadastro
+from ...Views.UserStories import UserStoryBusca, UserStoryCadastro
 
 @RoutingUtils.default_template
 class MainRouter(MainRouterTemplate):
@@ -21,4 +20,4 @@ class MainRouter(MainRouterTemplate):
     from OruData.SidebarComponent import get_instance as get_sidebar_instance
     from ... import MenuBuildUtils
 
-    self.add_component(get_sidebar_instance(show_user=False, menu_array=MenuBuildUtils.get_menu_array()), slot="left-nav")
+    self.add_component(get_sidebar_instance(menu_array=MenuBuildUtils.get_menu_array()), slot="left-nav")

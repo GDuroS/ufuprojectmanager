@@ -1,7 +1,9 @@
 container:
   type: HtmlTemplate
-  properties: {html: "<center style=\"font-style:italic; color:#888; margin: 3em;\"\
-      >\n  (Insert your custom HTML here)\n</center>\n<div anvil-slot=\"default\"\
-      ></div>"}
-components: []
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: content_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: default}
 is_package: true
