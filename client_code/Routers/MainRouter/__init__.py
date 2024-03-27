@@ -5,6 +5,8 @@ from OruData.Utils import RoutingUtils
 
 """Possible Routes"""
 from OruData.Views import NoRoute
+
+from ...Views.Home import Home
 # UserStories
 from ...Views.UserStories.UserStoryBusca import UserStoryBusca
 from ...Views.UserStories.UserStoryCadastro import UserStoryCadastro

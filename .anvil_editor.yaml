@@ -1,6 +1,7 @@
 unique_ids:
   forms:
     Routers.MainRouter: 5JOWT26QHIPWACYRAKJHH3GI2PQ266YH
+    Views.Home: '1711557933284972134534549.1082'
     Views.UserStories.UserStoryBusca: '1711496413555234621056329.48126'
     Views.UserStories.UserStoryCadastro: '171149646970127911689450.024426'
   modules:

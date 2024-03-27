@@ -1,0 +1,8 @@
+container: {type: ColumnPanel}
+components:
+- name: label
+  properties: {text: 'Bem vindo ao Project Manager. Faça login no botão superior esquerdo
+      e, depois, escolha uma opção ao lado para começar.'}
+  type: Label
+  layout_properties: {grid_position: 'FFEORP,DXVINK'}
+is_package: true
