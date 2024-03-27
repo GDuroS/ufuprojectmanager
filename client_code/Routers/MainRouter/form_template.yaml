@@ -13,7 +13,7 @@ components:
   name: navbar_links
   layout_properties: {slot: nav-right}
   components:
-  - name: navbar_links_component_1
+  - name: navbar_links_component
     properties: {}
     type: form:dep_oehtqjxaysba4u:NavbarLinksComponent
 - name: headline

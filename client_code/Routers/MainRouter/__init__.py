@@ -21,3 +21,10 @@ class MainRouter(MainRouterTemplate):
     from ... import MenuBuildUtils
 
     self.add_component(get_sidebar_instance(menu_array=MenuBuildUtils.get_menu_array()), slot="left-nav")
+
+  def on_navigation(self, **nav_args):
+    RoutingUtils.clear_navbar_setup()
+
+  def refresh_link_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    RoutingUtils.reload_page()
