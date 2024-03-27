@@ -9,7 +9,7 @@ from OruData.Views import NoRoute
 from ...Views.UserStories.UserStoryBusca import UserStoryBusca
 from ...Views.UserStories.UserStoryCadastro import UserStoryCadastro
 
-@RoutingUtils.default_template()
+@RoutingUtils.default_template
 class MainRouter(MainRouterTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.

@@ -5,10 +5,10 @@ dependencies:
 services:
 - source: /runtime/services/tables.yml
   client_config: {}
-  server_config: {}
+  server_config: {auto_create_missing_columns: true}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: true, use_email: false,
-    confirm_email: false, require_secure_passwords: true, use_google: true}
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
+    confirm_email: false, require_secure_passwords: false, use_google: false}
   server_config: {user_table: users}
 - source: /runtime/services/google.yml
   client_config: {}
@@ -22,45 +22,6 @@ metadata: {title: Project Manager, description: 'Administrador de Histórias de 
     Tarefas, Sprints e Releases'}
 startup_form: null
 db_schema:
-  tarefa:
-    client: none
-    server: full
-    columns:
-    - name: Titulo
-      admin_ui: {width: 200, order: 0}
-      type: string
-    - name: Descricao
-      admin_ui: {width: 200, order: 1}
-      type: string
-    - name: Prioridade
-      admin_ui: {width: 200, order: 2}
-      type: string
-    - name: Tipo
-      admin_ui: {width: 200, order: 3}
-      type: string
-    - name: Pontos
-      admin_ui: {width: 200, order: 4}
-      type: number
-    - name: Limite
-      admin_ui: {width: 200, order: 5}
-      type: date
-    - name: UserStory
-      admin_ui: {width: 200, order: 6}
-      type: link_single
-      target: tarefa
-    - name: Criador
-      admin_ui: {order: 1.5, width: 200}
-      type: link_single
-      target: users
-    - name: Sprint
-      admin_ui: {width: 200, order: 7}
-      type: link_single
-      target: sprint
-    - name: Desenvolvedor
-      admin_ui: {width: 200, order: 8}
-      type: link_single
-      target: users
-    title: Tarefa
   sprint:
     client: none
     server: full
@@ -118,5 +79,79 @@ db_schema:
     - name: signed_up
       admin_ui: {order: 6, width: 200}
       type: datetime
+    - name: dev
+      admin_ui: {width: 200, order: 7}
+      type: bool
     title: Users
+  userstory:
+    client: none
+    server: full
+    columns:
+    - name: Titulo
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Descricao
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Prioridade
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: Tipo
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: Pontos
+      admin_ui: {width: 200, order: 4}
+      type: number
+    - name: Limite
+      admin_ui: {width: 200, order: 5}
+      type: date
+    - name: Criador
+      admin_ui: {order: 1.5, width: 200}
+      type: link_single
+      target: users
+    title: UserStory
+  tarefa:
+    client: none
+    server: full
+    columns:
+    - name: Titulo
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: Descricao
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: Criador
+      admin_ui: {width: 200, order: 2}
+      type: link_single
+      target: users
+    - name: UserStory
+      admin_ui: {width: 200, order: 3}
+      type: link_single
+      target: userstory
+    - name: Prioridade
+      admin_ui: {width: 200, order: 4}
+      type: string
+    - name: Tipo
+      admin_ui: {width: 200, order: 5}
+      type: string
+    - name: Tempo
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: Prazo
+      admin_ui: {order: 7, width: 200}
+      type: datetime
+    - name: Desenvolvedor
+      admin_ui: {width: 200, order: 8}
+      type: link_single
+      target: users
+    - name: Sprint
+      admin_ui: {width: 200, order: 9}
+      type: link_single
+      target: users
+    title: Tarefa
+  sequencer:
+    client: none
+    server: full
+    columns: []
+    title: Sequencer
 renamed: true
