@@ -1,3 +1,7 @@
 is_package: true
 container: {type: DataRowPanel}
-components: []
+components:
+- name: edit_link
+  properties: {icon: 'fa:edit'}
+  type: Link
+  layout_properties: {column: KFJZFT}

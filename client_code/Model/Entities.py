@@ -22,6 +22,14 @@ class UserStory(Entity):
         self._tipo_enum = TipoTarefa.by_key(self['Tipo'])
     return self._tipo_enum
 
+  @property
+  def tipo_nome(self):
+    return self.prioridade_enum.nome
+
+  @property
+  def prioridade_nome(self):
+    return self.prioridade_enum.nome
+
 @anvil.server.portable_class
 class Tarefa(Entity):
   _prioridade_enum = None

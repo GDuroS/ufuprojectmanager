@@ -46,7 +46,7 @@ class UserStoryBusca(UserStoryBuscaTemplate):
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""
     RoutingUtils.set_navbar_links(
-      create_visible=True, create_callback=self.create(),
-      search_visible=True, search_callback=self.search(),
-      clear_visible=True, clear_callback=self.clear()
+      create_visible=True, create_callback=self.create,
+      search_visible=True, search_callback=self.search,
+      clear_visible=True, clear_callback=self.clear
     )

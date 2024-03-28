@@ -11,6 +11,7 @@ components:
   - name: filter_panel
     properties:
       role: [elevated-card, tonal-card]
+      col_widths: '{"BBFHNF":15,"UYFRWC":45,"VLBYKQ":15,"JNWHMH":45,"XCTMND":15,"SZEAUQ":45,"EAFXFX":15,"TTSNWK":45,"VZQPXK":15,"MAZZXI":45,"LSOEOF":15,"IKMUDE":45}'
     type: ColumnPanel
     layout_properties: {grid_position: 'MUWCWN,MHJZJS'}
     components:
@@ -65,6 +66,7 @@ components:
   - name: result_data_grid
     properties:
       columns:
+      - {id: KFJZFT, data_key: '', title: '', width: '50'}
       - {id: IBKKGZ, data_key: Titulo, title: Titulo}
       - {id: BADPGL, data_key: Descricao, title: Descricao}
       - {id: VIDQNS, data_key: Criador, title: Criador}
@@ -73,6 +75,7 @@ components:
       - {id: NABIOH, data_key: Pontos, title: Pontos}
       - {id: IUFQXX, data_key: Limite, title: Limite}
       role: tonal-data-grid
+      visible: false
     type: DataGrid
     components:
     - name: no_result_label
