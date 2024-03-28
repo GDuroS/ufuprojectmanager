@@ -2,6 +2,46 @@
  This CSS implements the Material Design 3 look and feel for Anvil apps.
  **/
 
+:root {
+  --primary: %color:Primary%;
+  --primary-container: %color:Primary Container%;
+  --on-primary: %color:On Primary%;
+  --on-primary-container: %color:On Primary Container%;
+  --secondary: %color:Secondary%;
+  --secondary-container: %color:Secondary Container%;
+  --on-secondary: %color:On Secondary%;
+  --on-secondary-container: %color:On Secondary Container%;
+  --tertiary: %color:Tertiary%;
+  --tertiary-container: %color:Tertiary Container%;
+  --on-tertiary: %color:On Tertiary%;
+  --on-tertiary-container: %color:On Tertiary Container%;
+  --error: %color:Error%;
+  --background: %color:Background%;
+  --surface: %color:Surface%;
+  --on-background: %color:On Background%;
+  --on-surface: %color:On Surface%;
+  --surface-variant: %color:Surface Variant%;
+  --on-surface-variant: %color:On Surface Variant%;
+  --outline: %color:Outline%;
+  --on-disabled: %color:On Disabled%;
+  --disabled-container: %color:Disabled Container%;
+  --light-overlay-1: %color:Light Overlay 1%;
+  --light-overlay-2: %color:Light Overlay 2%;
+  --dark-overlay-1: %color:Dark Overlay 1%;
+  --dark-overlay-2: %color:Dark Overlay 2%;
+  --primary-overlay-1: %color:Primary Overlay 1%;
+  --primary-overlay-2: %color:Primary Overlay 2%;
+  --primary-overlay-3: %color:Primary Overlay 3%;
+  --success: #d4edda;
+  --on-success: #155724;
+  --warning: #fff3cd;
+  --on-warning: #856404;
+  --danger: #f8d7da;
+  --on-danger: #721c24;
+  --delete-button: rgb(179, 27, 27);
+  --user-rank-color: black;
+}
+
 /* Stop panel-cols cutting off drop shadows */
 .anvil-panel-col {
   padding-bottom: 10px;
@@ -33,10 +73,10 @@ a>.anvil-component-icon.right_edge-icon,
   padding-bottom: 8px;
 }
 .file-loader>label {
-    padding: 8px;
+  padding: 8px;
 }
 .checkbox label, .radio label {
-    padding-top: 8px; padding-right: 8px; padding-bottom: 8px;
+  padding-top: 8px; padding-right: 8px; padding-bottom: 8px;
 }
 
 /*TODO: see if this spacing stuff needs to be changed*/
@@ -101,8 +141,8 @@ body {
   font-family: Roboto, Noto, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.4286;
-  color: %color:On Surface%;
-  background-color: %color:Background%;
+  color: var(--on-surface);
+  background-color: var(--background);
   min-height: calc(100vh - 56px)
 }
 
@@ -114,11 +154,11 @@ body {
 
 a, a:focus {
   text-decoration: none;
-  color: %color:Primary%;
+  color: var(--primary);
 }
 
 a:hover, a:active {
-color: %color:On Primary Container%;
+  color: var(--on-primary-container);
 }
 
 .anvil-role-display {
@@ -276,11 +316,11 @@ color: %color:On Primary Container%;
 .nav-holder .left-nav, .left-nav-placeholder {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
+  background: linear-gradient(0deg, var(--primary-overlay-1), var(--primary-overlay-1)), var(--background);
 /*   border-right: 1px solid #e0e0e0; */
   font-size: 14px;
   font-weight: 500;
-  color: %color:On Surface Variant%;
+  color: var(--on-surface-variant);
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
@@ -350,7 +390,7 @@ color: %color:On Primary Container%;
 */
 
 .left-nav a, .left-nav .anvil-label, .left-nav .anvil-label.left_edge-icon, .left-nav .anvil-label.right_edge-icon {
-  color: %color:On Surface Variant%;
+  color: var(--on-surface-variant);
   margin: 0 -8px;
   padding: 4px 16px;
   border-radius: 100px;
@@ -361,17 +401,17 @@ color: %color:On Primary Container%;
 }
 
 .left-nav a:hover, .app-bar a:hover, .app-bar a:active {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
+  background: linear-gradient(0deg, var(--dark-overlay-1), var(--dark-overlay-1)), linear-gradient(0deg, var(--primary-overlay-1), var(--primary-overlay-1)), var(--background);
   opacity: 100%;
 }
 
 .left-nav a.anvil-role-selected, .app-bar a.anvil-role-selected  {
-  background-color: %color:Secondary Container%;
-  color: %color:On Secondary Container%;
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
 }
 
 .left-nav a.anvil-role-selected:hover, .app-bar a.anvil-role-selected:hover {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
+  background: linear-gradient(0deg, var(--dark-overlay-1), var(--dark-overlay-1)), var(--secondary-container);
 }
 
 .designer .nav-holder .left-nav {
@@ -406,7 +446,7 @@ color: %color:On Primary Container%;
   line-height: 40px;
   font-size: 20px;
 
-  background-color: %color:Surface%;
+  background-color: var(--surface);
   transition: background-color 250ms;
   -webkit-transition: background-color 250ms;
   -moz-transition: background-color 250ms;
@@ -415,8 +455,8 @@ color: %color:On Primary Container%;
   z-index: 1;
 }
 
-.app-bar.scrolled {
-  background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+.app-bar.scrolled:not(.app-bar-mirror) {
+  background: linear-gradient(0deg, var(--primary-overlay-2), var(--primary-overlay-2)), var(--background);
   transition: background 250ms;
   -webkit-transition: background 250ms;
   -moz-transition: background 250ms;
@@ -430,7 +470,9 @@ color: %color:On Primary Container%;
 
 .app-bar > .sidebar-toggle { display:block; float:left;  margin-left: -61px; }
 .app-bar > .top-left-btn { float: left; margin-left: -60px; margin-right: -40px; }
-.app-bar > .title { float: left; }
+.app-bar > .title { 
+  float: left;
+}
 .app-bar > .title > .placeholder { outline: 1px dotted; padding-left: 16px; padding-right: 16px; margin: 8px 8px 0; display:none; }
 .app-bar > .app-bar-nav { float: right; font-weight: normal; }
 .app-bar > .app-bar-nav .placeholder { margin-top: 8px; padding: 0 8px; }
@@ -439,7 +481,7 @@ color: %color:On Primary Container%;
 
 .app-bar a, .app-bar .anvil-component {
   display: block;
-  color: %color:On Surface%;
+  color: var(--on-surface);
   line-height: 30px;
   min-width: 30px;
   min-height: 30px;
@@ -503,7 +545,7 @@ color: %color:On Primary Container%;
 /* Component: Dialog (alert), Notification */
 .modal-content, body>div[data-notify="container"] {
   border-radius: 28px;
-  background: linear-gradient(0deg, %color:Primary Overlay 3%, %color:Primary Overlay 3%), %color:Background%;
+  background: linear-gradient(0deg, var(--primary-overlay-3), var(--primary-overlay-3)), var(--background);
   box-shadow: none;
   border: none;
 }
@@ -513,13 +555,13 @@ color: %color:On Primary Container%;
   font-size: 24px;
   line-height: 32px;
   border: 0;
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 
 .modal-body {
   padding: 24px;
   font-size: 16px;
-  color: %color:On Surface Variant%;
+  color: var(--on-surface-variant);
 }
 
 .modal-footer {
@@ -534,7 +576,7 @@ color: %color:On Primary Container%;
 
 /* Notifications */
 body>div[data-notify="container"] {
-  background: linear-gradient(0deg, %color:Primary Overlay 3%, %color:Primary Overlay 3%), %color:Background%;
+  background: linear-gradient(0deg, var(--primary-overlay-3), var(--primary-overlay-3)), var(--background);
   border: none;
   padding: 24px;
   /* 24dp */ box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
@@ -544,43 +586,43 @@ body>div[data-notify="container"]>span[data-notify="title"] {
   display: block;
   font-size: 18px;
   font-weight: 500;
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 
 body>div[data-notify="container"]>span[data-notify="message"] {
   display: block;
   padding: 20px 0 0;
   font-size: 16px;
-  color: %color:On Surface Variant%;  
+  color: var(--on-surface-variant);  
 }
 
 body>div[data-notify="container"].alert-success{
-  background-color: #d4edda;
+  background-color: var(--success);
 }
 
 body>div[data-notify="container"].alert-success>span[data-notify="title"]{
-  color: #155724;
+  color: var(--on-success);
 }
 
 body>div[data-notify="container"].alert-danger{
-  background-color: #f8d7da;
+  background-color: var(--danger);
 }
 
 body>div[data-notify="container"].alert-danger>span[data-notify="title"]{
-  color: #721c24;
+  color: var(--on-danger);
 }
 
 body>div[data-notify="container"].alert-warning{
-  background-color: #fff3cd;
+  background-color: var(--warning)
 }
 
 body>div[data-notify="container"].alert-warning>span[data-notify="title"]{
-  color: #856404;
+  color: var(--on-warning);
 }
 
 button.close > span, button.close {
-  color:%color:On Background%;
-  text-shadow: 0 1px 0 %color:Background%;
+  color:var(--on-background);
+  text-shadow: 0 1px 0 var(--background);
 }
 
 /* Component: Button */
@@ -596,7 +638,7 @@ button.close > span, button.close {
   border: 0;
   background-image: none;
   background-color: transparent;
-  color: %color:Primary%;
+  color: var(--primary);
   text-shadow: none;
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -605,45 +647,45 @@ button.close > span, button.close {
 }
 
 .btn:hover,.file-loader>label:hover {
-  background-color: %color:Light Overlay 1%;
+  background-color: var(--light-overlay-1);
   background-image: none;
   outline: none;
-  color: %color:Primary%;
+  color: var(--primary);
 }
 
 .btn:active, .btn:focus, .btn:active:focus, .file-loader>label:active, .file-loader>label:focus, .file-loader>label:active:focus {
-  background-color: %color:Light Overlay 2%;
+  background-color: var(--light-overlay-2);
   background-image: none;
   outline: none;
   box-shadow: none;
-  color: %color:Primary%;
+  color: var(--primary);
 }
 
 
 .anvil-role-outlined-button > .btn, .anvil-role-outlined-button.file-loader>label {
-  color: %color:Primary%;
-  border: solid 1px %color:Outline%;
+  color: var(--primary);
+  border: solid 1px var(--outline);
 }
 
 .anvil-role-outlined-button > .btn:hover, .anvil-role-outlined-button.file-loader>label:hover {
-  background-color: %color:Light Overlay 1%;
+  background-color: var(--light-overlay-1);
 }
 
 .anvil-role-outlined-button > .btn:focus, .anvil-role-outlined-button > .btn:active, 
 .anvil-role-outlined-button.file-loader>label:focus, .anvil-role-outlined-button.file-loader>label:active{
-  background-color: %color:Light Overlay 2%;
-  color: %color:Primary%;
+  background-color: var(--light-overlay-2);
+  color: var(--primary);
 }
 
 .anvil-role-filled-button > .btn, .btn-primary, .anvil-role-filled-button.file-loader>label {
-  background-color: %color:Primary%;
-  color: %color:On Primary%; 
+  background-color: var(--primary);
+  color: var(--on-primary); 
 }
 
 .anvil-role-filled-button > .btn:hover, .btn-primary:hover, .anvil-role-filled-button.file-loader>label:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Primary%;
-  color: %color:On Primary%; 
+  background: linear-gradient(0deg, var(--light-overlay-1), var(--light-overlay-1)), var(--primary);
+  color: var(--on-primary); 
 }
 
 .anvil-role-filled-button > .btn:focus, .btn-primary:focus, .anvil-role-filled-button > .btn:active, 
@@ -651,49 +693,49 @@ button.close > span, button.close {
 .anvil-role-filled-button.file-loader>label:focus, .anvil-role-filled-button.file-loader>label:active, 
 .anvil-role-filled-button.file-loader>label:active:focus
 {
-  background: linear-gradient(0deg, %color:Light Overlay 2%, %color:Light Overlay 2%), %color:Primary%;
-  color: %color:On Primary%; 
+  background: linear-gradient(0deg, var(--light-overlay-2), var(--light-overlay-2)), var(--primary);
+  color: var(--on-primary); 
 }
 
 .anvil-role-elevated-button > .btn, .anvil-role-elevated-button.file-loader>label {
-  color: %color:Primary%;
-  background-color: %color:Surface%;
+  color: var(--primary);
+  background-color: var(--surface);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .anvil-role-elevated-button > .btn:focus, .anvil-role-elevated-button > .btn:active, 
 .anvil-role-elevated-button > .btn:active:focus, .anvil-role-elevated-button.file-loader>label:focus, 
 .anvil-role-elevated-button.file-loader>label:active, .anvil-role-elevated-button.file-loader>label:active:focus {
-  background: linear-gradient(0deg, %color:Light Overlay 2%, %color:Light Overlay 2%), %color:Surface%;
-  color: %color:Primary%;
+  background: linear-gradient(0deg, var(--light-overlay-2), var(--light-overlay-2)), var(--surface);
+  color: var(--primary);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .anvil-role-elevated-button > .btn:hover, .anvil-role-elevated-button.file-loader>label:hover {
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Surface%;
+  background: linear-gradient(0deg, var(--light-overlay-1), var(--light-overlay-1)), var(--surface);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
 }
 
 .anvil-role-tonal-button > .btn, .anvil-role-tonal-button.file-loader>label {
-  color: %color:On Secondary Container%;
-  background-color: %color:Secondary Container%;
+  color: var(--on-secondary-container);
+  background-color: var(--secondary-container);
 }
 
 .anvil-role-tonal-button > .btn:focus, .anvil-role-tonal-button > .btn:active, .anvil-role-tonal-button > .btn:active:focus, 
 .anvil-role-tonal-button.file-loader>label:focus, .anvil-role-tonal-button.file-loader>label:active, .anvil-role-tonal-button.file-loader>label:focus:active {
-  background: linear-gradient(0deg, %color:Dark Overlay 2%, %color:Dark Overlay 2%), %color:Secondary Container%;
-  color: %color:On Secondary Container%;
+  background: linear-gradient(0deg, var(--dark-overlay-2), var(--dark-overlay-2)), var(--secondary-container);
+  color: var(--on-secondary-container);
 }
 
 .anvil-role-tonal-button > .btn:hover, .anvil-role-tonal-button.file-loader>label:hover{
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
+  background: linear-gradient(0deg, var(--dark-overlay-1), var(--dark-overlay-1)), var(--secondary-container);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-  color: %color:On Secondary Container%;
+  color: var(--on-secondary-container);
 }
 
 .btn-default[disabled], .btn-default[disabled]:hover, .file-loader.anvil-disabled>label, .file-loader.anvil-disabled>label:hover {
   background: transparent;
-  color: %color:On Disabled%;
+  color: var(--on-disabled);
 }
 
 .anvil-role-tonal-button > .btn[disabled], .anvil-role-tonal-button> .btn[disabled]:hover, 
@@ -702,13 +744,13 @@ button.close > span, button.close {
 .anvil-role-filled-button.file-loader.anvil-disabled>label, .anvil-role-filled-button.file-loader.anvil-disabled>label:hover, 
 .anvil-role-elevated-button > .btn[disabled], .anvil-role-elevated-button > .btn[disabled]:hover, 
 .anvil-role-elevated-button.file-loader.anvil-disabled>label, .anvil-role-elevated-button.file-loader.anvil-disabled>label:hover { 
-  background: %color:Disabled Container%;
-  color: %color:On Disabled%;
+  background: var(--disabled-container);
+  color: var(--on-disabled);
   box-shadow: none;
 }
 
 .anvil-role-outlined-button > .btn[disabled], .anvil-role-outlined-button.file-loader.anvil-disabled>label {
-  border-color: %color:On Disabled%;
+  border-color: var(--on-disabled);
   background-color: transparent;
 }
 
@@ -718,15 +760,15 @@ button.close > span, button.close {
 .anvil-role-outlined-card {
   overflow: hidden;
   border-radius: 12px;
-  background-color: %color:Surface%;
-  border: solid 1px %color:Outline%;
+  background-color: var(--surface);
+  border: solid 1px var(--outline);
   padding: 15px;
 }
 
 .anvil-role-elevated-card {
   overflow: hidden;
   border-radius: 12px;
-  background-color: %color:Surface%;
+  background-color: var(--surface);
   /* 2dp */  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
   padding: 15px;
 }
@@ -734,7 +776,7 @@ button.close > span, button.close {
 .anvil-role-tonal-card {
   overflow: hidden;
   border-radius: 12px;
-  background-color: %color:Surface Variant%;
+  background-color: var(--surface-variant);
   padding: 15px;
 }
 
@@ -764,8 +806,8 @@ input.anvil-component, textarea.anvil-component, .anvil-component select, .anvil
   font-size: 16px;
   line-height: 1.5;
   border-radius: 4px 4px 0 0;
-  background-color: %color:Surface Variant%;
-  color: %color:On Surface Variant%;
+  background-color: var(--surface-variant);
+  color: var(--on-surface-variant);
   box-shadow: none;
 }
 
@@ -780,7 +822,7 @@ input.anvil-component, textarea.anvil-component, .anvil-component select, .anvil
 input.anvil-component, .anvil-component select, .anvil-datepicker input, textarea.anvil-component {
   padding: 8px 16px;
   border: 0;
-  border-bottom: 1px solid %color:Outline%;
+  border-bottom: 1px solid var(--outline);
 }
 
 .anvil-dropdown select.form-control {
@@ -804,7 +846,7 @@ input.anvil-component, .anvil-component select, .anvil-datepicker input, textare
     right: 0;
     font-size: 80%;
     line-height: calc(1.8em + 8px);
-    color: %color:Outline%;
+    color: var(--outline);
     pointer-events:none;
     padding: 4px 4px;
 }
@@ -816,28 +858,28 @@ input.anvil-component.anvil-spacing-below-medium { margin-bottom: 12px; }
 input.anvil-component.anvil-spacing-below-large { margin-bottom: 20px; }
 
 input.anvil-component::-webkit-input-placeholder, textarea.anvil-component::-webkit-input-placeholder {
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 input.anvil-component::-moz-placeholder, textarea.anvil-component::-moz-placeholder {
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 input.anvil-component::placeholder, textarea.anvil-component::placeholder  {
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 
 .app-bar input.anvil-component::-webkit-input-placeholder, .app-bar textarea.anvil-component::-webkit-input-placeholder {
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 .app-bar input.anvil-component::-moz-placeholder, .app-bar textarea.anvil-component::-moz-placeholder {
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 .app-bar input.anvil-component::placeholder, .app-bar textarea.anvil-component::placeholder  {
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 
 input.anvil-component:hover, input.anvil-component:focus, textarea.anvil-component:hover, textarea.anvil-component:focus, 
 .anvil-component select:hover, .anvil-component select:focus, .anvil-datepicker input:hover, .anvil-datepicker input:focus {
-  border-bottom: 2px solid %color:Primary%;
+  border-bottom: 2px solid var(--primary);
   padding-bottom: 7px;
   box-shadow: none;
 }
@@ -846,9 +888,9 @@ input.anvil-component:hover, input.anvil-component:focus, textarea.anvil-compone
 input.anvil-component[disabled], .anvil-component select[disabled], .anvil-datepicker input[disabled], textarea.anvil-component[disabled], 
 textarea.anvil-component.anvil-role-input-error[disabled], input.anvil-component.anvil-role-input-error[disabled], 
 .anvil-component.anvil-role-input-error select[disabled], .anvil-datepicker.anvil-role-input-error input[disabled] {
-  background-color: %color:Dark Overlay 1%;
-  color: %color:On Disabled%;
-  border-bottom: 1px solid %color:On Disabled%;
+  background-color: var(--dark-overlay-1);
+  color: var(--on-disabled);
+  border-bottom: 1px solid var(--on-disabled);
   padding-bottom: 8px;
 }
 
@@ -860,16 +902,16 @@ textarea.anvil-component.anvil-role-input-error[disabled], input.anvil-component
 textarea.anvil-component.anvil-role-outlined, input.anvil-component.anvil-role-outlined, 
 .anvil-component.anvil-role-outlined select, .anvil-datepicker.anvil-role-outlined input {
   background-color: transparent;
-  border: 1px solid %color:Outline%;
+  border: 1px solid var(--outline);
   border-radius: 4px;
-  color: %color:On Surface%;
+  color: var(--on-surface);
 }
 
 textarea.anvil-component.anvil-role-outlined:hover, textarea.anvil-component.anvil-role-outlined:focus, 
 input.anvil-component.anvil-role-outlined:hover, input.anvil-component.anvil-role-outlined:focus,
 .anvil-component.anvil-role-outlined select:hover, .anvil-component.anvil-role-outlined select:focus,
 .anvil-datepicker.anvil-role-outlined input:hover, .anvil-datepicker.anvil-role-outlined input:focus{
-  border: 2px solid %color:Primary%;
+  border: 2px solid var(--primary);
   padding: 7px 15px;
 }
 
@@ -877,7 +919,7 @@ textarea.anvil-component.anvil-role-outlined-error:hover, textarea.anvil-compone
 input.anvil-component.anvil-role-outlined-error:hover, input.anvil-component.anvil-role-outlined-error:focus,
 .anvil-component.anvil-role-outlined-error select:hover, .anvil-component.anvil-role-outlined-error select:focus,
 .anvil-datepicker.anvil-role-outlined-error input:hover, .anvil-datepicker.anvil-role-outlined-error input:focus{
-  border: 2px solid %color:Error%;
+  border: 2px solid var(--error);
   padding-bottom: 6px;
 }
 
@@ -885,39 +927,39 @@ textarea.anvil-component.anvil-role-outlined[disabled], input.anvil-component.an
 .anvil-component.anvil-role-outlined select[disabled], .anvil-datepicker.anvil-role-outlined input[disabled], 
 textarea.anvil-component.anvil-role-outlined-error[disabled], input.anvil-component.anvil-role-outlined-error[disabled], 
 .anvil-component.anvil-role-outlined-error select[disabled], .anvil-datepicker.anvil-role-outlined-error input[disabled] {
-  border: 1px solid %color:On Disabled%;
-  color: %color:On Disabled%;
+  border: 1px solid var(--on-disabled);
+  color: var(--on-disabled);
   padding-bottom: 8px;
 }
 
 .daterangepicker td.active {
-  background: %color:Primary%;
+  background: var(--primary);
 }
 
 .daterangepicker td.available:hover {
-  background: %color:Dark Overlay 2%;
+  background: var(--dark-overlay-2);
 }
 
 .daterangepicker td.active:hover {
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Primary%;
+  background: linear-gradient(0deg, var(--light-overlay-1), var(--light-overlay-1)), var(--primary);
 }
 
 .daterangepicker td.off {
-  color: %color:On Disabled%;
+  color: var(--on-disabled);
 }
 
 textarea.anvil-component.anvil-role-outlined-error, input.anvil-component.anvil-role-outlined-error, 
 .anvil-component.anvil-role-outlined-error select, .anvil-datepicker.anvil-role-outlined-error input {
-  color: %color:Error%;
+  color: var(--error);
   background-color: transparent;
-  border: 1px solid %color:Error%;;
+  border: 1px solid var(--error);;
   border-radius: 4px;
 }
 
 textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-role-input-error, 
 .anvil-component.anvil-role-input-error select, .anvil-datepicker.anvil-role-input-error input {
-  color: %color:Error%;
-  border-color: %color:Error%; 
+  color: var(--error);
+  border-color: var(--error); 
 }
 
 /*TODO: figure out what this is used for*/
@@ -932,16 +974,16 @@ textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-rol
   width: 15px;
   height: 15px;
   border-radius: 1px;
-  background-color: %color:Surface Variant%; 
-/*   color: %color:On Surface Variant%; */
+  background-color: var(--surface-variant); 
+/*   color: var(--on-surface-variant); */
 }
 
 .radio input {
-  border-radius : 50%;
+  border-radius: 50%;
 }
 
 .checkbox input:hover, .radio input:hover {
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Surface Variant%;
+  background: linear-gradient(0deg, var(--light-overlay-1), var(--light-overlay-1)), var(--surface-variant);
 }
 
 .checkbox input:focus, .radio input:focus {
@@ -954,12 +996,12 @@ textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-rol
 
 .checkbox input[type="checkbox"][disabled]:hover, .radio input[type="radio"][disabled]:hover, 
 .checkbox input[type="checkbox"][disabled], .radio input[type="radio"][disabled] {
-  background: %color:Disabled Container%; 
+  background: var(--disabled-container); 
 }
 
 input[disabled] ~ span {
   cursor: not-allowed;
-  color: %color:On Disabled%;
+  color: var(--on-disabled);
 }
 
 .checkbox input, .radio input {
@@ -969,8 +1011,8 @@ input[disabled] ~ span {
 }
 
 .checkbox input:checked, .radio input:checked {
-  background-color: %color:Primary Container%;
-  color: %color:On Primary Container%;
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
 }
 
 .checkbox input:checked:before {
@@ -978,12 +1020,6 @@ input[disabled] ~ span {
   content: "\f00c";
   font-size: 10px;
 }
-
-.checkbox input:indeterminate:before {
-  font-family: "FontAwesome";
-  content: "\f068";
-  font-size: 10px;
-}  
 
 .radio input:checked:before {
   font-family: "FontAwesome";
@@ -997,8 +1033,8 @@ input[disabled] ~ span {
 
 /* Data Grids */
 .anvil-role-tonal-data-grid.anvil-data-grid > .data-grid-child-panel>div.auto-grid-header {
-  background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
-  border-bottom: 1px solid %color:Surface Variant%;
+  background: linear-gradient(0deg, var(--primary-overlay-2), var(--primary-overlay-2)), var(--background);
+  border-bottom: 1px solid var(--surface-variant);
   border-radius: 24px 24px 0 0;
 }
 
@@ -1009,12 +1045,12 @@ input[disabled] ~ span {
 
 .anvil-role-tonal-data-grid.anvil-data-grid {
   border-radius: 24px;
-  border: 1px solid %color:Surface Variant%;
+  border: 1px solid var(--surface-variant);
 }
 
 .anvil-role-tonal-data-grid.anvil-data-grid .data-grid-child-panel div.data-row-col {
-  border-left: 1px solid %color:Surface Variant%;
-  border-bottom: 1px solid %color:Surface Variant%;
+  border-left: 1px solid var(--surface-variant);
+  border-bottom: 1px solid var(--surface-variant);
 }
 
 .anvil-role-tonal-data-grid.anvil-data-grid .data-grid-child-panel div.data-row-col:first-child {
@@ -1031,7 +1067,7 @@ input[disabled] ~ span {
 /*Plots*/
 
 div.plot-container.plotly svg.main-svg {
-  border: 1px solid %color:Surface Variant%;
+  border: 1px solid var(--surface-variant);
   border-radius: 12px;
 }
 
@@ -1040,9 +1076,233 @@ div.plot-container.plotly svg.main-svg {
 }
 
 .plot-container.plotly .main-svg .parcoords .y-axis .axis > path.domain {
-  stroke: %color:Outline%;
+  stroke: var(--outline);
 }
 
-.anvil-spinner {
-    --anvil-spinner-bg: %color:Surface Variant%;
+#loadingSpinner {
+  background-color: var(--surface-variant);
+  box-shadow: 0px 0px 100px 100px var(--surface-variant);
+}
+
+/* ALTERAÇÕES DO MODELO PADRÃO */
+/* Observação: As variáveis de cor estão alteradas para var e estão definidas no :root */
+
+/* Component: Round Image
+	Usado para imagens arredondadas
+*/
+.anvil-image.anvil-role-round {
+  border-radius: 100%;
+}
+
+.app-bar .anvil-role-orudata-navbar-links {
+  margin: 0px !important;
+}
+
+.app-bar .anvil-image.anvil-role-round {
+  margin: 0px;
+  border: solid 2px var(--user-rank-color);
+}
+
+.anvil-rich-text.anvil-role-round {
+  padding: 7px;
+  border-radius: 7px;
+}
+
+/* Botões de pop up de user  */
+.anvil-role-user-popup-component .btn {
+  width: 175px;
+}
+
+.anvil-role-user-popup-component .anvil-role-delete-account .btn {
+  border: solid 1px var(--delete-button);
+  min-height: 0px;
+  padding: 0px;
+  width: 130px;
+  background: white;
+}
+
+.app-bar-nav > .flow-panel > .flow-panel-gutter >
+.flow-panel-item > .column-panel > .anvil-panel-section >
+.anvil-panel-section-container > .anvil-panel-section-gutter >
+.anvil-panel-row > .anvil-panel-col {
+  margin-top: -5px;
+}
+
+.anvil-role-user-popup-component .btn .button-text {
+  display: inline-block;
+  min-width: 85px;
+}
+
+.anvil-role-squared-button > .btn {
+  border-radius: 0px;
+}
+
+.anvil-role-round-icon-button > .btn {
+  /*  Para botões redondos simples, só com icone  */
+  padding: 0.5ex 1ex;
+  min-width: 40px;
+}
+
+/* Outlined Links */
+/*   Links */
+a.anvil-role-outlined-link {
+  color: var(--primary);
+  border: solid 1px var(--outline);
+}
+
+/*  , .anvil-role-outlined-link.file-loader>label:hover  */
+a.anvil-role-outlined-link:hover {
+  background-color: var(--light-overlay-1);
+}
+
+/*   .anvil-role-outlined-link.file-loader>label:focus, .anvil-role-outlined-link.file-loader>label:active */
+a.anvil-role-outlined-link:focus, a.anvil-role-outlined-link:active{
+  background-color: var(--light-overlay-2);
+  color: var(--primary);
+}
+
+.left-nav a.anvil-role-module-expanded {
+  border-radius: 25px;
+}
+
+/* Grid-button-panel: Diminui o padding dos botões */
+.anvil-role-grid-button-panel .btn {
+  padding: 8px 8px;
+}
+
+/* Centralização do título */
+.app-bar > .title { 
+  float: left;
+  margin-left: calc(50vw - 140px); /* ou min-width: calc(100vw - 140px)*/
+}
+
+/* Modal */
+@media (min-width: 768px) {
+  .modal-sm.anvil-role-modal-md {
+    width: auto;
+    min-width: 300px;
+    max-width: 600px;
+  }
+}
+
+/* Strip Button */
+.anvil-role-strip-button > .btn, .anvil-role-strip-button.file-loader>label {
+  min-height: 0;
+  padding: 0 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* AnvilExtras Popover */
+.popover {
+  background-color: var(--surface);
+}
+
+.popover-title {
+  background-color: var(--surface-variant);
+}
+
+.popover.bottom > .arrow:after {
+  border-bottom-color: var(--surface) !important;
+}
+
+.popover.top > .arrow:after {
+  border-top-color: var(--surface) !important;
+}
+
+/* DataGrid Horizontal Scroll */
+.anvil-role-horizontal-scroll {
+  overflow: hidden; /* Corrige o background do auto-header quando é arredondado */
+}
+.anvil-role-horizontal-scroll .data-grid-child-panel {
+  overflow-x: auto;
+}
+
+.anvil-role-horizontal-scroll .anvil-data-row-panel {
+  flex-wrap: nowrap;
+  width: fit-content; /* Fix background*/
+}
+
+/* Anvil Extras Tabs with role Toggle Button */
+.anvil-extras-tabs.anvil-role-toggle-button {
+	& > .tabs > .indicator {
+		background-color: transparent;
+	}
+
+	& > .tabs > .tab > a > .link-text {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+  & > .tabs > .tab > a {
+    border-radius: 0;
+    margin: 0;
+  }
+  
+  & > .tabs {
+    border-radius: 20px;
+    overflow-x: hidden;
+  }
+
+  & > .tabs .tab a:hover, 
+  & > .tabs .tab a.active {
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+  }
+
+  & > .tabs .tab a {
+    color: rgba(var(--color),0.7);
+  }
+}
+
+/* Quill background */
+.ql-container {
+  background-color: var(--surface-variant);
+  color: var(--on-surface-variant);
+}
+
+/* Critérios Component */
+.anvil-slider-container.anvil-role-criterio-component {
+  margin-right: 20px;
+
+  & .noUi-tooltip {
+    bottom: 0;
+    border: 0;
+    background: none;
+  }
+}
+
+/* DateRangePicker */
+.daterangepicker {
+  background-color: var(--surface-variant);
+  border-color: var(--outline);
+}
+
+.daterangepicker .calendar-table {
+  background-color: var(--surface-variant);
+}
+
+.daterangepicker td.off {
+  background-color: var(--disabled-container);
+}
+
+.daterangepicker select.hourselect, 
+.daterangepicker select.minuteselect, 
+.daterangepicker select.secondselect, 
+.daterangepicker select.ampmselect,
+.daterangepicker select.monthselect, 
+.daterangepicker select.yearselect {
+  background-color: var(--tertiary-container);
+  border-color: var(--tertiary-container);
+  color: var(--on-tertiary-container);
+}
+
+.daterangepicker .calendar-table .next span, 
+.daterangepicker .calendar-table .prev span {
+  color: var(--surface);
+  border-color: var(--on-surface);
+}
+
+option:disabled {
+  color: var(--on-disabled);
 }
