@@ -7,4 +7,80 @@ components:
   properties: {}
   type: ColumnPanel
   layout_properties: {slot: default}
+  components:
+  - name: filter_panel
+    properties:
+      role: [elevated-card, tonal-card]
+    type: ColumnPanel
+    layout_properties: {grid_position: 'MUWCWN,MHJZJS'}
+    components:
+    - name: titulo_label
+      properties: {text: 'Título:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'ICKMHQ,VLBYKQ'}
+    - name: titulo_text_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'ICKMHQ,JNWHMH'}
+    - name: descricao_label
+      properties: {text: 'Descrição (contém):', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'RVBRKN,BBFHNF'}
+    - name: descricao_text_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'RVBRKN,UYFRWC'}
+    - name: prioridade_label
+      properties: {text: 'Prioridade:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'LALSTZ,XCTMND'}
+    - name: prioridade_drop_down
+      properties: {include_placeholder: true}
+      type: DropDown
+      layout_properties: {grid_position: 'LALSTZ,SZEAUQ'}
+    - name: tipo_label
+      properties: {role: input-prompt, text: 'Tipo:'}
+      type: Label
+      layout_properties: {grid_position: 'GDYBOJ,VZQPXK'}
+    - name: tipo_drop_down
+      properties: {include_placeholder: true}
+      type: DropDown
+      layout_properties: {grid_position: 'GDYBOJ,MAZZXI'}
+    - name: prontos_label
+      properties: {role: input-prompt, text: 'Pontos:'}
+      type: Label
+      layout_properties: {grid_position: 'QBJFJR,EAFXFX'}
+    - name: pontos_number_range_component
+      properties: {}
+      type: form:dep_oehtqjxaysba4u:NumberRangeComponent
+      layout_properties: {grid_position: 'QBJFJR,TTSNWK'}
+    - name: limite_label
+      properties: {role: input-prompt, text: 'Data Limite:'}
+      type: Label
+      layout_properties: {grid_position: 'RTJAZP,LSOEOF'}
+    - name: limite_date_range_component
+      properties: {}
+      type: form:dep_oehtqjxaysba4u:DateRangeComponent
+      layout_properties: {grid_position: 'RTJAZP,IKMUDE'}
+  - name: result_data_grid
+    properties:
+      columns:
+      - {id: IBKKGZ, data_key: Titulo, title: Titulo}
+      - {id: BADPGL, data_key: Descricao, title: Descricao}
+      - {id: VIDQNS, data_key: Criador, title: Criador}
+      - {id: YNBVUC, data_key: Prioridade, title: Prioridade}
+      - {id: QHKPXN, data_key: Tipo, title: Tipo}
+      - {id: NABIOH, data_key: Pontos, title: Pontos}
+      - {id: IUFQXX, data_key: Limite, title: Limite}
+      role: tonal-data-grid
+    type: DataGrid
+    components:
+    - name: no_result_label
+      properties: {align: center, text: Nenhum Registro Encontrado., italic: true}
+      type: Label
+      layout_properties: {}
+    - name: result_data_panel
+      properties: {item_template: Views.UserStories.UserStoryBusca.StoriesRowTemplate}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'SBBFTQ,LUTCQZ'}
 is_package: true
