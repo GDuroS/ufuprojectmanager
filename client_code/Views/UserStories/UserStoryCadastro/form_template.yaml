@@ -1,9 +1,10 @@
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
+  event_bindings: {show: form_show}
 components:
 - name: content_panel
-  properties: {col_widths: '{"QIXAQT":10,"ORZWZE":50,"QPEWNT":10,"JJYMBD":50}'}
+  properties: {col_widths: '{"QIXAQT":10,"ORZWZE":50,"QPEWNT":10,"JJYMBD":50,"WRXAUH":10,"XVLWNS":50,"UGTQAD":10,"BURPQO":50}'}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
@@ -77,7 +78,7 @@ components:
     properties: {role: input-prompt, text: 'Prioridade:'}
     type: Label
     layout_properties: {grid_position: 'DZCGBH,QPEWNT'}
-  - name: tipo_panel_copy
+  - name: prioridade_panel
     properties: {}
     type: FlowPanel
     layout_properties: {grid_position: 'DZCGBH,JJYMBD'}
@@ -119,10 +120,39 @@ components:
     properties: {role: input-prompt, text: 'Story Points:', italic: true}
     type: Label
     layout_properties: {grid_position: 'SUDPLF,WRXAUH'}
+  - name: pontos_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'SUDPLF,XVLWNS'}
+    components:
+    - name: pontos_text_box
+      properties: {type: number}
+      type: TextBox
+      layout_properties: {width: 139}
+      event_bindings: {change: pontos_text_box_change}
+    - name: pontos_label
+      properties: {role: title}
+      type: Label
+      layout_properties: {}
   - name: limite_input_label
     properties: {role: input-prompt, text: 'Data Limite:'}
     type: Label
     layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
+  - name: limite_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
+    components:
+    - name: limite_date_picker
+      properties: {format: '%d/%m/%Y', date: null}
+      type: DatePicker
+      data_bindings:
+      - {property: min_date, code: self.hoje, writeback: false}
+      layout_properties: {width: 139}
+    - name: limite_label
+      properties: {role: title}
+      type: Label
+      layout_properties: {}
   - name: descricao_input_label
     properties: {role: input-prompt, text: 'Descrição:'}
     type: Label
