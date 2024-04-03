@@ -15,9 +15,12 @@ from datetime import date
 class UserStoryCadastro(CrudInterface, UserStoryCadastroTemplate):
   def __init__(self, item_row=None, **properties):
     # Set Form properties and Data Bindings.
-    CrudInterface.__init__(self, UserStory, item_row)
+    CrudInterface.__init__(self, UserStory, item_row, on_navigate=self.on_navigate)
     self.tipo_drop_down.items = TipoTarefa.attr_key_tuple('nome')
     self.prioridade_drop_down.items = Prioridade.attr_key_tuple('nome')
+
+    if self.has_entity:
+      self.descricao_quill.set_html(self.item['Descricao'])
 
     self.init_components(**properties)
 
@@ -41,12 +44,16 @@ class UserStoryCadastro(CrudInterface, UserStoryCadastroTemplate):
     if value and value < 0:
       self.pontos_text_box.text = 0
 
+  def before_save(self):
+    self.item['Descricao'] = self.descricao_quill.get_html()
+
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""
     RoutingUtils.set_navbar_links(
       back_visible=True, back_callback=lambda:self.routingUtils.go_back(),
-      save_visible=True, save_callback=None
+      save_visible=True, save_callback=self.action_link_click
     )
 
-  def save_click(self, **event_args):
-    pass
+  def on_navigate(self, from_mode:str, to_mode:str):
+    if to_mode.upper() == 'VIEW':
+      self.descricao_quill.set_html(self.item['Descricao'])
