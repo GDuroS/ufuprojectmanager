@@ -50,7 +50,7 @@ class UserStoryCadastro(CrudInterface, UserStoryCadastroTemplate):
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""
     RoutingUtils.set_navbar_links(
-      back_visible=True, back_callback=lambda:self.routingUtils.go_back(),
+      back_visible=True, back_callback=lambda:self.routingUtils.set_url_hash('story'),
       save_visible=self.create_mode, save_callback=self.action_link_click,
       edit_visible=self.edit_mode, edit_callback=self.action_link_click
     )
