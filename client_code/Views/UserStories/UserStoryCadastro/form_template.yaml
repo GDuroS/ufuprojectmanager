@@ -175,4 +175,6 @@ components:
     layout_properties: {grid_position: 'JCQRPB,ZXQOQL'}
     data_bindings:
     - {property: readonly, code: not self.create_mode and not self.edit_mode, writeback: false}
+    - {property: theme, code: '''snow'' if self.create_mode or self.edit_mode else
+        ''bubble''', writeback: false}
 is_package: true

@@ -32,12 +32,12 @@
   --primary-overlay-1: %color:Primary Overlay 1%;
   --primary-overlay-2: %color:Primary Overlay 2%;
   --primary-overlay-3: %color:Primary Overlay 3%;
-  --success: #d4edda;
-  --on-success: #155724;
-  --warning: #fff3cd;
-  --on-warning: #856404;
-  --danger: #f8d7da;
-  --on-danger: #721c24;
+  --success: #155724;
+  --on-success: #d4edda;
+  --warning: #856404;
+  --on-warning: #fff3cd;
+  --danger: #721c24;
+  --on-danger: #f8d7da;
   --delete-button: rgb(179, 27, 27);
   --user-rank-color: black;
 }
