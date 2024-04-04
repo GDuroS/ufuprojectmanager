@@ -4,7 +4,7 @@ from anvil import *
 from OruData.Utils import RoutingUtils
 from OruData.Views.CrudInterface import CrudInterface
 
-@RoutingUtils.route('story')
+@RoutingUtils.route('task')
 class TarefaBusca(TarefaBuscaTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -24,7 +24,7 @@ class TarefaBusca(TarefaBuscaTemplate):
       'Tipo': self.tipo_drop_down.selected_value
     }
     self.result_data_panel.items = ObjectUtils.search_iterator_to_entity_class_list(
-      server.call('getUserStoriesFind', **{k:v for k, v in filter.items() if v is not None}),
+      server.call('getTarefasFind', **{k:v for k, v in filter.items() if v is not None}),
       UserStory
     )
     self.result_data_grid.visible = True
@@ -33,15 +33,15 @@ class TarefaBusca(TarefaBuscaTemplate):
 
 
   def create(self, **event_args):
-    RoutingUtils.set_url_hash('story/new')
+    RoutingUtils.set_url_hash('task/new')
 
   def clear(self, **event_args):
     self.titulo_text_box.text = None
     self.descricao_text_box.text = None
     self.prioridade_drop_down.selected_value = None
     self.tipo_drop_down.selected_value = None
-    self.pontos_number_range_component.clear_button_click()
-    self.limite_date_range_component.clear_button_click()
+    self.tempo_number_range_component.clear_button_click()
+    self.prazo_date_range_component.clear_button_click()
 
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""
