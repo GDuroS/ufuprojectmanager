@@ -68,7 +68,6 @@ components:
       columns:
       - {id: KFJZFT, data_key: '', title: '', width: '50'}
       - {id: IBKKGZ, data_key: Titulo, title: Titulo}
-      - {id: BADPGL, data_key: Descricao, title: Descricao}
       - {id: VIDQNS, data_key: Criador, title: Criador}
       - {id: YNBVUC, data_key: Prioridade, title: Prioridade}
       - {id: QHKPXN, data_key: Tipo, title: Tipo}

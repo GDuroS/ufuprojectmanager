@@ -47,19 +47,22 @@ class UserStoryCadastro(CrudInterface, UserStoryCadastroTemplate):
   def before_save(self):
     self.item['Descricao'] = self.descricao_quill.get_html()
 
+  def go_back(self, **event_args):
+    self.routingUtils.set_url_hash('story')
+
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""
     RoutingUtils.set_navbar_links(
-      back_visible=True, back_callback=lambda:self.routingUtils.set_url_hash('story'),
+      back_visible=True, back_callback=self.go_back,
       save_visible=self.create_mode or self.edit_mode, save_callback=self.action_link_click,
       edit_visible=self.view_mode, edit_callback=self.action_link_click
     )
 
   def on_navigate(self, from_mode:str, to_mode:str):
-    if to_mode.upper() == 'VIEW':
+    if to_mode.upper() in ['VIEW', 'EDIT']:
       self.descricao_quill.set_html(self.item['Descricao'])
     RoutingUtils.set_navbar_links(
-      back_visible=True, back_callback=lambda:self.routingUtils.set_url_hash('story'),
-      save_visible=self.create_mode or self.edit_mode, save_callback=self.action_link_click,
-      edit_visible=self.view_mode, edit_callback=self.action_link_click
+      back_visible=True, back_callback=self.go_back,
+      save_visible=to_mode.upper() in ['NEW', 'EDIT'], save_callback=self.action_link_click,
+      edit_visible=to_mode.upper() == 'VIEW', edit_callback=self.action_link_click
     )

@@ -5,3 +5,10 @@ components:
   properties: {icon: 'fa:edit'}
   type: Link
   layout_properties: {column: KFJZFT}
+  event_bindings: {click: edit_link_click}
+- name: criador_label
+  properties: {spacing_above: none, spacing_below: none}
+  type: Label
+  layout_properties: {column: VIDQNS}
+  data_bindings:
+  - {property: text, code: 'self.item[''Criador''][''display_name'']', writeback: false}

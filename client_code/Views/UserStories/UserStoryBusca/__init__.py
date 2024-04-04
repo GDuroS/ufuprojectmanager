@@ -18,8 +18,8 @@ class UserStoryBusca(UserStoryBuscaTemplate):
     from ....Model.Entities import UserStory
     from OruData.Utils import ObjectUtils
     filter = {
-      'Titulo': self.titulo_text_box.text,
-      'Descricao': self.descricao_text_box.text,
+      'Titulo': self.titulo_text_box.text if len(self.titulo_text_box.text) > 0 else None,
+      'Descricao': self.descricao_text_box.text if len(self.descricao_text_box.text) > 0 else None,
       'Prioridade': self.prioridade_drop_down.selected_value,
       'Tipo': self.tipo_drop_down.selected_value
     }
@@ -50,3 +50,4 @@ class UserStoryBusca(UserStoryBuscaTemplate):
       search_visible=True, search_callback=self.search,
       clear_visible=True, clear_callback=self.clear
     )
+    self.clear()
