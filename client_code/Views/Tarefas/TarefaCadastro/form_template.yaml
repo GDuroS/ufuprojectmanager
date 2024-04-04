@@ -1,0 +1,180 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+  event_bindings: {show: form_show}
+components:
+- name: content_panel
+  properties: {col_widths: '{"QIXAQT":10,"ORZWZE":50,"QPEWNT":10,"JJYMBD":50,"WRXAUH":10,"XVLWNS":50,"UGTQAD":10,"BURPQO":50}'}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: titulo_headline
+    properties: {role: title}
+    type: Label
+    layout_properties: {grid_position: 'TKDNGU,TJDEBV'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Titulo'']', writeback: false}
+    - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+  - name: titulo_edit_panel
+    properties: {col_widths: '{"VWBDJH":10,"BNKXMI":50}'}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'CFAVAQ,BYJPYL'}
+    components:
+    - name: titulo_input_label
+      properties: {text: 'Título:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'GLLQPJ,VWBDJH'}
+    - name: titulo_text_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'GLLQPJ,BNKXMI'}
+      data_bindings:
+      - {property: text, code: 'self.item[''Titulo'']', writeback: true}
+    data_bindings:
+    - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+  - name: tipo_input_label
+    properties: {role: input-prompt, text: 'Tipo:'}
+    type: Label
+    layout_properties: {grid_position: 'HERVGU,QIXAQT'}
+  - name: tipo_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'HERVGU,ORZWZE'}
+    components:
+    - name: tipo_drop_down
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: ['']
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      type: DropDown
+      layout_properties: {expand: true}
+      data_bindings:
+      - {property: selected_value, code: 'self.item[''Tipo'']', writeback: true}
+      - {property: enabled, code: self.create_mode or self.edit_mode, writeback: false}
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+    - name: tipo_label
+      properties: {spacing_above: none, spacing_below: none, role: title}
+      type: Label
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: self.item.tipo_nome, writeback: false}
+      layout_properties: {}
+  - name: prioridade_input_label
+    properties: {role: input-prompt, text: 'Prioridade:'}
+    type: Label
+    layout_properties: {grid_position: 'DZCGBH,QPEWNT'}
+  - name: prioridade_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'DZCGBH,JJYMBD'}
+    components:
+    - name: prioridade_drop_down
+      properties:
+        role: null
+        align: full
+        tooltip: ''
+        placeholder: ''
+        border: ''
+        enabled: true
+        foreground: ''
+        items: ['']
+        visible: true
+        font_size: null
+        font: ''
+        spacing_above: small
+        spacing_below: small
+        italic: false
+        background: ''
+        bold: false
+        underline: false
+        include_placeholder: true
+      type: DropDown
+      layout_properties: {expand: true}
+      data_bindings:
+      - {property: selected_value, code: 'self.item[''Prioridade'']', writeback: true}
+      - {property: enabled, code: self.create_mode or self.edit_mode, writeback: false}
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+    - name: prioridade_label
+      properties: {spacing_above: none, spacing_below: none, role: title}
+      type: Label
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: self.item.prioridade_nome, writeback: false}
+      layout_properties: {}
+  - name: pontos_input_label
+    properties: {role: input-prompt, text: 'Story Points:', italic: true}
+    type: Label
+    layout_properties: {grid_position: 'SUDPLF,WRXAUH'}
+  - name: pontos_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'SUDPLF,XVLWNS'}
+    components:
+    - name: pontos_text_box
+      properties: {type: number}
+      type: TextBox
+      layout_properties: {width: 139}
+      event_bindings: {change: pontos_text_box_change}
+      data_bindings:
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+      - {property: text, code: 'self.item[''Pontos'']', writeback: true}
+    - name: pontos_label
+      properties: {role: title}
+      type: Label
+      layout_properties: {}
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: 'self.item[''Pontos'']', writeback: false}
+  - name: limite_input_label
+    properties: {role: input-prompt, text: 'Data Limite:'}
+    type: Label
+    layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
+  - name: limite_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
+    components:
+    - name: limite_date_picker
+      properties: {format: '%d/%m/%Y', date: null}
+      type: DatePicker
+      data_bindings:
+      - {property: min_date, code: self.hoje, writeback: false}
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+      - {property: date, code: 'self.item[''Limite'']', writeback: true}
+      layout_properties: {width: 139}
+    - name: limite_label
+      properties: {role: title}
+      type: Label
+      layout_properties: {}
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: '"{:%d/%m/%Y}".format(self.item[''Limite'']) if self.item[''Limite'']
+          is not None else ''''', writeback: false}
+  - name: descricao_input_label
+    properties: {role: input-prompt, text: 'Descrição:'}
+    type: Label
+    layout_properties: {grid_position: 'HOXPIG,KJGZQT'}
+  - name: descricao_quill
+    properties: {theme: snow}
+    type: form:C6ZZPAPN4YYF5NVJ:Quill
+    layout_properties: {grid_position: 'JCQRPB,ZXQOQL'}
+    data_bindings:
+    - {property: readonly, code: not self.create_mode and not self.edit_mode, writeback: false}
+    - {property: theme, code: '''snow'' if self.create_mode or self.edit_mode else
+        ''bubble''', writeback: false}
+is_package: true

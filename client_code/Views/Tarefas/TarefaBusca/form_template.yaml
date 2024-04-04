@@ -47,19 +47,19 @@ components:
       properties: {include_placeholder: true}
       type: DropDown
       layout_properties: {grid_position: 'GDYBOJ,MAZZXI'}
-    - name: pontos_label
-      properties: {role: input-prompt, text: 'Pontos:'}
+    - name: tempo_label
+      properties: {role: input-prompt, text: 'Tempo Previsto (h):'}
       type: Label
       layout_properties: {grid_position: 'QBJFJR,EAFXFX'}
-    - name: pontos_number_range_component
+    - name: tempo_number_range_component
       properties: {}
       type: form:dep_oehtqjxaysba4u:NumberRangeComponent
       layout_properties: {grid_position: 'QBJFJR,TTSNWK'}
-    - name: limite_label
-      properties: {role: input-prompt, text: 'Data Limite:'}
+    - name: prazo_label
+      properties: {role: input-prompt, text: 'Prazo:'}
       type: Label
       layout_properties: {grid_position: 'RTJAZP,LSOEOF'}
-    - name: limite_date_range_component
+    - name: prazo_date_range_component
       properties: {}
       type: form:dep_oehtqjxaysba4u:DateRangeComponent
       layout_properties: {grid_position: 'RTJAZP,IKMUDE'}
@@ -67,12 +67,16 @@ components:
     properties:
       columns:
       - {id: KFJZFT, data_key: '', title: '', width: '50'}
-      - {id: IBKKGZ, data_key: Titulo, title: Titulo}
-      - {id: VIDQNS, data_key: Criador, title: Criador}
-      - {id: YNBVUC, data_key: Prioridade, title: Prioridade}
-      - {id: QHKPXN, data_key: Tipo, title: Tipo}
-      - {id: NABIOH, data_key: Pontos, title: Pontos}
-      - {id: IUFQXX, data_key: Limite, title: Limite}
+      - {id: KAXJBQ, data_key: Titulo, title: Titulo}
+      - {id: ATLNTW, data_key: Descricao, title: Descricao}
+      - {id: ILUJHY, data_key: Criador, title: Criador}
+      - {id: CKBLCL, data_key: UserStory, title: UserStory}
+      - {id: XCADKL, data_key: Prioridade, title: Prioridade}
+      - {id: XDRSER, data_key: Tipo, title: Tipo}
+      - {id: PNQVON, data_key: Tempo, title: Tempo}
+      - {id: JJRZTK, data_key: Prazo, title: Prazo}
+      - {id: TWFCIC, data_key: Desenvolvedor, title: Desenvolvedor}
+      - {id: KHBKTO, data_key: Sprint, title: Sprint}
       role: tonal-data-grid
       visible: false
     type: DataGrid
