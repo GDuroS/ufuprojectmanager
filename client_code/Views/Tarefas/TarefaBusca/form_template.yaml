@@ -84,9 +84,7 @@ components:
       columns:
       - {id: KFJZFT, data_key: '', title: '', width: '50'}
       - {id: KAXJBQ, data_key: Titulo, title: Titulo}
-      - {id: ATLNTW, data_key: Descricao, title: Descricao}
       - {id: ILUJHY, data_key: Criador, title: Criador}
-      - {id: CKBLCL, data_key: UserStory, title: UserStory}
       - {id: XCADKL, data_key: Prioridade, title: Prioridade}
       - {id: XDRSER, data_key: Tipo, title: Tipo}
       - {id: PNQVON, data_key: Tempo, title: Tempo}
