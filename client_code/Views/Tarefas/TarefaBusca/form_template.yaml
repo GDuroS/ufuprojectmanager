@@ -64,18 +64,18 @@ components:
       type: form:dep_oehtqjxaysba4u:DateRangeComponent
       layout_properties: {grid_position: 'RTJAZP,IKMUDE'}
     - name: sprint_label
-      properties: {text: 'Sprint:'}
+      properties: {text: 'Sprint:', role: input-prompt}
       type: Label
       layout_properties: {grid_position: 'JCHCAC,XIAJGX'}
-    - name: drop_down_1
+    - name: sprint_drop_down
       properties: {}
       type: DropDown
       layout_properties: {grid_position: 'JCHCAC,FPRSOV'}
     - name: dev_label
-      properties: {text: 'Desenvolvedor:'}
+      properties: {text: 'Desenvolvedor:', role: input-prompt}
       type: Label
       layout_properties: {grid_position: 'WGJKMC,HRFJSM'}
-    - name: drop_down_2
+    - name: dev_drop_down
       properties: {}
       type: DropDown
       layout_properties: {grid_position: 'WGJKMC,NGSSSG'}

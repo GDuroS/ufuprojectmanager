@@ -18,10 +18,12 @@ class UserStoryBusca(UserStoryBuscaTemplate):
     from ....Model.Entities import UserStory
     from OruData.Utils import ObjectUtils
     filter = {
-      'Titulo': self.titulo_text_box.text if len(self.titulo_text_box.text) > 0 else None,
-      'Descricao': self.descricao_text_box.text if len(self.descricao_text_box.text) > 0 else None,
+      'Titulo': q.ilike(self.titulo_text_box.text) if len(self.titulo_text_box.text) > 0 else None,
+      'Descricao': q.ilike('%' + self.descricao_text_box.text + '%') if len(self.descricao_text_box.text) > 0 else None,
       'Prioridade': self.prioridade_drop_down.selected_value,
-      'Tipo': self.tipo_drop_down.selected_value
+      'Tipo': self.tipo_drop_down.selected_value,
+      'Pontos': None if self.pontos_number_range_component.item is None else self.pontos_number_range_component.item.get_comparator(),
+      'Limite': None if self.limite_date_range_component.item is None else self.limite_date_range_component.item.get_comparator()
     }
     self.result_data_panel.items = ObjectUtils.search_iterator_to_entity_class_list(
       server.call('getUserStoriesFind', **{k:v for k, v in filter.items() if v is not None}),
