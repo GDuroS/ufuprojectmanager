@@ -68,7 +68,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
   @property
   def story_nome(self):
     try:
-      return self.item.user_story
+      return self.item['UserStory']['Titulo']
     except:
       return None
 

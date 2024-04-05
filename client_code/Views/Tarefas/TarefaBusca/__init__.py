@@ -40,7 +40,7 @@ class TarefaBusca(TarefaBuscaTemplate):
 
 
   def create(self, **event_args):
-    RoutingUtils.set_url_hash('task/new')
+    RoutingUtils.set_url_hash('task/new', load_from_cache=False)
 
   def clear(self, **event_args):
     self.titulo_text_box.text = None
