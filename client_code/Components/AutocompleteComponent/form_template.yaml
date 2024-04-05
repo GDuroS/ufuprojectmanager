@@ -1,0 +1,106 @@
+properties:
+- {name: auto_header, type: boolean, default_value: false, important: true, default_binding_prop: true}
+- {name: max_results, type: number, important: true}
+- {name: result_attributes, type: object, important: true}
+- {name: min_length, type: number, important: true, default_value: 5}
+- {name: use_entity_class, type: object, important: true}
+- {name: main_attribute, type: string, default_value: name, important: true}
+- {name: show_clear_button, type: boolean, default_value: false, important: true}
+- {name: show_continue_button, type: boolean, default_value: true, important: true}
+- {name: show_create_button, type: boolean, default_value: true, important: true}
+- {name: filter_object, type: object, important: true}
+- {name: filter_method, type: string, default_value: '', important: true}
+is_package: true
+events:
+- name: selected_value_change
+  default_event: true
+  parameters:
+  - {name: selected_value}
+- name: new_button_clicked
+  parameters:
+  - {name: text}
+- name: continue_button_clicked
+  parameters:
+  - {name: selected_value}
+custom_component: true
+components:
+- name: content_panel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: ''}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: input_panel
+    properties: {role: null, spacing: none, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: none, background: ''}
+    type: FlowPanel
+    layout_properties: {grid_position: 'PJPFGG,PYLMGA'}
+    components:
+    - name: input_box
+      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
+        font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+        background: '', bold: false, underline: false}
+      type: TextBox
+      layout_properties: {expand: true, width: null}
+      event_bindings: {change: input_box_change, lost_focus: focus_change, focus: focus_change}
+    - name: spinner_image
+      properties: {role: null, vertical_align: center, height: '0', tooltip: '', border: '',
+        foreground: '', visible: false, display_mode: shrink_to_fit, spacing_above: none,
+        source: _/theme/NewSpinner.gif, spacing_below: none, background: var(--surface-variant),
+        horizontal_align: center}
+      type: Image
+      layout_properties: {width: 0, expand: false}
+    - name: clear_button
+      properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+        foreground: var(--on-surface-variant), visible: true, text: '', font_size: null,
+        font: '', spacing_above: none, icon_align: left, spacing_below: none, italic: false,
+        background: var(--surface-variant), bold: false, underline: false, icon: 'fa:times-circle'}
+      type: Button
+      layout_properties: {}
+      data_bindings:
+      - {property: visible, code: self.show_clear_button and self._selected_value is not None}
+      event_bindings: {click: clear_button_click}
+    - name: create_or_next_button
+      properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: none,
+        icon_align: left, spacing_below: none, italic: false, background: Green, bold: false,
+        underline: false, icon: 'fa:plus'}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: create_or_next_button_click}
+      data_bindings:
+      - {property: visible, code: (self.show_continue_button and self._selected_value) or (self.show_create_button and not self._selected_value)}
+  - name: result_grid
+    properties:
+      role: null
+      columns:
+      - {id: WNZXNF, title: Resultados, data_key: result, $$hashKey: 'object:38531'}
+      auto_header: false
+      tooltip: ''
+      border: ''
+      foreground: ''
+      rows_per_page: 20
+      visible: true
+      wrap_on: never
+      show_page_controls: false
+      spacing_above: none
+      spacing_below: small
+      background: ''
+    type: DataGrid
+    layout_properties: {grid_position: 'IVBKNI,LBWOUI'}
+    data_bindings:
+    - {property: auto_header, code: self.auto_header}
+    - {property: rows_per_page, code: self.max_results}
+    - {property: columns, code: self.result_attributes}
+    components:
+    - name: result_grid_data
+      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: none, spacing_below: none, item_template: Components.AutocompleteComponent.DefaultResultsRowTemplate,
+        background: ''}
+      type: RepeatingPanel
+      layout_properties: {}
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}

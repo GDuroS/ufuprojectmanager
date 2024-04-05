@@ -5,19 +5,20 @@ from OruData.Utils import RoutingUtils
 from OruData.Views.CrudInterface import CrudInterface
 
 from ....Model.Enums import Prioridade, TipoTarefa
-from ....Model.Entities import UserStory
+from ....Model.Entities import Tarefa
 
 from datetime import date
 
-@RoutingUtils.route('story/new')
-@RoutingUtils.route('story/{id}/view')
-@RoutingUtils.route('story/{id}/edit')
+@RoutingUtils.route('task/new')
+@RoutingUtils.route('task/{id}/view')
+@RoutingUtils.route('task/{id}/edit')
 class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
   def __init__(self, item_row=None, **properties):
     # Set Form properties and Data Bindings.
-    CrudInterface.__init__(self, UserStory, item_row, on_navigate=self.on_navigate)
+    CrudInterface.__init__(self, Tarefa, item_row, on_navigate=self.on_navigate)
     self.tipo_drop_down.items = TipoTarefa.attr_key_tuple('nome')
     self.prioridade_drop_down.items = Prioridade.attr_key_tuple('nome')
+    
 
     if self.has_entity:
       self.descricao_quill.set_html(self.item['Descricao'])
@@ -29,8 +30,8 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
       (self.titulo_text_box, self.tipo_input_label),
       (self.tipo_drop_down, self.tipo_input_label),
       (self.prioridade_drop_down, self.prioridade_input_label),
-      (self.pontos_text_box, self.pontos_input_label),
-      (self.limite_date_picker, self.limite_input_label),
+      (self.prazo_date_picker, self.prazo_input_label),
+      (self.tempo_text_box, self.tempo_input_label),
       (self.descricao_quill, self.descricao_input_label)
     ])
 
@@ -38,7 +39,26 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
   def hoje(self):
     return date.today()
 
-  def pontos_text_box_change(self, **event_args):
+  @property
+  def has_dev(self):
+    try:
+      return self.item['Desenvolvedor'] is not None
+    except:
+      return False
+
+  @property
+  def desenvolvedor_nome(self):
+    if self.has_dev:
+      return self.item['Desenvolvedor']['display_name']
+    return None
+
+  @property
+  def sprint_nome(self):
+    if self.has_dev:
+      return self.item['Sprint']['Nome']
+    return None
+
+  def tempo_text_box_change(self, **event_args):
     """This method is called when the text in this text box is edited"""
     value = self.pontos_text_box.text
     if value and value < 0:
@@ -48,7 +68,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
     self.item['Descricao'] = self.descricao_quill.get_html()
 
   def go_back(self, **event_args):
-    self.routingUtils.set_url_hash('story')
+    self.routingUtils.set_url_hash('task')
 
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""

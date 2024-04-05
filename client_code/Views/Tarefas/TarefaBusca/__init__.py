@@ -9,7 +9,7 @@ class TarefaBusca(TarefaBuscaTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     from anvil import server
-    self.sprint_drop_down.items = server.call('getSprintsFind')
+    self.sprint_drop_down.items = [(d['Nome'], d) for d in server.call('getSprintsFind')]
     self.dev_drop_down.items = [(d['display_name'], d) for d in server.call('getDesenvolvedores')]
     self.init_components(**properties)
 
