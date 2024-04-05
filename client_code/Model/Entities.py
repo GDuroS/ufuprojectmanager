@@ -29,7 +29,7 @@ class UserStory(Entity):
     return self.prioridade_enum.nome
 
   @classmethod
-  def from_(cls, row, lista):
+  def from_(cls, row):
     return super().from_(row, 'Titulo')
 
 @anvil.server.portable_class

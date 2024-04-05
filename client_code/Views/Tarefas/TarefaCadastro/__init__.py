@@ -5,7 +5,8 @@ from OruData.Utils import RoutingUtils
 from OruData.Views.CrudInterface import CrudInterface
 
 from ....Model.Enums import Prioridade, TipoTarefa
-from ....Model.Entities import Tarefa
+from ....Model.Entities import Tarefa, UserStory
+user_story_class = UserStory
 
 from datetime import date
 
@@ -22,6 +23,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
 
     if self.has_entity:
       self.descricao_quill.set_html(self.item['Descricao'])
+      self.story_autocomplete.set_selected_value(self.item.user_story)
 
     self.init_components(**properties)
 
@@ -32,12 +34,17 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
       (self.prioridade_drop_down, self.prioridade_input_label),
       (self.prazo_date_picker, self.prazo_input_label),
       (self.tempo_text_box, self.tempo_input_label),
-      (self.descricao_quill, self.descricao_input_label)
+      (self.descricao_quill, self.descricao_input_label),
+      (self.story_autocomplete, self.story_input_label)
     ])
 
   @property
   def hoje(self):
     return date.today()
+
+  @property
+  def entity_class(self):
+    return user_story_class
 
   @property
   def has_dev(self):
@@ -58,11 +65,18 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
       return self.item['Sprint']['Nome']
     return None
 
+  @property
+  def story_nome(self):
+    try:
+      return self.item.user_story
+    except:
+      return None
+
   def tempo_text_box_change(self, **event_args):
     """This method is called when the text in this text box is edited"""
-    value = self.pontos_text_box.text
+    value = self.tempo_text_box.text
     if value and value < 0:
-      self.pontos_text_box.text = 0
+      self.tempo_text_box.text = 0
 
   def before_save(self):
     self.item['Descricao'] = self.descricao_quill.get_html()
@@ -72,6 +86,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
 
   def form_show(self, **event_args):
     """This method is called when the form is shown on the page"""
+    self.story_autocomplete.visible = self.create_mode or self.edit_mode
     RoutingUtils.set_navbar_links(
       back_visible=True, back_callback=self.go_back,
       save_visible=self.create_mode or self.edit_mode, save_callback=self.action_link_click,
@@ -81,8 +96,12 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
   def on_navigate(self, from_mode:str, to_mode:str):
     if to_mode.upper() in ['VIEW', 'EDIT']:
       self.descricao_quill.set_html(self.item['Descricao'])
+    self.story_autocomplete.visible = to_mode.upper() in ['EDIT', 'NEW']
     RoutingUtils.set_navbar_links(
       back_visible=True, back_callback=self.go_back,
       save_visible=to_mode.upper() in ['NEW', 'EDIT'], save_callback=self.action_link_click,
       edit_visible=to_mode.upper() == 'VIEW', edit_callback=self.action_link_click
     )
+
+  def story_autocomplete_selected_value_change(self, selected_value, **event_args):
+    self.item['UserStory'] = selected_value

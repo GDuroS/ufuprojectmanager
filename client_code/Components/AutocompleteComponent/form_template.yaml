@@ -103,4 +103,27 @@ components:
       layout_properties: {}
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
+  properties: {html: "<style>\n  .anvil-role-autocomplete-component {\n    \n    &\
+      \ .anvil-role-autocomplete-input > .btn {\n      /* Diminui o padding horizontal\
+      \ e coloca 0.5 de padding-bottom para alinhar com o text-box*/\n      padding:\
+      \ 10px 10px 9.5px 10px;\n      width: 40px;\n    }\n    & input.anvil-role-autocomplete-input\
+      \ {\n      border-top-right-radius: 0px;\n      margin-bottom: 0px !important;\n\
+      \    }\n  \n    & *:last-child > .anvil-role-squared-button > .btn {\n     \
+      \ border-top-right-radius: 5px;\n    }\n  \n    & .anvil-role-clear-button >\
+      \ .btn,\n    & .anvil-image {\n      border-bottom: 1px solid var(--outline);\n\
+      \      padding-bottom: 10px;\n      max-height: 41px;\n    }\n  \n    & .flow-panel.anvil-role-autocomplete-input:hover\
+      \ \n    .anvil-role-clear-button > .btn,\n    & .flow-panel.anvil-role-autocomplete-input:hover\
+      \ \n    .anvil-image,\n    & .flow-panel.anvil-role-autocomplete-input:focus\
+      \ \n    .anvil-role-clear-button > .btn,\n    & .flow-panel.anvil-role-autocomplete-input:focus\
+      \ \n    .anvil-image{\n      border-bottom: 2px solid var(--primary);\n    \
+      \  padding-bottom: 9px;\n      box-shadow: none;\n    }\n  \n    /*  Data Grid\
+      \  */\n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
+      \    a.anvil-role-outlined-link {\n      border-radius: 5px;\n      background-color:\
+      \ var(--primary-container);\n      color: var(--on-primary-container)\n    }\n\
+      \  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
+      \    a.anvil-role-outlined-link:hover {\n    background-color: var(--light-overlay-1);\n\
+      \    }\n  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
+      \    a.anvil-role-outlined-link:focus, a.anvil-role-outlined-link:active{\n\
+      \      background-color: var(--light-overlay-2);\n      color: var(--primary);\n\
+      \    }\n    \n    & .anvil-role-autocomplete-result.anvil-data-grid .data-grid-footer-panel\
+      \ {\n      display: none;\n    }\n  }\n</style>"}

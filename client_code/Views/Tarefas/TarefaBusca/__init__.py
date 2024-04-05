@@ -32,7 +32,7 @@ class TarefaBusca(TarefaBuscaTemplate):
     }
     self.result_data_panel.items = ObjectUtils.search_iterator_to_entity_class_list(
       server.call('getTarefasFind', **{k:v for k, v in filter.items() if v is not None}),
-      UserStory
+      Tarefa
     )
     self.result_data_grid.visible = True
     self.result_data_panel.visible = len(self.result_data_panel.items) > 0
