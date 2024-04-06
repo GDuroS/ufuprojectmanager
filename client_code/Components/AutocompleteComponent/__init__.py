@@ -11,11 +11,9 @@ from anvil_extras import augment
 
 from OruData.Utils import ObjectUtils
 
-from OruData.Utils.ValidationUtils import CustomValidationComponent
-
 rotate_quad = Transition(rotate=[0, "90deg"])
 
-class AutocompleteComponent(CustomValidationComponent, AutocompleteComponentTemplate):
+class AutocompleteComponent(AutocompleteComponentTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self._create_icon = 'fa:plus'
@@ -24,7 +22,6 @@ class AutocompleteComponent(CustomValidationComponent, AutocompleteComponentTemp
     self._in = False
     self._entity_class = None
     
-    super().__init__(comp_value_lambda=lambda x: self._selected_value)
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
