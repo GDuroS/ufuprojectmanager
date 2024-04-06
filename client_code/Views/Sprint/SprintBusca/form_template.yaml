@@ -64,7 +64,7 @@ components:
       type: Label
       layout_properties: {}
     - name: result_data_panel
-      properties: {item_template: Views.Tarefas.TarefaBusca.TarefasRowTemplate}
+      properties: {item_template: Views.Sprint.SprintBusca.SprintRowTemplate}
       type: RepeatingPanel
       layout_properties: {}
     layout_properties: {grid_position: 'SBBFTQ,LUTCQZ'}

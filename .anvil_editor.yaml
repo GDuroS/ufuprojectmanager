@@ -7,6 +7,7 @@ unique_ids:
     Views.Tarefas.TarefaBusca: '1712263991827588088280185.1141'
     Views.UserStories.UserStoryCadastro: '171149646970127911689450.024426'
     Views.Tarefas.TarefaCadastro: '1712264023118144075394329.29095'
+    Views.Sprint.SprintBusca.SprintRowTemplate: '1712419759340192926516001.10977'
     Views.Release.ReleaseCadastro: '1712428513227542435541727.0714'
     Components.AutocompleteComponent: '1712290227784896033397947.5598'
     Views.Tarefas.TarefaBusca.TarefasRowTemplate: '171226430153958580805026.11851'

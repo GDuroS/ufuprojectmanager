@@ -6,3 +6,16 @@ components:
   type: Link
   layout_properties: {column: KFJZFT}
   event_bindings: {click: edit_link_click}
+- name: criador_label
+  properties: {spacing_above: none, spacing_below: none}
+  type: Label
+  layout_properties: {column: ILUJHY}
+  data_bindings:
+  - {property: text, code: 'self.item[''Criador''][''display_name'']', writeback: false}
+- name: dev_label
+  properties: {spacing_above: none, spacing_below: none}
+  type: Label
+  layout_properties: {column: TWFCIC}
+  data_bindings:
+  - {property: text, code: 'self.item[''Desenvolvedor''][''display_name''] if self.item[''Desenvolvedor'']
+      else None', writeback: false}
