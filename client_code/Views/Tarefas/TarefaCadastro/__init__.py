@@ -62,7 +62,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
   @property
   def sprint_nome(self):
     if self.has_dev:
-      return self.item['Sprint']['Nome']
+      return self.item['Sprint']['Titulo']
     return None
 
   @property
