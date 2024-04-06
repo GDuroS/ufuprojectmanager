@@ -26,9 +26,6 @@ db_schema:
     client: none
     server: full
     columns:
-    - name: Nome
-      admin_ui: {width: 200, order: 0}
-      type: string
     - name: Inicio
       admin_ui: {width: 200, order: 1}
       type: datetime
@@ -39,20 +36,23 @@ db_schema:
       admin_ui: {width: 200, order: 3}
       type: link_single
       target: release
+    - name: Titulo
+      admin_ui: {width: 200}
+      type: string
     title: Sprint
   release:
     client: none
     server: full
     columns:
-    - name: Codigo
-      admin_ui: {width: 200, order: 0}
-      type: string
     - name: Inicio
       admin_ui: {width: 200, order: 1}
       type: datetime
     - name: Termino
       admin_ui: {width: 200, order: 2}
       type: datetime
+    - name: Sequence
+      admin_ui: {width: 200}
+      type: number
     title: Release
   users:
     client: none
