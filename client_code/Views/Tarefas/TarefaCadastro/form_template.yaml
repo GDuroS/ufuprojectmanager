@@ -187,7 +187,7 @@ components:
     - name: tempo_text_box
       properties: {type: number}
       type: TextBox
-      layout_properties: {width: 174}
+      layout_properties: {width: 180}
       event_bindings: {change: tempo_text_box_change}
       data_bindings:
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
@@ -215,7 +215,7 @@ components:
       - {property: min_date, code: self.hoje, writeback: false}
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
       - {property: date, code: 'self.item[''Prazo'']', writeback: true}
-      layout_properties: {width: 174}
+      layout_properties: {width: 180}
     - name: prazo_label
       properties: {role: title}
       type: Label

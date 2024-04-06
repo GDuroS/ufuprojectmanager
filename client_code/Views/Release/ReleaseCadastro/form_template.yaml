@@ -32,7 +32,7 @@ components:
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
       - {property: date, code: 'self.item[''Inicio'']', writeback: true}
       - {property: max_date, code: self.termino_date_picker.date, writeback: false}
-      layout_properties: {width: 174}
+      layout_properties: {width: 180}
     - name: inicio_label
       properties: {role: title}
       type: Label
@@ -57,7 +57,7 @@ components:
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
       - {property: date, code: 'self.item[''Termino'']', writeback: true}
       - {property: min_date, code: self.min_termino, writeback: false}
-      layout_properties: {width: 174}
+      layout_properties: {width: 180}
     - name: termino_label
       properties: {role: title}
       type: Label
