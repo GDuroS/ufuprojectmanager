@@ -14,8 +14,6 @@ def getSprintsFind(*args, **kwargs):
 
 @anvil.server.callable(require_user=True)
 def postSprint(sprint):
-  from anvil import users
-  sprint['Criador'] = users.get_user()
   return AbstractService.save(TABLE, sprint, True)
 
 @anvil.server.callable(require_user=True)
