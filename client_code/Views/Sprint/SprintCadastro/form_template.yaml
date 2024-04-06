@@ -48,6 +48,7 @@ components:
       - {property: min_date, code: self.hoje, writeback: false}
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
       - {property: date, code: 'self.item[''Inicio'']', writeback: true}
+      - {property: max_date, code: self.termino_date_picker.date, writeback: false}
       layout_properties: {width: 174}
     - name: inicio_label
       properties: {role: title}
@@ -58,7 +59,7 @@ components:
       - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Inicio''])
           if self.item[''Inicio''] is not None else ''''', writeback: false}
   - name: termino_input_label
-    properties: {role: input-prompt, text: 'Prazo:'}
+    properties: {role: input-prompt, text: 'Término:'}
     type: Label
     layout_properties: {grid_position: 'UEEQAA,OCVXCR'}
   - name: termino_panel
@@ -70,9 +71,9 @@ components:
       properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
       type: DatePicker
       data_bindings:
-      - {property: min_date, code: self.hoje, writeback: false}
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
       - {property: date, code: 'self.item[''Termino'']', writeback: true}
+      - {property: min_date, code: self.min_termino, writeback: false}
       layout_properties: {width: 174}
     - name: termino_label
       properties: {role: title}

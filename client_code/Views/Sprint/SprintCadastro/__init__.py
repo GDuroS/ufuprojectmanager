@@ -35,6 +35,10 @@ class SprintCadastro(CrudInterface, SprintCadastroTemplate):
     return date.today()
 
   @property
+  def min_termino(self):
+    return self.inicio_date_picker.date if self.inicio_date_picker.date is not None else self.hoje
+
+  @property
   def entity_class(self):
     return user_story_class
 

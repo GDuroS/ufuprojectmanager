@@ -28,6 +28,10 @@ class ReleaseCadastro(CrudInterface, ReleaseCadastroTemplate):
   def hoje(self):
     return date.today()
 
+  @property
+  def min_termino(self):
+    return self.inicio_date_picker.date if self.inicio_date_picker.date is not None else self.hoje
+
   def go_back(self, **event_args):
     self.routingUtils.set_url_hash('release')
 
