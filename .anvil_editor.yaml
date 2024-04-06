@@ -3,13 +3,17 @@ unique_ids:
     Views.UserStories.UserStoryBusca.StoriesRowTemplate: '1711582960540748164284483.8488'
     Views.UserStories.UserStoryBusca: '1711496413555234621056329.48126'
     Views.Home: '1711557933284972134534549.1082'
+    Views.Release.ReleaseBusca.ReleaseRowTemplate: '1712418808099615581043339.9786'
     Views.Tarefas.TarefaBusca: '1712263991827588088280185.1141'
     Views.UserStories.UserStoryCadastro: '171149646970127911689450.024426'
     Views.Tarefas.TarefaCadastro: '1712264023118144075394329.29095'
+    Views.Release.ReleaseCadastro: '1712428513227542435541727.0714'
     Components.AutocompleteComponent: '1712290227784896033397947.5598'
     Views.Tarefas.TarefaBusca.TarefasRowTemplate: '171226430153958580805026.11851'
     Routers.MainRouter: 5JOWT26QHIPWACYRAKJHH3GI2PQ266YH
     Views.Sprint.SprintCadastro: '1712426187407696873761363.0729'
+    Views.Release.ReleaseBusca: '1712418716601634086813405.8823'
+    Views.Sprint.SprintBusca: '171242864930438128485844.30362'
     Components.AutocompleteComponent.DefaultResultsRowTemplate: '1712290347172326419126036.7315'
   modules:
     Views.Release: '1712364461162877544678689.4691'

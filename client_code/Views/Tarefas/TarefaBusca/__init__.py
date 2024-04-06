@@ -2,7 +2,6 @@ from ._anvil_designer import TarefaBuscaTemplate
 from anvil import *
 
 from OruData.Utils import RoutingUtils
-from OruData.Views.CrudInterface import CrudInterface
 
 @RoutingUtils.route('task')
 class TarefaBusca(TarefaBuscaTemplate):

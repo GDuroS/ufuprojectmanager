@@ -2,7 +2,6 @@ from ._anvil_designer import UserStoryBuscaTemplate
 from anvil import *
 
 from OruData.Utils import RoutingUtils
-from OruData.Views.CrudInterface import CrudInterface
 
 @RoutingUtils.route('story')
 class UserStoryBusca(UserStoryBuscaTemplate):

@@ -26,7 +26,7 @@ components:
     components:
     - name: story_autocomplete
       properties: {filter_method: getUserStoriesFind, main_attribute: Titulo, show_clear_button: true,
-        max_results: 20, min_length: 3}
+        max_results: 20, min_length: 3, show_continue_button: false, show_create_button: false}
       type: form:Components.AutocompleteComponent
       layout_properties: {expand: true}
       data_bindings:

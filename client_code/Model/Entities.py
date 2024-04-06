@@ -73,7 +73,8 @@ class Tarefa(Entity):
 
 @anvil.server.portable_class
 class Release(Entity):
-  pass
+  def __str__(self):
+    return f"Release #{str(self['Sequence']).zfill(4)}"
 
 @anvil.server.portable_class
 class Sprint(Entity):
