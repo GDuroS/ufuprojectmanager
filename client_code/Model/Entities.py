@@ -22,7 +22,7 @@ class UserStory(Entity):
 
   @property
   def tipo_nome(self):
-    return self.prioridade_enum.nome
+    return self.tipo_enum.nome
 
   @property
   def prioridade_nome(self):
@@ -54,7 +54,7 @@ class Tarefa(Entity):
 
   @property
   def tipo_nome(self):
-    return self.prioridade_enum.nome
+    return self.tipo_enum.nome
 
   @property
   def prioridade_nome(self):

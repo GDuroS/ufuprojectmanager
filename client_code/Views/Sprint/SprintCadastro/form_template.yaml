@@ -97,7 +97,7 @@ components:
       type: DropDown
       layout_properties: {expand: true}
       data_bindings:
-      - {property: selected_value, code: 'self.item[''Release'']', writeback: false}
+      - {property: selected_value, code: 'self.item[''Release'']', writeback: true}
       - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
     - name: release_label
       properties: {spacing_above: none, spacing_below: none, role: title}
