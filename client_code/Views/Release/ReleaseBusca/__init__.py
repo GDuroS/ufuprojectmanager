@@ -23,7 +23,7 @@ class ReleaseBusca(ReleaseBuscaTemplate):
     }
     self.result_data_panel.items = ObjectUtils.search_iterator_to_entity_class_list(
       server.call('getReleasesFind', **{k:v for k, v in filter.items() if v is not None}),
-      Tarefa
+      Release
     )
     self.result_data_grid.visible = True
     self.result_data_panel.visible = len(self.result_data_panel.items) > 0

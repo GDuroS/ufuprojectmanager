@@ -2,14 +2,14 @@ from ._anvil_designer import SprintBuscaTemplate
 from anvil import *
 
 from OruData.Utils import RoutingUtils, ObjectUtils
-from ....Model.Entities import Release
+from ....Model.Entities import Release, Sprint
 
 @RoutingUtils.route('sprint')
 class SprintBusca(SprintBuscaTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     from anvil import server
-    self.release_drop_down.items = ObjectUtils.search_iterator_to_entity_class_list(server.call('getReleasesFind'), Release)
+    self.release_drop_down.items = [(str(r), r) for r in ObjectUtils.search_iterator_to_entity_class_list(server.call('getReleasesFind'), Release)]
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
@@ -25,7 +25,7 @@ class SprintBusca(SprintBuscaTemplate):
     }
     self.result_data_panel.items = ObjectUtils.search_iterator_to_entity_class_list(
       server.call('getSprintsFind', **{k:v for k, v in filter.items() if v is not None}),
-      Tarefa
+      Sprint
     )
     self.result_data_grid.visible = True
     self.result_data_panel.visible = len(self.result_data_panel.items) > 0

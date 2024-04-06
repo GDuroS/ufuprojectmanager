@@ -92,18 +92,13 @@ components:
     type: FlowPanel
     layout_properties: {grid_position: 'WOCHJK,EAYAQV'}
     components:
-    - name: release_autocomplete
-      properties: {filter_method: getReleasesFind, main_attribute: Sequence, show_clear_button: true,
-        max_results: 20, min_length: 1, show_continue_button: false, show_create_button: false}
-      type: form:Components.AutocompleteComponent
+    - name: release_drop_down
+      properties: {include_placeholder: false}
+      type: DropDown
       layout_properties: {expand: true}
       data_bindings:
-      - {property: result_attributes, code: '[{''id'': 1, ''data_key'': ''Sequence'',
-          ''title'': ''Código'', ''expand'': False}, {''id'': 2, ''data_key'': ''Inicio'',
-          ''title'': ''Início''}, {''id'': 3, ''data_key'': ''Termino'', ''title'':
-          ''Término''}]', writeback: false}
-      - {property: use_entity_class, code: self.entity_class, writeback: false}
-      event_bindings: {selected_value_change: release_autocomplete_selected_value_change}
+      - {property: selected_value, code: 'self.item[''Release'']', writeback: false}
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
     - name: release_label
       properties: {spacing_above: none, spacing_below: none, role: title}
       type: Label

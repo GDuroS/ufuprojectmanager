@@ -29,7 +29,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
 
     # Any code you write here will run before the form opens.
     self.validationUtils.define_componentes_obrigatorios([
-      (self.titulo_text_box, self.tipo_input_label),
+      (self.titulo_text_box, self.titulo_input_label),
       (self.tipo_drop_down, self.tipo_input_label),
       (self.prioridade_drop_down, self.prioridade_input_label),
       (self.prazo_date_picker, self.prazo_input_label),
