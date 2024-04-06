@@ -121,7 +121,7 @@ container:
       \    a.anvil-role-outlined-link {\n      border-radius: 5px;\n      background-color:\
       \ var(--primary-container);\n      color: var(--on-primary-container)\n    }\n\
       \  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
-      \    a.anvil-role-outlined-link:hover {\n    background-color: var(--light-overlay-1);\n\
+      \    a.anvil-role-outlined-link:hover {\n      background-color: var(--light-overlay-1);\n\
       \    }\n  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
       \    a.anvil-role-outlined-link:focus, a.anvil-role-outlined-link:active{\n\
       \      background-color: var(--light-overlay-2);\n      color: var(--primary);\n\
