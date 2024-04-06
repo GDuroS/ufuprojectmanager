@@ -11,7 +11,7 @@ from datetime import date
 @RoutingUtils.route('release/new')
 @RoutingUtils.route('release/{id}/view')
 @RoutingUtils.route('release/{id}/edit')
-class ReleaseCadastro(ReleaseCadastroTemplate):
+class ReleaseCadastro(CrudInterface, ReleaseCadastroTemplate):
   def __init__(self, item_row=None, **properties):
     # Set Form properties and Data Bindings.
     CrudInterface.__init__(self, Release, item_row, on_navigate=self.on_navigate)

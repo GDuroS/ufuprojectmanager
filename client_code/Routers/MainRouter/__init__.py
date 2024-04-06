@@ -7,9 +7,11 @@ from OruData.Utils import RoutingUtils
 from OruData.Views import NoRoute, LoginForm
 # Home
 from ...Views.Home import Home
-# UserStories
+# Telas
 from ...Views.UserStories import UserStoryBusca, UserStoryCadastro
 from ...Views.Tarefas import TarefaBusca, TarefaCadastro
+from ...Views.Sprint import SprintBusca, SprintCadastro
+from ...Views.Release import ReleaseBusca, ReleaseCadastro
 
 @RoutingUtils.default_template
 class MainRouter(MainRouterTemplate):

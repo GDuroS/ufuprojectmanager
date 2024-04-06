@@ -12,7 +12,7 @@ from datetime import date
 @RoutingUtils.route('sprint/new')
 @RoutingUtils.route('sprint/{id}/view')
 @RoutingUtils.route('sprint/{id}/edit')
-class SprintCadastro(SprintCadastroTemplate):
+class SprintCadastro(CrudInterface, SprintCadastroTemplate):
   def __init__(self, item_row=None, **properties):
     # Set Form properties and Data Bindings.
     CrudInterface.__init__(self, Sprint, item_row, on_navigate=self.on_navigate)    
