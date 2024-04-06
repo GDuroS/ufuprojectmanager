@@ -1,6 +1,7 @@
 container:
   type: HtmlTemplate
   properties: {html: <div anvil-slot="default"></div>}
+  event_bindings: {show: form_show}
 components:
 - name: content_panel
   properties: {col_widths: '{"UGTQAD":10,"BURPQO":50,"OCVXCR":10,"EUVOXQ":50,"SWJBCI":10,"EAYAQV":50}'}
@@ -107,5 +108,5 @@ components:
       type: Label
       data_bindings:
       - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-      - {property: text, code: self.story_nome, writeback: false}
+      - {property: text, code: self.release_nome, writeback: false}
 is_package: true
