@@ -1,0 +1,111 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: content_panel
+  properties: {col_widths: '{"UGTQAD":10,"BURPQO":50,"OCVXCR":10,"EUVOXQ":50,"SWJBCI":10,"EAYAQV":50}'}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: titulo_headline
+    properties: {role: title}
+    type: Label
+    layout_properties: {grid_position: 'TKDNGU,TJDEBV'}
+    data_bindings:
+    - {property: text, code: 'self.item[''Titulo'']', writeback: false}
+    - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+  - name: titulo_edit_panel
+    properties: {col_widths: '{"VWBDJH":10,"BNKXMI":50}'}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'CFAVAQ,BYJPYL'}
+    data_bindings:
+    - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+    components:
+    - name: titulo_input_label
+      properties: {text: 'Título:', role: input-prompt}
+      type: Label
+      layout_properties: {grid_position: 'GLLQPJ,VWBDJH'}
+    - name: titulo_text_box
+      properties: {}
+      type: TextBox
+      layout_properties: {grid_position: 'GLLQPJ,BNKXMI'}
+      data_bindings:
+      - {property: text, code: 'self.item[''Titulo'']', writeback: true}
+  - name: inicio_input_label
+    properties: {role: input-prompt, text: 'Início:'}
+    type: Label
+    layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
+  - name: inicio_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
+    components:
+    - name: inicio_date_picker
+      properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
+      type: DatePicker
+      data_bindings:
+      - {property: min_date, code: self.hoje, writeback: false}
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+      - {property: date, code: 'self.item[''Inicio'']', writeback: true}
+      layout_properties: {width: 174}
+    - name: inicio_label
+      properties: {role: title}
+      type: Label
+      layout_properties: {}
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Inicio''])
+          if self.item[''Inicio''] is not None else ''''', writeback: false}
+  - name: termino_input_label
+    properties: {role: input-prompt, text: 'Prazo:'}
+    type: Label
+    layout_properties: {grid_position: 'UEEQAA,OCVXCR'}
+  - name: termino_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'UEEQAA,EUVOXQ'}
+    components:
+    - name: termino_date_picker
+      properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
+      type: DatePicker
+      data_bindings:
+      - {property: min_date, code: self.hoje, writeback: false}
+      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
+      - {property: date, code: 'self.item[''Termino'']', writeback: true}
+      layout_properties: {width: 174}
+    - name: termino_label
+      properties: {role: title}
+      type: Label
+      layout_properties: {}
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Termino''])
+          if self.item[''Termino''] is not None else ''''', writeback: false}
+  - name: release_input_label
+    properties: {role: input-prompt, text: 'Release:', italic: true}
+    type: Label
+    layout_properties: {grid_position: 'WOCHJK,SWJBCI'}
+  - name: release_panel
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'WOCHJK,EAYAQV'}
+    components:
+    - name: release_autocomplete
+      properties: {filter_method: getReleasesFind, main_attribute: Sequence, show_clear_button: true,
+        max_results: 20, min_length: 1}
+      type: form:Components.AutocompleteComponent
+      layout_properties: {expand: true}
+      data_bindings:
+      - {property: result_attributes, code: '[{''id'': 1, ''data_key'': ''Sequence'',
+          ''title'': ''Código'', ''expand'': False}, {''id'': 2, ''data_key'': ''Inicio'',
+          ''title'': ''Início''}, {''id'': 3, ''data_key'': ''Termino'', ''title'':
+          ''Término''}]', writeback: false}
+      - {property: use_entity_class, code: self.entity_class, writeback: false}
+      event_bindings: {selected_value_change: release_autocomplete_selected_value_change}
+    - name: release_label
+      properties: {spacing_above: none, spacing_below: none, role: title}
+      type: Label
+      data_bindings:
+      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
+      - {property: text, code: self.story_nome, writeback: false}
+is_package: true

@@ -9,6 +9,7 @@ unique_ids:
     Components.AutocompleteComponent: '1712290227784896033397947.5598'
     Views.Tarefas.TarefaBusca.TarefasRowTemplate: '171226430153958580805026.11851'
     Routers.MainRouter: 5JOWT26QHIPWACYRAKJHH3GI2PQ266YH
+    Views.Sprint.SprintCadastro: '1712426187407696873761363.0729'
     Components.AutocompleteComponent.DefaultResultsRowTemplate: '1712290347172326419126036.7315'
   modules:
     Views.Release: '1712364461162877544678689.4691'

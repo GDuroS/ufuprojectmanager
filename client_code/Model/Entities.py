@@ -70,3 +70,17 @@ class Tarefa(Entity):
     if not inst.is_new:
       inst._user_story = UserStory.from_(row['UserStory'])
     return inst
+
+@anvil.server.portable_class
+class Release(Entity):
+  pass
+
+@anvil.server.portable_class
+class Sprint(Entity):
+  
+  @classmethod
+  def from_(cls, row):
+    inst = super().from_(row, 'Nome')
+    if not inst.is_new:
+      inst['Release'] = Release.from_(row['Release'])
+    return inst

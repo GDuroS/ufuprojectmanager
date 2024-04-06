@@ -8,7 +8,7 @@ from ....Model.Enums import Prioridade, TipoTarefa
 from ....Model.Entities import Tarefa, UserStory
 user_story_class = UserStory
 
-from datetime import date
+from datetime import datetime
 
 @RoutingUtils.route('task/new')
 @RoutingUtils.route('task/{id}/view')
@@ -40,7 +40,7 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
 
   @property
   def hoje(self):
-    return date.today()
+    return datetime.now()
 
   @property
   def entity_class(self):
