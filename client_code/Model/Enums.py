@@ -77,3 +77,66 @@ class TipoTarefa(BaseEnum):
   @property
   def descricao(self):
     return self._descricao
+
+class StatusTarefa(BaseEnum):
+  __options__ = {
+    'BACKLOG': {'nome': 'Backlog', 'color': 'slategray',
+                'icon': 'fa:list',
+                'next': 'ATRIBUIDA', 'n_tooltip': 'Atribuir'
+               },
+    'ATRIBUIDA': {'nome': 'Atribuída', 'color': 'lightgoldenrodyellow', 
+                  'icon': 'fas:chalkboard-user',
+                  'previous': 'BACKLOG', 'p_tooltip': 'Desatribuir',
+                  'next': 'EM_PROGRESSO', 'n_tooltip': 'Iniciar Progresso',
+                 },
+    'EM_PROGRESSO': {'nome': 'Em Progresso', 'color': 'lightskyblue', 
+                     'icon': 'fa:bars-progress', 
+                     'previous': 'ATRIBUIDA', 'p_tooltip': 'Parar Progresso',
+                     'next': 'EM_TESTES', 'n_tooltip': 'Começar Testes'
+                    },
+    'EM_TESTES': {'nome': 'Em Testes', 'color': 'darkslateblue', 
+                  'icon': 'fas:flask-vial',
+                  'previous': 'EM_PROGRESSO', 'p_tooltip': 'Encontrado Erros',
+                  'next': 'CONCLUIDA', 'n_tooltip': 'Tarefa Validada'
+                 },
+    'CONCLUIDA': {'nome': 'Concluída', 'color': 'mediumseagreen', 
+                  'icon': 'fas:vial-circle-check'
+                 }
+  }
+
+  _name = None
+  _color = None
+  _next = None
+  _previous = None
+  _icon = None
+  _p_tooltip = None
+  _n_tooltip = None
+
+  @property
+  def nome(self):
+    return self._nome
+
+  @property
+  def color(self):
+    return self._color
+
+  @property
+  def next(self):
+    return self._next
+
+  @property
+  def previous(self):
+    return self._previous
+
+  @property
+  def next_tooltip(self):
+    return self._n_tooltip
+
+  @property
+  def previous_tooltip(self):
+    return self._p_tooltip
+
+  @property
+  def icon(self):
+    return self._icon
+  

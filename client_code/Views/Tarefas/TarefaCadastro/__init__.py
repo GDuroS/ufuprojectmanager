@@ -80,6 +80,9 @@ class TarefaCadastro(CrudInterface, TarefaCadastroTemplate):
 
   def before_save(self):
     self.item['Descricao'] = self.descricao_quill.get_html()
+    if self.item.is_new:
+      from ....Model.Enums import StatusTarefa
+      self.item['Status'] = StatusTarefa.by_key('BACKLOG').key
 
   def go_back(self, **event_args):
     self.routingUtils.set_url_hash('task')

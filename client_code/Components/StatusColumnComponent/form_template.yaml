@@ -1,0 +1,25 @@
+container:
+  type: HtmlTemplate
+  properties: {html: "<style>\n  .anvil-role-board-column {\n    min-width: 200px;\n\
+      \  }\n  .anvil-role-board-column .anvil-label.anvil-role-board-column {\n  \
+      \  border-top-right-radius: 10px;\n    border-top-left-radius: 10px;\n  }\n\
+      \  .anvil-role-board-column .column-panel.anvil-role-board-column {\n    border-bottom-left-radius:\
+      \ 10px;\n    border-bottom-right-radius: 10px;\n    min-height: 500px;\n  }\n\
+      </style>\n<div anvil-slot=\"default\"></div>", background: ''}
+  data_bindings: []
+components:
+- name: title_label
+  properties: {spacing_below: none, align: center, text: '', background: var(--surface-variant),
+    foreground: var(--on-surface-variant), bold: true}
+  type: Label
+  layout_properties: {slot: default}
+  data_bindings:
+  - {property: text, code: self.item.nome, writeback: false}
+- name: column_panel
+  properties: {spacing_above: none, foreground: '', background: ''}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  data_bindings:
+  - {property: background, code: self.item.color, writeback: false}
+  components: []
+is_package: true

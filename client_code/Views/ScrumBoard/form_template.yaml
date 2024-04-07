@@ -1,0 +1,30 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: content_panel
+  properties: {col_widths: '{"IGBABT":5,"PSIHCT":55}'}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: sprint_label
+    properties: {role: input-prompt, text: 'Sprint:'}
+    type: Label
+    layout_properties: {grid_position: 'EQIYZT,IGBABT'}
+  - name: sprint_autocomplete_component
+    properties: {main_attribute: Titulo, filter_method: getSprintsFind, show_continue_button: false,
+      show_create_button: false, show_clear_button: true, min_length: 3, auto_header: false}
+    type: form:Components.AutocompleteComponent
+    layout_properties: {grid_position: 'EQIYZT,PSIHCT'}
+    data_bindings:
+    - {property: result_attributes, code: '[{''id'': 1, ''data_key'': ''Titulo'',
+        ''title'': ''Título'', ''expand'': True}, {''id'': 2, ''data_key'': ''Inicio'',
+        ''title'': ''Início''}, {''id'': 3, ''data_key'': ''Termino'', ''title'':
+        ''Término''}]', writeback: false}
+    - {property: use_entity_class, code: self.entity_class, writeback: false}
+    event_bindings: {selected_value_change: sprint_autocomplete_component_selected_value_change}
+  - name: board_panel
+    properties: {align: center}
+    type: FlowPanel
+    layout_properties: {grid_position: 'AXSSMJ,SFLJKH', full_width_row: true}
+is_package: true

@@ -1,0 +1,56 @@
+properties: []
+is_package: true
+events:
+- name: moved
+  default_event: true
+  parameters:
+  - {name: new_status, description: O novo status da Tarefa}
+custom_component: true
+components:
+- name: tarefa_link
+  properties: {text: '', background: var(--primary-container), foreground: var(--on-primary-container)}
+  type: Link
+  layout_properties: {slot: default}
+  components:
+  - name: tarefa_panel
+    properties: {spacing: tiny}
+    type: FlowPanel
+    layout_properties: {grid_position: 'YNDNUM,UMJQGK', full_width_row: false}
+    components:
+    - name: tarefa_label
+      properties: {text: Tarefa, bold: true, icon: 'fa:list-check'}
+      type: Label
+      layout_properties: {expand: true}
+      data_bindings:
+      - {property: text, code: self.item, writeback: false}
+    - name: move_left_button
+      properties:
+        text: ''
+        icon: fa:arrow-circle-left
+        role: [filled-button, elevated-button, round-icon-button]
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: move_left_button_click}
+      data_bindings:
+      - {property: icon, code: self.previous_icon, writeback: false}
+      - {property: tooltip, code: self.item.status_enum.previous_tooltip, writeback: false}
+      - {property: visible, code: self.item.status_enum.previous is not None, writeback: false}
+    - name: move_right_button
+      properties:
+        text: ''
+        icon: fa:arrow-circle-right
+        role: [filled-button, elevated-button, round-icon-button]
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: move_right_button_click}
+      data_bindings:
+      - {property: tooltip, code: self.item.status_enum.next_tooltip, writeback: false}
+      - {property: icon, code: self.next_icon, writeback: false}
+      - {property: visible, code: self.item.status_enum.next is not None, writeback: false}
+  event_bindings: {click: tarefa_link_click}
+container:
+  type: HtmlTemplate
+  properties: {html: "<style>\n  .anvil-role-tarefa-chip-component a {\n    border-radius:\
+      \ 15px;\n  }\n  .anvil-role-tarefa-chip-component .anvil-panel-row {\n    padding:\
+      \ 0 15px;\n  }\n</style>\n<div anvil-slot=\"default\"></div>", background: '',
+    foreground: ''}

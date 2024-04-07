@@ -36,6 +36,7 @@ class UserStory(Entity):
 class Tarefa(Entity):
   _prioridade_enum = None
   _tipo_enum = None
+  _status_enum = None
   _user_story = None
 
   @property
@@ -53,12 +54,23 @@ class Tarefa(Entity):
     return self._tipo_enum
 
   @property
+  def status_enum(self):
+    if self._status_enum is None:
+      from .Enums import StatusTarefa
+      self._status_enum = StatusTarefa.by_key(self['Status'])
+    return self._status_enum
+
+  @property
   def tipo_nome(self):
     return self.tipo_enum.nome
 
   @property
   def prioridade_nome(self):
     return self.prioridade_enum.nome
+
+  @property
+  def status_nome(self):
+    return self.status_enum.nome
 
   @property
   def user_story(self):

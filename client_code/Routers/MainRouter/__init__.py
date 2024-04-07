@@ -6,7 +6,7 @@ from OruData.Utils import RoutingUtils
 """Possible Routes"""
 from OruData.Views import NoRoute, LoginForm
 # Home
-from ...Views.Home import Home
+from ...Views import Home, ScrumBoard
 # Telas
 from ...Views.UserStories import UserStoryBusca, UserStoryCadastro
 from ...Views.Tarefas import TarefaBusca, TarefaCadastro

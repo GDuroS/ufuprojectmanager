@@ -16,3 +16,14 @@ class Home(HomeTemplate):
       {'user': 'Usuário 1', 'email': 'user1', 'pass': 'user123'},
       {'user': 'Usuário 2', 'email': 'user2', 'pass': 'user233'}
     ]
+
+    def teste_component():
+      from anvil import server
+      from ...Components.TarefaChipComponent import TarefaChipComponent
+      from ...Model.Entities import Tarefa
+      task = server.call('getTarefaById', 1)
+      chip = TarefaChipComponent(item=Tarefa.from_(task))
+      self.add_component(chip)
+
+    teste_component()
+      
