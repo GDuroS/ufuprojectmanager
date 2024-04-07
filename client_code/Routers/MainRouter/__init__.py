@@ -7,6 +7,9 @@ from OruData.Utils import RoutingUtils
 from OruData.Views import NoRoute, LoginForm
 # Home
 from ...Views import Home, ScrumBoard, About
+# Documentação
+# from ...Views.Docs import DocsSummary
+from ...Views.Docs.DocsSummary import DocsSummary, DocsBoard, DocsUserStory, DocsTarefa, DocsRelease, DocsSprint
 # Telas
 from ...Views.UserStories import UserStoryBusca, UserStoryCadastro
 from ...Views.Tarefas import TarefaBusca, TarefaCadastro
