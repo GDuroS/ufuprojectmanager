@@ -33,6 +33,7 @@ components:
       - {property: date, code: 'self.item[''Inicio'']', writeback: true}
       - {property: max_date, code: self.termino_date_picker.date, writeback: false}
       layout_properties: {width: 180}
+      event_bindings: {change: inicio_date_picker_change}
     - name: inicio_label
       properties: {role: title}
       type: Label

@@ -27,6 +27,11 @@ class MainRouter(MainRouterTemplate):
     get_sidebar_instance(False)
 
   def on_navigation(self, **nav_args):
+    from OruData.Utils import UserUtils
+    if UserUtils.get_logged_user() is None:
+      if not RoutingUtils.get_url_hash().startswith(tuple(['about', 'docs', '/login', '/signup'])) and not RoutingUtils.get_url_hash() == '':
+        Notification("Não é permitido acessar a tela solicitada sem estar logado no sistema.", title="Não permitido", style="warning").show()
+        RoutingUtils.set_url_hash('/login')
     RoutingUtils.clear_navbar_setup()
 
   def refresh_link_click(self, **event_args):

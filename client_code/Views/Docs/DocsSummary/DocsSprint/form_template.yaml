@@ -8,28 +8,29 @@ components:
   layout_properties: {slot: default}
   components:
   - name: page_headline_label
-    properties: {text: Cadastro de Release, role: headline}
+    properties: {text: Cadastro de Sprint, role: headline}
     type: Label
     layout_properties: {grid_position: 'VAYNGE,AWUBAO'}
   - name: details_rich_text
-    properties: {content: '<p>O <u>cadastro de Releases</u> é a funcionalidade para
-        geração de Versão de Sistema, com data de Início e Fim da determinada versão.</p><br/>
+    properties: {content: '<p>O <u>cadastro de Sprints</u> é a funcionalidade para
+        geração de Iterações, com data de Início e Fim da determinada iteração, bem
+        como um título e qual Release a iteração faz parte.</p><br/>
 
         <br/>
 
-        <p>O acesso ao Cadastro de Releases é feito através do hash <a href="https://ufu-esof-designer.anvil.app/#release">#release</a>.
+        <p>O acesso ao Cadastro de Sprints é feito através do hash <a href="https://ufu-esof-designer.anvil.app/#sprint">#sprint</a>.
         Por padrão, o usuário primeiro acessa a tela de busca de registros, podendo
         acessar algum registro para visualização e/ou edição, ou criar um novo através
         do botão de Novo, localizado na Barra de Navegação no canto superior direito.</p>
 
-        <p>O conjunto de telas de Release <strong><u>exige acesso por <em>login</em>
+        <p>O conjunto de telas de Sprint <strong><u>exige acesso por <em>login</em>
         de usuário</u></strong>.</p>
 
-        <p>Para <strong>Buscar Release (Relatório)</strong> o usuário:</p>
+        <p>Para <strong>Buscar Sprint (Relatório)</strong> o usuário:</p>
 
         <ol>
 
-        <li>O usuário acessa a tela de Busca de Releases através do <a href="https://ufu-esof-designer.anvil.app/#release">link</a>
+        <li>O usuário acessa a tela de Busca de Sprint através do <a href="https://ufu-esof-designer.anvil.app/#sprint">link</a>
         ou menu lateral;
 
         <ol>
@@ -46,22 +47,23 @@ components:
 
         <li>O usuário clica no botão de Buscar;</li>
 
-        <li>O sistema busca todos os Releases que satisfaçam os critérios do usuário
+        <li>O sistema busca todos os registros que satisfaçam os critérios do usuário
         e exibe em formato de tabela abaixo dos filtros.</li>
 
         </ol>
 
-        <p>Para <strong>Visualizar e/ou editar um Release</strong> o usuário:</p>
+        <p>Para <strong>Visualizar e/ou editar um Sprint</strong> o usuário:</p>
 
         <ol>
 
-        <li>O usuário faz os passos descritos na funcionalidade de <u>Buscar Release</u>
+        <li>O usuário faz os passos descritos na funcionalidade de <u>Buscar Sprint</u>
         descritos acima;</li>
 
         <li>O usuário clica no botão de edição de algum dos registros exibidos no
         relatório.</li>
 
-        <li>O sistema exibe uma nova tela com as informações da Release para exibição.</li>
+        <li>O sistema exibe uma nova tela com as informações do registro selecionado
+        para exibição.</li>
 
         <li>Caso o usuário deseje editar o registro:
 
@@ -75,24 +77,26 @@ components:
 
         <li>O usuário clica no botão de salvar;</li>
 
-        <li>O sistema salva as alterações e volta para a visualização do Registro.</li>
+        <li>O sistema salva as alterações e volta para a visualização do registro.</li>
 
         </ol></li>
 
         </ol>
 
-        <p>Para <strong>Criar um Release novo</strong> o usuário:</p>
+        <p>Para <strong>Criar um Sprint novo</strong> o usuário:</p>
 
         <ol>
 
-        <li>O usuário faz os passos descritos na funcionalidade de <u>Buscar Release</u>
+        <li>O usuário faz os passos descritos na funcionalidade de <u>Buscar Sprint</u>
         descritos acima;</li>
 
         <li>O usuário clica no botão de Novo na Barra de Navegação.</li>
 
-        <li>O sistema exibe uma nova tela com os campos para preenchimento da Release.</li>
+        <li>O sistema exibe uma nova tela com os campos para preenchimento da Sprint.</li>
 
-        <li>O usuário preenche os campos de Data de Início e Fim do Release.
+        <li>O usuário preenche o campo de Título do Sprint</li>
+
+        <li>O usuário preenche os campos de Data de Início e Fim do Sprint.
 
         <ol>
 
@@ -101,13 +105,13 @@ components:
 
         </ol></li>
 
+        <li>O usuário escolhe um Release para o Sprint dentro de uma lista de Releases
+        criados anteriormente.</li>
+
         <li>O usuário clica em Salvar na Barra de Navegação;<ol>
 
         <li>Caso o usuário não preencha algum campo, o sistema emite um aviso e não
         permite o salvamento.</li></ol></li>
-
-        <li>O sistema gera um número sequencial próximo automaticamente para o Release
-        e salva;</li>
 
         <li>O sistema exibe em tela o registro salvo.</li>
 

@@ -49,3 +49,7 @@ class ReleaseCadastro(CrudInterface, ReleaseCadastroTemplate):
       save_visible=to_mode.upper() in ['NEW', 'EDIT'], save_callback=self.action_link_click,
       edit_visible=to_mode.upper() == 'VIEW', edit_callback=self.action_link_click
     )
+
+  def inicio_date_picker_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    self.termino_date_picker.min_date = self.min_termino

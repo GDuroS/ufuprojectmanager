@@ -1,0 +1,143 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: content_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: page_headline_label
+    properties: {text: Cadastro de Tarefa, role: headline}
+    type: Label
+    layout_properties: {grid_position: 'VAYNGE,AWUBAO'}
+  - name: details_rich_text
+    properties: {content: '<p>O <u>cadastro de Tarefas</u> é a funcionalidade para
+        criação de Tarefas a partir de uma User Story, com informações necessárias
+        para classificação, importância e data limite entre outras informações que
+        o desenvolvedor achar necessário.</p><br/>
+
+        <br/>
+
+        <p>O acesso ao Cadastro de Tarefas é feito através do hash <a href="https://ufu-esof-designer.anvil.app/#task">#task</a>.
+        Por padrão, o usuário primeiro acessa a tela de busca de registros, podendo
+        acessar algum registro para visualização e/ou edição, ou criar um novo através
+        do botão de Novo, localizado na Barra de Navegação no canto superior direito.</p>
+
+        <p>O conjunto de telas de Tarefas <strong><u>exige acesso por <em>login</em>
+        de usuário</u></strong>.</p>
+
+        <p>Para <strong>Buscar Tarefas (Relatório)</strong> o usuário:</p>
+
+        <ol>
+
+        <li>O usuário acessa a tela de Busca de Tarefas através do <a href="https://ufu-esof-designer.anvil.app/#task">link</a>
+        ou menu lateral;
+
+        <ol>
+
+        <li>Caso o usuário não esteja logado, a opção <strong>não</strong> aparecerá
+        no menu lateral;</li>
+
+        <li>Caso o usuário não esteja logado e tente acessar diretamente pelo link,
+        uma mensagem será exibida e o usuário será redirecionado para a tela de login.</li>
+
+        </ol></li>
+
+        <li>O usuário preenche os campos de filtro conforme desejado;</li>
+
+        <li>O usuário clica no botão de Buscar;</li>
+
+        <li>O sistema busca todos os registros que satisfaçam os critérios do usuário
+        e exibe em formato de tabela abaixo dos filtros.</li>
+
+        </ol>
+
+        <p>Para <strong>Visualizar e/ou editar uma Tarefa</strong> o usuário:</p>
+
+        <ol>
+
+        <li>O usuário faz os passos descritos na funcionalidade de <u>Buscar Tarefa</u>
+        descritos acima;</li>
+
+        <li>O usuário clica no botão de edição de algum dos registros exibidos no
+        relatório.</li>
+
+        <li>O sistema exibe uma nova tela com as informações do registro selecionado
+        para exibição.<ol>
+
+        <li>Caso a Tarefa já esteja vinculada à um Sprint, o sistema exibe uma tarja
+        com a informação de qual <strong>Desenvolvedor</strong> está responsável pela
+        Tarefa e em qual <strong>Sprint</strong> está vinculada.</li>
+
+        </ol></li>
+
+        <li>Caso o usuário deseje editar o registro:
+
+        <ol>
+
+        <li>O usuário clica no botão de edição na Barra de Navegação;</li>
+
+        <li>O sistema exibe na tela os campos para edição.</li>
+
+        <li>O usuário atualiza os campos conforme achar necessário;</li>
+
+        <li>O usuário clica no botão de salvar;</li>
+
+        <li>O sistema salva as alterações e volta para a visualização do registro.</li>
+
+        </ol></li>
+
+        </ol>
+
+        <p>Para <strong>Criar uma Tarefa nova</strong> o usuário:</p>
+
+        <ol>
+
+        <li>O usuário faz os passos descritos na funcionalidade de <u>Buscar Tarefa</u>
+        descritos acima;</li>
+
+        <li>O usuário clica no botão de Novo na Barra de Navegação.</li>
+
+        <li>O sistema exibe uma nova tela com os campos para preenchimento da Sprint.</li>
+
+        <li>O usuário busca uma User Story digitando parte do título da user story
+        desejada. O sistema busca e exibe uma lista de stories que satisfaçam a busca.
+        O usuário seleciona uma das opções exibidas;</li>
+
+        <li>O usuário preenche o campo de Título da Tarefa;</li>
+
+        <li>O usuário escolhe um Tipo pré-definido para a Tarefa;</li>
+
+        <li>O usuário escolhe uma Prioridade pré-definido para a Tarefa;</li>
+
+        <li>O usuário define um número de horas prevista para conclusão da Tarefa;
+
+        <ol>
+
+        <li>Não é permitido ao usuário informar um valor menor que 0.</li>
+
+        </ol></li>
+
+        <li>O usuário preenche o campo de Prazo para conclusão da Tarefa.
+
+        <ol>
+
+        <li>O sistema não permite que seja informado um prazo anterior à uma data
+        atual.</li>
+
+        </ol></li>
+
+        <li>O usuário digita a descrição completa da Tarefa;</li>
+
+        <li>O usuário clica em Salvar na Barra de Navegação;<ol>
+
+        <li>Caso o usuário não preencha algum campo, o sistema emite um aviso e não
+        permite o salvamento.</li></ol></li>
+
+        <li>O sistema exibe em tela o registro salvo.</li>
+
+        </ol>', format: restricted_html}
+    type: RichText
+    layout_properties: {grid_position: 'RUNUVP,JASRCS'}
+is_package: true
