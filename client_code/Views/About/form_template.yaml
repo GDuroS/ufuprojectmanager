@@ -5,9 +5,30 @@ components:
 
       <br/>
 
-      <em>Seção em construção.</em><br/>
+      <p>O Project Manager é uma ferramenta simples e em MVP (Produto mínimo viável)
+      feito como uma atividade da disciplina de Engenharia de Software do Curso de
+      Bacharelado em Ciência da Computação da Universidade Federal de Uberlândia.</p><br/>
+
+      <p>O propósito desta aplicação é permitir ao usuário a criação de <strong>User
+      Stories</strong>, <strong>Tarefas</strong>, <strong>Releases</strong> e <strong>Sprints</strong>,
+      bem como fazer a movimentação das Tarefas através de um <strong>Scrum Board</strong>.</p><br/>
+
+      <p>A aplicação utiliza <strong>Python</strong> na maior parte dos códigos, com
+      poucas utilizações de <strong>HTML</strong>, <strong>CSS</strong> e <strong>Javascript</strong>
+      explicitamente. Isso é possível através da plataforma <a href="https://anvil.works/">Anvil</a>,
+      que serve tanto como uma biblioteca de componentes, uma IDE Online para criação
+      dos apps e serviço de hospedagem. No desenvolvimento desta aplicação foram utilizadas
+      bibliotecas próprias (de autoria do aluno) criadas anteriormente para outras
+      aplicações na plataforma Anvil, bem como uma biblioteca pública e amplamente
+      utilizada por apps do Anvil chamada <a href="https://anvil-extras.readthedocs.io/en/latest/index.html">Anvil
+      Extras.</a></p>
 
       <br/>
+
+      <strong>Anvil Extras (utilizada na navegação e outras funcionalidades):</strong><br/>
+
+      <a href="https://anvil-extras.readthedocs.io/en/latest/index.html">Anvil Extras</a><br/><br/>
+
 
       <strong>Créditos pelo Logo (favicon) do Aplicativo:</strong><br/>
 

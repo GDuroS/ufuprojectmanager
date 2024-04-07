@@ -10,7 +10,6 @@ CADASTRAR_TASK = Menu(key="CADASTRAR_TASK", name="Tarefas", secure=True, icon="f
 CADASTRAR_ITERACAO = Menu(key="CADASTRAR_ITERACAO", name="Sprints", secure=True, icon="fa:person-chalkboard", action="route", route={'url_hash': 'sprint'})
 CADASTRAR_RELEASE = Menu(key="CADASTRAR_RELEASE", name="Releases", secure=True, icon="fa:code-merge", action="route", route={'url_hash': 'release'})
 
-MODULO_REPORT = Menu(key="MODULO_REPORT", name="Relatórios", secure=True, icon="fa:file-invoice", action="route", route={'url_hash': 'report'})
 SCRUM_BOARD = Menu(key="SCRUM_BOARD", name="Scrum Board", secure=True, icon="fa:bars-progress", action="route", route={'url_hash': 'board'})
 
 DOCUMENTATION = Menu(key="DOCUMENTATION", name="Documentação", secure=False, icon="fa:book", action="route", route={'url_hash': 'docs'})
@@ -23,7 +22,6 @@ def get_menu():
     CADASTRAR_TASK,
     CADASTRAR_RELEASE,
     CADASTRAR_ITERACAO,
-    MODULO_REPORT,
     SCRUM_BOARD,
     DOCUMENTATION,
     CREDITS

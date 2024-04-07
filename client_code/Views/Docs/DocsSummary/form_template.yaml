@@ -38,7 +38,17 @@ components:
 
         <li><a href="https://ufu-esof-designer.anvil.app/#docs/board">Scrum Board</a></li>
 
-        </ul>', format: restricted_html}
+        </ul>
+
+        <br/>
+
+        <p><strong>Anvil Clone Link:</strong> <a href"https://anvil.works/build#clone:LI7YQ5UGX6NPI3SV=H72QFZET4IWAUJAKC6H53PGT">Clique
+        aqui</a></p>
+
+        <p><strong>Repositório no GitHub:</strong> <a href"https://github.com/GDuroS/ufuprojectmanager">Clique
+        aqui</a></p>
+
+        <p><strong>Vídeo Demonstrativo:</strong> <a href"#">YouTube</a></p>', format: restricted_html}
     type: RichText
     layout_properties: {grid_position: 'NZJOYM,LRAZTG'}
 is_package: true
