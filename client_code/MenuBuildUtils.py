@@ -10,7 +10,7 @@ CADASTRAR_ITERACAO = Menu(key="CADASTRAR_ITERACAO", name="Sprints", secure=True,
 CADASTRAR_RELEASE = Menu(key="CADASTRAR_RELEASE", name="Releases", secure=True, icon="fa:code-merge", action="route", route={'url_hash': 'release'})
 
 MODULO_REPORT = Menu(key="MODULO_REPORT", name="Relatórios", secure=True, icon="fa:file-invoice", action="route", route={'url_hash': 'report'})
-SCRUM_BOARD = Menu(key="SCRUM_BOARD", name="Scrum Board", secure=False, icon="fa:bars-progress", action="route", route={'url_hash': 'board'})
+SCRUM_BOARD = Menu(key="SCRUM_BOARD", name="Scrum Board", secure=True, icon="fa:bars-progress", action="route", route={'url_hash': 'board'})
 
 def get_menu():
   return [
