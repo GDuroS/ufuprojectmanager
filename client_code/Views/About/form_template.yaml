@@ -1,0 +1,23 @@
+container: {type: ColumnPanel}
+components:
+- name: rich_text
+  properties: {format: restricted_html, content: '<h1><strong>Sobre o Project Manager</strong></h1><br/>
+
+      <br/>
+
+      <em>Seção em construção.</em><br/>
+
+      <br/>
+
+      <strong>Créditos pelo Logo (favicon) do Aplicativo:</strong><br/>
+
+      <a href="https://www.flaticon.com/free-icons/fact" title="fact icons">Fact icons
+      created by Grafixpoint - Flaticon</a><br/><br/>
+
+      <strong>Demais ícones usados no Aplicativo:</strong><br/>
+
+      <a href="https://fontawesome.com/v6/search?o=r&m=free" title="Font Awesome">Font
+      Awesome Free</a><br/><br/>'}
+  type: RichText
+  layout_properties: {grid_position: 'KPIVHV,SKYBHT'}
+is_package: true

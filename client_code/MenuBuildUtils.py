@@ -14,6 +14,7 @@ MODULO_REPORT = Menu(key="MODULO_REPORT", name="Relatórios", secure=True, icon=
 SCRUM_BOARD = Menu(key="SCRUM_BOARD", name="Scrum Board", secure=True, icon="fa:bars-progress", action="route", route={'url_hash': 'board'})
 
 DOCUMENTATION = Menu(key="DOCUMENTATION", name="Documentação", secure=False, icon="fa:book", action="route", route={'url_hash': 'docs'})
+CREDITS = Menu(key="CREDITS", name="Sobre", secure=False, icon="fas:circle-question", action="route", route={'url_hash': 'about'})
 
 def get_menu():
   return [
@@ -24,7 +25,8 @@ def get_menu():
     CADASTRAR_ITERACAO,
     MODULO_REPORT,
     SCRUM_BOARD,
-    DOCUMENTATION
+    DOCUMENTATION,
+    CREDITS
   ]
 
 def get_menu_array():
