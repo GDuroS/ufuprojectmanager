@@ -23,7 +23,8 @@ class MainRouter(MainRouterTemplate):
     from OruData.SidebarComponent import get_instance as get_sidebar_instance
     from ... import MenuBuildUtils
 
-    self.add_component(get_sidebar_instance(menu_array=MenuBuildUtils.get_menu_array()), slot="left-nav")
+    self.add_component(get_sidebar_instance(show_user_options=False, menu_array=MenuBuildUtils.get_menu_array()), slot="left-nav")
+    get_sidebar_instance(False)
 
   def on_navigation(self, **nav_args):
     RoutingUtils.clear_navbar_setup()
@@ -31,3 +32,8 @@ class MainRouter(MainRouterTemplate):
   def refresh_link_click(self, **event_args):
     """This method is called when the link is clicked"""
     RoutingUtils.reload_page()
+
+  def form_show(self, **event_args):
+    """This method is called when the form is shown on the page"""
+    from anvil import js
+    js.call('addMarginToContent')
