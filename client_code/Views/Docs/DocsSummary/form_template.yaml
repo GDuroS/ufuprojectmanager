@@ -1,0 +1,14 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: content_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: details_rich_text
+    properties: {}
+    type: RichText
+    layout_properties: {grid_position: 'RUNUVP,JASRCS'}
+is_package: true
