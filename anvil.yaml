@@ -166,10 +166,25 @@ db_schema:
     - name: Sequence
       admin_ui: {width: 200}
       type: number
+    - name: Status
+      admin_ui: {width: 200}
+      type: string
     title: Tarefa
   sequencer:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: Release
+      admin_ui: {width: 200}
+      type: number
+    - name: Sprint
+      admin_ui: {width: 200}
+      type: number
+    - name: Tarefa
+      admin_ui: {width: 200}
+      type: number
+    - name: UserStory
+      admin_ui: {width: 200}
+      type: number
     title: Sequencer
 renamed: true
