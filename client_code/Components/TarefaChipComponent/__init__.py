@@ -37,7 +37,7 @@ class TarefaChipComponent(TarefaChipComponentTemplate):
   def tarefa_link_click(self, **event_args):
     """This method is called when the link is clicked"""
     from OruData.Utils import RoutingUtils
-    RoutingUtils.set_url_hash(f'task/{self.item["Sequence"]}/view')
+    RoutingUtils.set_url_hash(f'task/{self.item["Sequence"]}/view', load_from_cache=False)
 
   def move_left_button_click(self, **event_args):
     """This method is called when the button is clicked"""

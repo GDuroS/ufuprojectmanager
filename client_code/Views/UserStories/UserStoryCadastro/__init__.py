@@ -41,7 +41,7 @@ class UserStoryCadastro(CrudInterface, UserStoryCadastroTemplate):
   def pontos_text_box_change(self, **event_args):
     """This method is called when the text in this text box is edited"""
     value = self.pontos_text_box.text
-    if value and value < 1:
+    if value is not None and value < 1:
       self.pontos_text_box.text = 1
 
   def before_save(self):
