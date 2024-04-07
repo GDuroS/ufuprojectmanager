@@ -1,6 +1,9 @@
 from ._anvil_designer import DocsSummaryTemplate
 from anvil import *
 
+from OruData.Utils import RoutingUtils
+
+@RoutingUtils.route('docs')
 class DocsSummary(DocsSummaryTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
