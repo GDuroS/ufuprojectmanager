@@ -159,16 +159,16 @@ db_schema:
       admin_ui: {width: 200, order: 8}
       type: link_single
       target: users
-    - name: Sprint
-      admin_ui: {width: 200, order: 9}
-      type: link_single
-      target: users
     - name: Sequence
       admin_ui: {width: 200}
       type: number
     - name: Status
       admin_ui: {width: 200}
       type: string
+    - name: Sprint
+      admin_ui: {order: 7.5, width: 200}
+      type: link_single
+      target: sprint
     title: Tarefa
   sequencer:
     client: none
