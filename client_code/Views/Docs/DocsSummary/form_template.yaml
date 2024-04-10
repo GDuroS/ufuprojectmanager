@@ -8,6 +8,10 @@ components:
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
+  - name: for_printing_column_panel
+    properties: {visible: false}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'QGRRGU,UGOIJD'}
   - name: page_headline_label
     properties: {text: Documentação, role: headline}
     type: Label

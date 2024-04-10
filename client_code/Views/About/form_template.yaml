@@ -9,6 +9,8 @@ components:
       feito como uma atividade da disciplina de Engenharia de Software do Curso de
       Bacharelado em Ciência da Computação da Universidade Federal de Uberlândia.</p><br/>
 
+      {for_printing_slot}
+
       <p>O propósito desta aplicação é permitir ao usuário a criação de <strong>User
       Stories</strong>, <strong>Tarefas</strong>, <strong>Releases</strong> e <strong>Sprints</strong>,
       bem como fazer a movimentação das Tarefas através de um <strong>Scrum Board</strong>.</p><br/>
@@ -41,4 +43,11 @@ components:
       Awesome Free</a><br/><br/>'}
   type: RichText
   layout_properties: {grid_position: 'KPIVHV,SKYBHT'}
+  components:
+  - name: for_ufu_label
+    properties: {text: 'O aplicativo foi desenvolvido por Gabriel Duro da Silva (12111BCC047)
+        e Christhian Rezende Vieira (12111BCC028). Ele pode ser acessado no link https://ufu-esof-designer.anvil.app/',
+      visible: false}
+    type: Label
+    layout_properties: {slot: for_printing_slot}
 is_package: true

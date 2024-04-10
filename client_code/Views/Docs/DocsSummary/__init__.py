@@ -17,10 +17,17 @@ class DocsSummary(DocsSummaryTemplate):
       from .DocsSprint import DocsSprint
       from .DocsTarefa import DocsTarefa
       from .DocsUserStory import DocsUserStory
+      from ...About import About
       from anvil_extras.PageBreak import PageBreak
 
       self.background = 'white'
       self.foreground = 'black'
+
+      about_page = About()
+      about_page.for_ufu_label.visible = True
+      self.for_printing_column_panel.add_component(about_page)
+      self.for_printing_column_panel.visible = True
+      self.for_printing_column_panel.add_component(PageBreak())
 
       to_add_list = [DocsUserStory, DocsTarefa, DocsRelease, DocsSprint, DocsBoard]
       for doc in to_add_list:
