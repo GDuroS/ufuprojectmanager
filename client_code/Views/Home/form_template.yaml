@@ -1,24 +1,24 @@
-container: {type: ColumnPanel}
 components:
-- name: label
-  properties: {text: 'Bem vindo ao Project Manager (MVP). Faça login (ao lado) e escolha
-      uma opção para começar.
-
-
-      Informações de login abaixo:'}
-  type: Label
-  layout_properties: {grid_position: 'FFEORP,DXVINK'}
-- name: user_data_grid
+- layout_properties: {grid_position: 'FFEORP,DXVINK'}
+  name: label
   properties:
-    columns:
-    - {id: JKSDUP, title: Usuário, data_key: user}
-    - {id: VJQQOR, title: email, data_key: email}
-    - {id: OJLQEN, title: senha, data_key: pass}
-    - {id: WVILKV, data_key: dev, title: Desenvolvedor}
-  type: DataGrid
-  components:
+    text: |-
+      Bem vindo ao Project Manager (MVP). Faça login (ao lado) e escolha uma opção para começar.
+
+      Informações de login abaixo:
+  type: Label
+- components:
   - name: user_data_panel
     properties: {item_template: Views.Home.RowTemplate1}
     type: RepeatingPanel
   layout_properties: {grid_position: 'DCEINT,XBBMNS'}
+  name: user_data_grid
+  properties:
+    columns:
+    - {data_key: user, id: JKSDUP, title: Usuário}
+    - {data_key: email, id: VJQQOR, title: email}
+    - {data_key: pass, id: OJLQEN, title: senha}
+    - {data_key: dev, id: WVILKV, title: Desenvolvedor}
+  type: DataGrid
+container: {type: ColumnPanel}
 is_package: true

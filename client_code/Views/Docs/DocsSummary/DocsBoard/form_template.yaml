@@ -1,111 +1,61 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
 components:
-- name: content_panel
+- components:
+  - layout_properties: {grid_position: 'VAYNGE,AWUBAO'}
+    name: page_headline_label
+    properties: {role: headline, text: Scrum Board}
+    type: Label
+  - layout_properties: {grid_position: 'RUNUVP,JASRCS'}
+    name: details_rich_text
+    properties:
+      content: |-
+        <p>O <u>Scrum Board</u> é a funcionalidade para exibição de Tarefas vinculadas à determinado Sprint (ou não vinculadas à Sprint algum), vincular tarefas à um Sprint selecionado e movimentar as tarefas de um Sprint.</p><br/>
+        <br/>
+        <p>O acesso ao Scrum Board é feito através do hash <a href="https://ufu-esof-designer.anvil.app/#board">#board</a>.</p>
+        <p>O Scrum Board <strong><u>exige acesso por <em>login</em> de usuário</u></strong>.</p>
+        <p>Para acessar o <strong>Scrum Board</strong> o usuário acessa a tela de Scrum Board através do <a href="https://ufu-esof-designer.anvil.app/#board">link</a> ou menu lateral.</p>
+        <p>Ao acessar o Scrum Board o usuário verá:</p>
+        <ol>
+        <li>Um campo de busca de Sprint para exibição no Board;</li>
+        <li>Cartões representativos das diversas situações que uma Tarefa poderá assumir, lado a lado.</li>
+        </ol>
+        <p>Para <strong>Exibir dados no Scrum Board</strong> o usuário:</p>
+        <ol>
+        <li>O usuário digita parte do nome do Sprint que deseja exibir no campo de Sprint;</li>
+        <li>O sistema busca e exibe uma lista de Sprints que satisfazem a busca.</li>
+        <li>O usuário escolhe e seleciona um Sprint da Lista.</li>
+        <li>O sistema busca as Tarefas daquele Sprint e exibe cada tarefa na coluna específica com base no seu status.</li>
+        <li>O sistema busca as Tarefas sem Sprint e exibe cada as tarefas na coluna de Backlog.</li>
+        </ol>
+        <p>Para <strong>Atribuir uma Tarefa à um Sprint e Desenvolvedor</strong>:</p>
+        <ol>
+        <li>O usuário faz os passos descritos acima para escolher o Sprint ao qual deseja vincular a Tarefa;</li>
+        <li>O usuário clica no botão de Atribuir no <em>Chip</em> de Tarefa na coluna de Backlog;</li>
+        <li>O sistema exibe uma nova tela com campo para informar o Desenvolvedor responsável.</li>
+        <li>O usuário escolhe um desenvolvedor da lista e clica em Confirmar.
+        <ol>
+        <li>O sistema não permite confirmar caso um desenvolvedor não tenha sido selecionado.</li>
+        </ol></li>
+        <li>O sistema vincula a Tarefa ao Desenvolvedor e Sprint escolhidos e muda o status da Tarefa para o status apropriado.</li>
+        <li>O sistema atualiza o Scrum Board.</li></ol>
+        <p>Para <strong>Mover uma Tarefa no Sprint</strong>:</p>
+        <ol>
+        <li>O usuário faz os passos descritos acima para escolher o Sprint ao qual deseja vincular a Tarefa;</li>
+        <li>O usuário clica no botão em um dos botões no <em>Chip</em> de Tarefa;
+        <ol>
+        <li>O botão mais à esquerda, volta em um nível o status da Tarefa</li>
+        <li>O botão mais à direita, avança em um nível o status da Tarefa</li>
+        <li>Uma Tarefa no Backlog só pode avançar.</li>
+        <li>Uma Tarefa concluída não pode ser movimentada mais.</li>
+        </ol></li>
+        <li>O sistema movimenta a Tarefa e muda o status da Tarefa para o status apropriado.</li>
+        <li>O sistema atualiza o Scrum Board.</li></ol>
+      format: restricted_html
+    type: RichText
+  layout_properties: {slot: default}
+  name: content_panel
   properties: {}
   type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: page_headline_label
-    properties: {text: Scrum Board, role: headline}
-    type: Label
-    layout_properties: {grid_position: 'VAYNGE,AWUBAO'}
-  - name: details_rich_text
-    properties: {content: '<p>O <u>Scrum Board</u> é a funcionalidade para exibição
-        de Tarefas vinculadas à determinado Sprint (ou não vinculadas à Sprint algum),
-        vincular tarefas à um Sprint selecionado e movimentar as tarefas de um Sprint.</p><br/>
-
-        <br/>
-
-        <p>O acesso ao Scrum Board é feito através do hash <a href="https://ufu-esof-designer.anvil.app/#board">#board</a>.</p>
-
-        <p>O Scrum Board <strong><u>exige acesso por <em>login</em> de usuário</u></strong>.</p>
-
-        <p>Para acessar o <strong>Scrum Board</strong> o usuário acessa a tela de
-        Scrum Board através do <a href="https://ufu-esof-designer.anvil.app/#board">link</a>
-        ou menu lateral.</p>
-
-        <p>Ao acessar o Scrum Board o usuário verá:</p>
-
-        <ol>
-
-        <li>Um campo de busca de Sprint para exibição no Board;</li>
-
-        <li>Cartões representativos das diversas situações que uma Tarefa poderá assumir,
-        lado a lado.</li>
-
-        </ol>
-
-        <p>Para <strong>Exibir dados no Scrum Board</strong> o usuário:</p>
-
-        <ol>
-
-        <li>O usuário digita parte do nome do Sprint que deseja exibir no campo de
-        Sprint;</li>
-
-        <li>O sistema busca e exibe uma lista de Sprints que satisfazem a busca.</li>
-
-        <li>O usuário escolhe e seleciona um Sprint da Lista.</li>
-
-        <li>O sistema busca as Tarefas daquele Sprint e exibe cada tarefa na coluna
-        específica com base no seu status.</li>
-
-        <li>O sistema busca as Tarefas sem Sprint e exibe cada as tarefas na coluna
-        de Backlog.</li>
-
-        </ol>
-
-        <p>Para <strong>Atribuir uma Tarefa à um Sprint e Desenvolvedor</strong>:</p>
-
-        <ol>
-
-        <li>O usuário faz os passos descritos acima para escolher o Sprint ao qual
-        deseja vincular a Tarefa;</li>
-
-        <li>O usuário clica no botão de Atribuir no <em>Chip</em> de Tarefa na coluna
-        de Backlog;</li>
-
-        <li>O sistema exibe uma nova tela com campo para informar o Desenvolvedor
-        responsável.</li>
-
-        <li>O usuário escolhe um desenvolvedor da lista e clica em Confirmar.
-
-        <ol>
-
-        <li>O sistema não permite confirmar caso um desenvolvedor não tenha sido selecionado.</li>
-
-        </ol></li>
-
-        <li>O sistema vincula a Tarefa ao Desenvolvedor e Sprint escolhidos e muda
-        o status da Tarefa para o status apropriado.</li>
-
-        <li>O sistema atualiza o Scrum Board.</li></ol>
-
-        <p>Para <strong>Mover uma Tarefa no Sprint</strong>:</p>
-
-        <ol>
-
-        <li>O usuário faz os passos descritos acima para escolher o Sprint ao qual
-        deseja vincular a Tarefa;</li>
-
-        <li>O usuário clica no botão em um dos botões no <em>Chip</em> de Tarefa;
-
-        <ol>
-
-        <li>O botão mais à esquerda, volta em um nível o status da Tarefa</li>
-
-        <li>O botão mais à direita, avança em um nível o status da Tarefa</li>
-
-        <li>Uma Tarefa no Backlog só pode avançar.</li>
-
-        <li>Uma Tarefa concluída não pode ser movimentada mais.</li>
-
-        </ol></li>
-
-        <li>O sistema movimenta a Tarefa e muda o status da Tarefa para o status apropriado.</li>
-
-        <li>O sistema atualiza o Scrum Board.</li></ol>', format: restricted_html}
-    type: RichText
-    layout_properties: {grid_position: 'RUNUVP,JASRCS'}
+container:
+  properties: {html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

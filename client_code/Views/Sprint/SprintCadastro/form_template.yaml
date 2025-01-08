@@ -1,108 +1,106 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
-  event_bindings: {show: form_show}
 components:
-- name: content_panel
-  properties: {col_widths: '{"UGTQAD":10,"BURPQO":50,"OCVXCR":10,"EUVOXQ":50,"SWJBCI":10,"EAYAQV":50}'}
-  type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: titulo_headline
+- components:
+  - data_bindings:
+    - {code: 'self.item[''Titulo'']', property: text, writeback: false}
+    - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+    layout_properties: {grid_position: 'TKDNGU,TJDEBV'}
+    name: titulo_headline
     properties: {role: title}
     type: Label
-    layout_properties: {grid_position: 'TKDNGU,TJDEBV'}
-    data_bindings:
-    - {property: text, code: 'self.item[''Titulo'']', writeback: false}
-    - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-  - name: titulo_edit_panel
-    properties: {col_widths: '{"VWBDJH":10,"BNKXMI":50}'}
-    type: ColumnPanel
-    layout_properties: {grid_position: 'CFAVAQ,BYJPYL'}
-    data_bindings:
-    - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
-    components:
-    - name: titulo_input_label
-      properties: {text: 'Título:', role: input-prompt}
+  - components:
+    - layout_properties: {grid_position: 'GLLQPJ,VWBDJH'}
+      name: titulo_input_label
+      properties: {role: input-prompt, text: 'Título:'}
       type: Label
-      layout_properties: {grid_position: 'GLLQPJ,VWBDJH'}
-    - name: titulo_text_box
+    - data_bindings:
+      - {code: 'self.item[''Titulo'']', property: text, writeback: true}
+      layout_properties: {grid_position: 'GLLQPJ,BNKXMI'}
+      name: titulo_text_box
       properties: {}
       type: TextBox
-      layout_properties: {grid_position: 'GLLQPJ,BNKXMI'}
-      data_bindings:
-      - {property: text, code: 'self.item[''Titulo'']', writeback: true}
-  - name: inicio_input_label
+    data_bindings:
+    - {code: self.edit_mode or self.create_mode, property: visible, writeback: false}
+    layout_properties: {grid_position: 'CFAVAQ,BYJPYL'}
+    name: titulo_edit_panel
+    properties: {col_widths: '{"VWBDJH":10,"BNKXMI":50}'}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
+    name: inicio_input_label
     properties: {role: input-prompt, text: 'Início:'}
     type: Label
-    layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
-  - name: inicio_panel
-    properties: {}
-    type: FlowPanel
-    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
-    components:
-    - name: inicio_date_picker
-      properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
-      type: DatePicker
-      data_bindings:
-      - {property: min_date, code: self.hoje, writeback: false}
-      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
-      - {property: date, code: 'self.item[''Inicio'']', writeback: true}
-      - {property: max_date, code: self.termino_date_picker.date, writeback: false}
+  - components:
+    - data_bindings:
+      - {code: self.hoje, property: min_date, writeback: false}
+      - {code: self.edit_mode or self.create_mode, property: visible, writeback: false}
+      - {code: 'self.item[''Inicio'']', property: date, writeback: true}
+      - {code: self.termino_date_picker.date, property: max_date, writeback: false}
       layout_properties: {width: 180}
-    - name: inicio_label
+      name: inicio_date_picker
+      properties: {date: null, format: '%d/%m/%Y %H:%M', pick_time: true}
+      type: DatePicker
+    - data_bindings:
+      - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+      - {code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Inicio'']) if self.item[''Inicio''] is not None else ''''', property: text, writeback: false}
+      layout_properties: {}
+      name: inicio_label
       properties: {role: title}
       type: Label
-      layout_properties: {}
-      data_bindings:
-      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-      - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Inicio''])
-          if self.item[''Inicio''] is not None else ''''', writeback: false}
-  - name: termino_input_label
+    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
+    name: inicio_panel
+    properties: {}
+    type: FlowPanel
+  - layout_properties: {grid_position: 'UEEQAA,OCVXCR'}
+    name: termino_input_label
     properties: {role: input-prompt, text: 'Término:'}
     type: Label
-    layout_properties: {grid_position: 'UEEQAA,OCVXCR'}
-  - name: termino_panel
-    properties: {}
-    type: FlowPanel
-    layout_properties: {grid_position: 'UEEQAA,EUVOXQ'}
-    components:
-    - name: termino_date_picker
-      properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
-      type: DatePicker
-      data_bindings:
-      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
-      - {property: date, code: 'self.item[''Termino'']', writeback: true}
-      - {property: min_date, code: self.min_termino, writeback: false}
+  - components:
+    - data_bindings:
+      - {code: self.edit_mode or self.create_mode, property: visible, writeback: false}
+      - {code: 'self.item[''Termino'']', property: date, writeback: true}
+      - {code: self.min_termino, property: min_date, writeback: false}
       layout_properties: {width: 180}
-    - name: termino_label
+      name: termino_date_picker
+      properties: {date: null, format: '%d/%m/%Y %H:%M', pick_time: true}
+      type: DatePicker
+    - data_bindings:
+      - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+      - {code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Termino'']) if self.item[''Termino''] is not None else ''''', property: text, writeback: false}
+      layout_properties: {}
+      name: termino_label
       properties: {role: title}
       type: Label
-      layout_properties: {}
-      data_bindings:
-      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-      - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Termino''])
-          if self.item[''Termino''] is not None else ''''', writeback: false}
-  - name: release_input_label
-    properties: {role: input-prompt, text: 'Release:', italic: true}
-    type: Label
-    layout_properties: {grid_position: 'WOCHJK,SWJBCI'}
-  - name: release_panel
+    layout_properties: {grid_position: 'UEEQAA,EUVOXQ'}
+    name: termino_panel
     properties: {}
     type: FlowPanel
-    layout_properties: {grid_position: 'WOCHJK,EAYAQV'}
-    components:
-    - name: release_drop_down
+  - layout_properties: {grid_position: 'WOCHJK,SWJBCI'}
+    name: release_input_label
+    properties: {italic: true, role: input-prompt, text: 'Release:'}
+    type: Label
+  - components:
+    - data_bindings:
+      - {code: 'self.item[''Release'']', property: selected_value, writeback: true}
+      - {code: self.edit_mode or self.create_mode, property: visible, writeback: false}
+      layout_properties: {expand: true}
+      name: release_drop_down
       properties: {include_placeholder: false}
       type: DropDown
-      layout_properties: {expand: true}
-      data_bindings:
-      - {property: selected_value, code: 'self.item[''Release'']', writeback: true}
-      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
-    - name: release_label
-      properties: {spacing_above: none, spacing_below: none, role: title}
+    - data_bindings:
+      - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+      - {code: self.release_nome, property: text, writeback: false}
+      name: release_label
+      properties: {role: title, spacing_above: none, spacing_below: none}
       type: Label
-      data_bindings:
-      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-      - {property: text, code: self.release_nome, writeback: false}
+    layout_properties: {grid_position: 'WOCHJK,EAYAQV'}
+    name: release_panel
+    properties: {}
+    type: FlowPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{"UGTQAD":10,"BURPQO":50,"OCVXCR":10,"EUVOXQ":50,"SWJBCI":10,"EAYAQV":50}'}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  properties: {html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

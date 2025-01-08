@@ -1,28 +1,26 @@
-is_package: true
-container: {type: DataRowPanel}
 components:
-- name: edit_link
+- event_bindings: {click: edit_link_click}
+  layout_properties: {column: KFJZFT}
+  name: edit_link
   properties: {icon: 'fa:edit', spacing_above: none, spacing_below: none}
   type: Link
-  layout_properties: {column: KFJZFT}
-  event_bindings: {click: edit_link_click}
-- name: criador_label
-  properties: {spacing_above: none, spacing_below: none}
-  type: Label
+- data_bindings:
+  - {code: 'self.item[''Criador''][''display_name'']', property: text, writeback: false}
   layout_properties: {column: ILUJHY}
-  data_bindings:
-  - {property: text, code: 'self.item[''Criador''][''display_name'']', writeback: false}
-- name: dev_label
+  name: criador_label
   properties: {spacing_above: none, spacing_below: none}
   type: Label
+- data_bindings:
+  - {code: 'self.item[''Desenvolvedor''][''display_name''] if self.item[''Desenvolvedor''] else None', property: text, writeback: false}
   layout_properties: {column: TWFCIC}
-  data_bindings:
-  - {property: text, code: 'self.item[''Desenvolvedor''][''display_name''] if self.item[''Desenvolvedor'']
-      else None', writeback: false}
-- name: sprint_label
+  name: dev_label
   properties: {spacing_above: none, spacing_below: none}
   type: Label
+- data_bindings:
+  - {code: 'self.item[''Sprint''][''Titulo''] if self.item[''Sprint''] else None', property: text, writeback: false}
   layout_properties: {column: KHBKTO}
-  data_bindings:
-  - {property: text, code: 'self.item[''Sprint''][''Titulo''] if self.item[''Sprint'']
-      else None', writeback: false}
+  name: sprint_label
+  properties: {spacing_above: none, spacing_below: none}
+  type: Label
+container: {type: DataRowPanel}
+is_package: true

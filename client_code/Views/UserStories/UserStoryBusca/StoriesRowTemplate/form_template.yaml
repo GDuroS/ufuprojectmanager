@@ -1,14 +1,14 @@
-is_package: true
-container: {type: DataRowPanel}
 components:
-- name: edit_link
+- event_bindings: {click: edit_link_click}
+  layout_properties: {column: KFJZFT}
+  name: edit_link
   properties: {icon: 'fa:edit', spacing_above: none, spacing_below: none}
   type: Link
-  layout_properties: {column: KFJZFT}
-  event_bindings: {click: edit_link_click}
-- name: criador_label
+- data_bindings:
+  - {code: 'self.item[''Criador''][''display_name'']', property: text, writeback: false}
+  layout_properties: {column: VIDQNS}
+  name: criador_label
   properties: {spacing_above: none, spacing_below: none}
   type: Label
-  layout_properties: {column: VIDQNS}
-  data_bindings:
-  - {property: text, code: 'self.item[''Criador''][''display_name'']', writeback: false}
+container: {type: DataRowPanel}
+is_package: true

@@ -1,190 +1,188 @@
-dependencies:
-- dep_id: dep_oehtqjxaysba4u
-  version: {dev: false}
-  resolution_hints: {app_id: OANIXGELFYRDP4VV, name: OruDataCore, package_name: OruData}
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {auto_create_missing_columns: true}
-- source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
-    confirm_email: false, require_secure_passwords: false, use_google: false}
-  server_config: {user_table: users}
-- source: /runtime/services/google.yml
-  client_config: {}
-  server_config: {}
-startup: {type: module, module: Main}
-package_name: ProjectManager
 allow_embedding: false
-name: ProjectManager
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {title: Project Manager, description: 'Administrador de Histórias de Usuário,
-    Tarefas, Sprints e Releases'}
-startup_form: null
 db_schema:
-  sprint:
-    client: none
-    server: full
-    columns:
-    - name: Inicio
-      admin_ui: {width: 200, order: 1}
-      type: datetime
-    - name: Termino
-      admin_ui: {width: 200, order: 2}
-      type: datetime
-    - name: Release
-      admin_ui: {width: 200, order: 3}
-      type: link_single
-      target: release
-    - name: Titulo
-      admin_ui: {width: 200}
-      type: string
-    - name: Sequence
-      admin_ui: {width: 200}
-      type: number
-    title: Sprint
   release:
     client: none
-    server: full
     columns:
-    - name: Inicio
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: Inicio
       type: datetime
-    - name: Termino
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Termino
       type: datetime
-    - name: Sequence
-      admin_ui: {width: 200}
+    - admin_ui: {width: 200}
+      name: Sequence
       type: number
+    server: full
     title: Release
+  sequencer:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: Release
+      type: number
+    - admin_ui: {width: 200}
+      name: Sprint
+      type: number
+    - admin_ui: {width: 200}
+      name: Tarefa
+      type: number
+    - admin_ui: {width: 200}
+      name: UserStory
+      type: number
+    server: full
+    title: Sequencer
+  sprint:
+    client: none
+    columns:
+    - admin_ui: {order: 1, width: 200}
+      name: Inicio
+      type: datetime
+    - admin_ui: {order: 2, width: 200}
+      name: Termino
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: Release
+      target: release
+      type: link_single
+    - admin_ui: {width: 200}
+      name: Titulo
+      type: string
+    - admin_ui: {width: 200}
+      name: Sequence
+      type: number
+    server: full
+    title: Sprint
+  tarefa:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: Titulo
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: Descricao
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: Criador
+      target: users
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: UserStory
+      target: userstory
+      type: link_single
+    - admin_ui: {order: 4, width: 200}
+      name: Prioridade
+      type: string
+    - admin_ui: {order: 5, width: 200}
+      name: Tipo
+      type: string
+    - admin_ui: {order: 6, width: 200}
+      name: Tempo
+      type: number
+    - admin_ui: {order: 7, width: 200}
+      name: Prazo
+      type: datetime
+    - admin_ui: {order: 8, width: 200}
+      name: Desenvolvedor
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: Sequence
+      type: number
+    - admin_ui: {width: 200}
+      name: Status
+      type: string
+    - admin_ui: {order: 7.5, width: 200}
+      name: Sprint
+      target: sprint
+      type: link_single
+    server: full
+    title: Tarefa
   users:
     client: none
-    server: full
     columns:
-    - name: email
-      admin_ui: {order: 0, width: 200}
+    - admin_ui: {order: 0, width: 200}
+      name: email
       type: string
-    - name: enabled
-      admin_ui: {order: 1, width: 200}
+    - admin_ui: {order: 1, width: 200}
+      name: enabled
       type: bool
-    - name: last_login
-      admin_ui: {order: 2, width: 200}
+    - admin_ui: {order: 2, width: 200}
+      name: last_login
       type: datetime
-    - name: password_hash
-      admin_ui: {order: 3, width: 200}
+    - admin_ui: {order: 3, width: 200}
+      name: password_hash
       type: string
-    - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
+    - admin_ui: {order: 4, width: 200}
+      name: n_password_failures
       type: number
-    - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
+    - admin_ui: {order: 5, width: 200}
+      name: confirmed_email
       type: bool
-    - name: signed_up
-      admin_ui: {order: 6, width: 200}
+    - admin_ui: {order: 6, width: 200}
+      name: signed_up
       type: datetime
-    - name: dev
-      admin_ui: {width: 200, order: 7}
+    - admin_ui: {order: 7, width: 200}
+      name: dev
       type: bool
-    - name: fullname
-      admin_ui: {width: 200, order: 8}
+    - admin_ui: {order: 8, width: 200}
+      name: fullname
       type: string
-    - name: photo
-      admin_ui: {width: 200, order: 9}
+    - admin_ui: {order: 9, width: 200}
+      name: photo
       type: media
-    - name: display_name
-      admin_ui: {order: 10, width: 200}
+    - admin_ui: {order: 10, width: 200}
+      name: display_name
       type: string
+    server: full
     title: Users
   userstory:
     client: none
-    server: full
     columns:
-    - name: Titulo
-      admin_ui: {width: 200, order: 0}
+    - admin_ui: {order: 0, width: 200}
+      name: Titulo
       type: string
-    - name: Descricao
-      admin_ui: {width: 200, order: 1}
+    - admin_ui: {order: 1, width: 200}
+      name: Descricao
       type: string
-    - name: Prioridade
-      admin_ui: {width: 200, order: 2}
+    - admin_ui: {order: 2, width: 200}
+      name: Prioridade
       type: string
-    - name: Tipo
-      admin_ui: {width: 200, order: 3}
+    - admin_ui: {order: 3, width: 200}
+      name: Tipo
       type: string
-    - name: Pontos
-      admin_ui: {width: 200, order: 4}
+    - admin_ui: {order: 4, width: 200}
+      name: Pontos
       type: number
-    - name: Limite
-      admin_ui: {width: 200, order: 5}
+    - admin_ui: {order: 5, width: 200}
+      name: Limite
       type: date
-    - name: Criador
-      admin_ui: {order: 1.5, width: 200}
-      type: link_single
+    - admin_ui: {order: 1.5, width: 200}
+      name: Criador
       target: users
-    - name: Sequence
-      admin_ui: {width: 200, order: 6}
+      type: link_single
+    - admin_ui: {order: 6, width: 200}
+      name: Sequence
       type: number
+    server: full
     title: UserStory
-  tarefa:
-    client: none
-    server: full
-    columns:
-    - name: Titulo
-      admin_ui: {width: 200, order: 0}
-      type: string
-    - name: Descricao
-      admin_ui: {width: 200, order: 1}
-      type: string
-    - name: Criador
-      admin_ui: {width: 200, order: 2}
-      type: link_single
-      target: users
-    - name: UserStory
-      admin_ui: {width: 200, order: 3}
-      type: link_single
-      target: userstory
-    - name: Prioridade
-      admin_ui: {width: 200, order: 4}
-      type: string
-    - name: Tipo
-      admin_ui: {width: 200, order: 5}
-      type: string
-    - name: Tempo
-      admin_ui: {width: 200, order: 6}
-      type: number
-    - name: Prazo
-      admin_ui: {order: 7, width: 200}
-      type: datetime
-    - name: Desenvolvedor
-      admin_ui: {width: 200, order: 8}
-      type: link_single
-      target: users
-    - name: Sequence
-      admin_ui: {width: 200}
-      type: number
-    - name: Status
-      admin_ui: {width: 200}
-      type: string
-    - name: Sprint
-      admin_ui: {order: 7.5, width: 200}
-      type: link_single
-      target: sprint
-    title: Tarefa
-  sequencer:
-    client: none
-    server: full
-    columns:
-    - name: Release
-      admin_ui: {width: 200}
-      type: number
-    - name: Sprint
-      admin_ui: {width: 200}
-      type: number
-    - name: Tarefa
-      admin_ui: {width: 200}
-      type: number
-    - name: UserStory
-      admin_ui: {width: 200}
-      type: number
-    title: Sequencer
+dependencies:
+- dep_id: dep_oehtqjxaysba4u
+  resolution_hints: {app_id: OANIXGELFYRDP4VV, name: OruDataCore, package_name: OruData}
+  version: {version_tag: v1.8}
+metadata: {description: 'Administrador de Histórias de Usuário, Tarefas, Sprints e Releases', title: Project Manager}
+name: ProjectManager
+package_name: ProjectManager
 renamed: true
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-full, version: 2}
+services:
+- client_config: {}
+  server_config: {auto_create_missing_columns: true}
+  source: /runtime/services/tables.yml
+- client_config: {allow_signup: true, confirm_email: false, enable_automatically: true, require_secure_passwords: false, use_email: true, use_google: false}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/google.yml
+startup: {module: Main, type: module}
+startup_form: null

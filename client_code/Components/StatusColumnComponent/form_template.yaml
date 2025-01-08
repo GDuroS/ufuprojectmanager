@@ -1,25 +1,36 @@
-container:
-  type: HtmlTemplate
-  properties: {html: "<style>\n  .anvil-role-board-column {\n    min-width: 200px;\n\
-      \  }\n  .anvil-role-board-column .anvil-label.anvil-role-board-column {\n  \
-      \  border-top-right-radius: 10px;\n    border-top-left-radius: 10px;\n  }\n\
-      \  .anvil-role-board-column .column-panel.anvil-role-board-column {\n    border-bottom-left-radius:\
-      \ 10px;\n    border-bottom-right-radius: 10px;\n    min-height: 500px;\n  }\n\
-      </style>\n<div anvil-slot=\"default\"></div>", background: ''}
-  data_bindings: []
 components:
-- name: title_label
-  properties: {spacing_below: none, align: center, text: '', background: var(--surface-variant),
-    foreground: var(--on-surface-variant), bold: true}
+- data_bindings:
+  - {code: self.item.nome, property: text, writeback: false}
+  layout_properties: {slot: default}
+  name: title_label
+  properties: {align: center, background: var(--surface-variant), bold: true, foreground: var(--on-surface-variant), spacing_below: none, text: ''}
   type: Label
-  layout_properties: {slot: default}
+- components: []
   data_bindings:
-  - {property: text, code: self.item.nome, writeback: false}
-- name: column_panel
-  properties: {spacing_above: none, foreground: '', background: ''}
+  - {code: self.item.color, property: background, writeback: false}
+  layout_properties: {slot: default}
+  name: column_panel
+  properties: {background: '', foreground: '', spacing_above: none}
   type: ColumnPanel
-  layout_properties: {slot: default}
-  data_bindings:
-  - {property: background, code: self.item.color, writeback: false}
-  components: []
+container:
+  data_bindings: []
+  properties:
+    background: ''
+    html: |-
+      <style>
+        .anvil-role-board-column {
+          min-width: 200px;
+        }
+        .anvil-role-board-column .anvil-label.anvil-role-board-column {
+          border-top-right-radius: 10px;
+          border-top-left-radius: 10px;
+        }
+        .anvil-role-board-column .column-panel.anvil-role-board-column {
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          min-height: 500px;
+        }
+      </style>
+      <div anvil-slot="default"></div>
+  type: HtmlTemplate
 is_package: true

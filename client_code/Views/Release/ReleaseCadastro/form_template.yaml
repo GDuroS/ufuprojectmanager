@@ -1,70 +1,68 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
-  event_bindings: {show: form_show}
 components:
-- name: content_panel
-  properties: {col_widths: '{"UGTQAD":10,"BURPQO":50,"OCVXCR":10,"EUVOXQ":50,"SWJBCI":10}'}
-  type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: titulo_headline
+- components:
+  - data_bindings:
+    - {code: self.item, property: text, writeback: false}
+    - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+    layout_properties: {grid_position: 'TKDNGU,TJDEBV'}
+    name: titulo_headline
     properties: {role: title}
     type: Label
-    layout_properties: {grid_position: 'TKDNGU,TJDEBV'}
-    data_bindings:
-    - {property: text, code: self.item, writeback: false}
-    - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-  - name: inicio_input_label
+  - layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
+    name: inicio_input_label
     properties: {role: input-prompt, text: 'Início:'}
     type: Label
-    layout_properties: {grid_position: 'XZUWMW,UGTQAD'}
-  - name: inicio_panel
-    properties: {}
-    type: FlowPanel
-    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
-    components:
-    - name: inicio_date_picker
-      properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
-      type: DatePicker
-      data_bindings:
-      - {property: min_date, code: self.hoje, writeback: false}
-      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
-      - {property: date, code: 'self.item[''Inicio'']', writeback: true}
-      - {property: max_date, code: self.termino_date_picker.date, writeback: false}
-      layout_properties: {width: 180}
+  - components:
+    - data_bindings:
+      - {code: self.hoje, property: min_date, writeback: false}
+      - {code: self.edit_mode or self.create_mode, property: visible, writeback: false}
+      - {code: 'self.item[''Inicio'']', property: date, writeback: true}
+      - {code: self.termino_date_picker.date, property: max_date, writeback: false}
       event_bindings: {change: inicio_date_picker_change}
-    - name: inicio_label
+      layout_properties: {width: 180}
+      name: inicio_date_picker
+      properties: {date: null, format: '%d/%m/%Y %H:%M', pick_time: true}
+      type: DatePicker
+    - data_bindings:
+      - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+      - {code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Inicio'']) if self.item[''Inicio''] is not None else ''''', property: text, writeback: false}
+      layout_properties: {}
+      name: inicio_label
       properties: {role: title}
       type: Label
-      layout_properties: {}
-      data_bindings:
-      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-      - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Inicio''])
-          if self.item[''Inicio''] is not None else ''''', writeback: false}
-  - name: termino_input_label
+    layout_properties: {grid_position: 'XZUWMW,BURPQO'}
+    name: inicio_panel
+    properties: {}
+    type: FlowPanel
+  - layout_properties: {grid_position: 'UEEQAA,OCVXCR'}
+    name: termino_input_label
     properties: {role: input-prompt, text: 'Término:'}
     type: Label
-    layout_properties: {grid_position: 'UEEQAA,OCVXCR'}
-  - name: termino_panel
-    properties: {}
-    type: FlowPanel
-    layout_properties: {grid_position: 'UEEQAA,EUVOXQ'}
-    components:
-    - name: termino_date_picker
-      properties: {format: '%d/%m/%Y %H:%M', date: null, pick_time: true}
-      type: DatePicker
-      data_bindings:
-      - {property: visible, code: self.edit_mode or self.create_mode, writeback: false}
-      - {property: date, code: 'self.item[''Termino'']', writeback: true}
-      - {property: min_date, code: self.min_termino, writeback: false}
+  - components:
+    - data_bindings:
+      - {code: self.edit_mode or self.create_mode, property: visible, writeback: false}
+      - {code: 'self.item[''Termino'']', property: date, writeback: true}
+      - {code: self.min_termino, property: min_date, writeback: false}
       layout_properties: {width: 180}
-    - name: termino_label
+      name: termino_date_picker
+      properties: {date: null, format: '%d/%m/%Y %H:%M', pick_time: true}
+      type: DatePicker
+    - data_bindings:
+      - {code: not self.create_mode and not self.edit_mode, property: visible, writeback: false}
+      - {code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Termino'']) if self.item[''Termino''] is not None else ''''', property: text, writeback: false}
+      layout_properties: {}
+      name: termino_label
       properties: {role: title}
       type: Label
-      layout_properties: {}
-      data_bindings:
-      - {property: visible, code: not self.create_mode and not self.edit_mode, writeback: false}
-      - {property: text, code: '"{:%d/%m/%Y %H:%M}".format(self.item[''Termino''])
-          if self.item[''Termino''] is not None else ''''', writeback: false}
+    layout_properties: {grid_position: 'UEEQAA,EUVOXQ'}
+    name: termino_panel
+    properties: {}
+    type: FlowPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{"UGTQAD":10,"BURPQO":50,"OCVXCR":10,"EUVOXQ":50,"SWJBCI":10}'}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  properties: {html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

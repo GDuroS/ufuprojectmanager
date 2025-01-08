@@ -1,53 +1,28 @@
-container: {type: ColumnPanel}
 components:
-- name: rich_text
-  properties: {format: restricted_html, content: '<h1><strong>Sobre o Project Manager</strong></h1><br/>
-
+- components:
+  - layout_properties: {slot: for_printing_slot}
+    name: for_ufu_label
+    properties: {text: 'O aplicativo foi desenvolvido por Gabriel Duro da Silva (12111BCC047) e Christhian Rezende Vieira (12111BCC028). Ele pode ser acessado no link https://ufu-esof-designer.anvil.app/', visible: false}
+    type: Label
+  layout_properties: {grid_position: 'KPIVHV,SKYBHT'}
+  name: rich_text
+  properties:
+    content: |-
+      <h1><strong>Sobre o Project Manager</strong></h1><br/>
       <br/>
-
-      <p>O Project Manager é uma ferramenta simples e em MVP (Produto mínimo viável)
-      feito como uma atividade da disciplina de Engenharia de Software do Curso de
-      Bacharelado em Ciência da Computação da Universidade Federal de Uberlândia.</p><br/>
-
+      <p>O Project Manager é uma ferramenta simples e em MVP (Produto mínimo viável) feito como uma atividade da disciplina de Engenharia de Software do Curso de Bacharelado em Ciência da Computação da Universidade Federal de Uberlândia.</p><br/>
       {for_printing_slot}
-
-      <p>O propósito desta aplicação é permitir ao usuário a criação de <strong>User
-      Stories</strong>, <strong>Tarefas</strong>, <strong>Releases</strong> e <strong>Sprints</strong>,
-      bem como fazer a movimentação das Tarefas através de um <strong>Scrum Board</strong>.</p><br/>
-
-      <p>A aplicação utiliza <strong>Python</strong> na maior parte dos códigos, com
-      poucas utilizações de <strong>HTML</strong>, <strong>CSS</strong> e <strong>Javascript</strong>
-      explicitamente. Isso é possível através da plataforma <a href="https://anvil.works/">Anvil</a>,
-      que serve tanto como uma biblioteca de componentes, uma IDE Online para criação
-      dos apps e serviço de hospedagem. No desenvolvimento desta aplicação foram utilizadas
-      bibliotecas próprias (de autoria do aluno) criadas anteriormente para outras
-      aplicações na plataforma Anvil, bem como uma biblioteca pública e amplamente
-      utilizada por apps do Anvil chamada <a href="https://anvil-extras.readthedocs.io/en/latest/index.html">Anvil
-      Extras.</a></p>
-
+      <p>O propósito desta aplicação é permitir ao usuário a criação de <strong>User Stories</strong>, <strong>Tarefas</strong>, <strong>Releases</strong> e <strong>Sprints</strong>, bem como fazer a movimentação das Tarefas através de um <strong>Scrum Board</strong>.</p><br/>
+      <p>A aplicação utiliza <strong>Python</strong> na maior parte dos códigos, com poucas utilizações de <strong>HTML</strong>, <strong>CSS</strong> e <strong>Javascript</strong> explicitamente. Isso é possível através da plataforma <a href="https://anvil.works/">Anvil</a>, que serve tanto como uma biblioteca de componentes, uma IDE Online para criação dos apps e serviço de hospedagem. No desenvolvimento desta aplicação foram utilizadas bibliotecas próprias (de autoria do aluno) criadas anteriormente para outras aplicações na plataforma Anvil, bem como uma biblioteca pública e amplamente utilizada por apps do Anvil chamada <a href="https://anvil-extras.readthedocs.io/en/latest/index.html">Anvil Extras.</a></p>
       <br/>
-
       <strong>Anvil Extras (utilizada na navegação e outras funcionalidades):</strong><br/>
-
       <a href="https://anvil-extras.readthedocs.io/en/latest/index.html">Anvil Extras</a><br/><br/>
 
-
       <strong>Créditos pelo Logo (favicon) do Aplicativo:</strong><br/>
-
-      <a href="https://www.flaticon.com/free-icons/fact" title="fact icons">Fact icons
-      created by Grafixpoint - Flaticon</a><br/><br/>
-
+      <a href="https://www.flaticon.com/free-icons/fact" title="fact icons">Fact icons created by Grafixpoint - Flaticon</a><br/><br/>
       <strong>Demais ícones usados no Aplicativo:</strong><br/>
-
-      <a href="https://fontawesome.com/v6/search?o=r&m=free" title="Font Awesome">Font
-      Awesome Free</a><br/><br/>'}
+      <a href="https://fontawesome.com/v6/search?o=r&m=free" title="Font Awesome">Font Awesome Free</a><br/><br/>
+    format: restricted_html
   type: RichText
-  layout_properties: {grid_position: 'KPIVHV,SKYBHT'}
-  components:
-  - name: for_ufu_label
-    properties: {text: 'O aplicativo foi desenvolvido por Gabriel Duro da Silva (12111BCC047)
-        e Christhian Rezende Vieira (12111BCC028). Ele pode ser acessado no link https://ufu-esof-designer.anvil.app/',
-      visible: false}
-    type: Label
-    layout_properties: {slot: for_printing_slot}
+container: {type: ColumnPanel}
 is_package: true

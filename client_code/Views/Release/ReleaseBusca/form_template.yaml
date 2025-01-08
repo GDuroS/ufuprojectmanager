@@ -1,62 +1,62 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
-  event_bindings: {show: form_show}
 components:
-- name: content_panel
-  properties: {}
-  type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: filter_panel
-    properties:
-      role: [elevated-card, tonal-card]
-      col_widths: '{"VLBYKQ":15,"JNWHMH":45,"LSOEOF":15,"IKMUDE":45,"FPRSOV":45,"CHPLNU":15,"CYOSKU":45}'
-    type: ColumnPanel
-    layout_properties: {grid_position: 'MUWCWN,MHJZJS'}
-    components:
-    - name: titulo_label
-      properties: {text: 'Título:', role: input-prompt}
+- components:
+  - components:
+    - layout_properties: {grid_position: 'ICKMHQ,VLBYKQ'}
+      name: titulo_label
+      properties: {role: input-prompt, text: 'Título:'}
       type: Label
-      layout_properties: {grid_position: 'ICKMHQ,VLBYKQ'}
-    - name: titulo_text_box
+    - layout_properties: {grid_position: 'ICKMHQ,JNWHMH'}
+      name: titulo_text_box
       properties: {}
       type: TextBox
-      layout_properties: {grid_position: 'ICKMHQ,JNWHMH'}
-    - name: inicio_label
+    - layout_properties: {grid_position: 'RTJAZP,LSOEOF'}
+      name: inicio_label
       properties: {role: input-prompt, text: 'Início:'}
       type: Label
-      layout_properties: {grid_position: 'RTJAZP,LSOEOF'}
-    - name: inicio_date_range_component
+    - layout_properties: {grid_position: 'RTJAZP,IKMUDE'}
+      name: inicio_date_range_component
       properties: {}
       type: form:dep_oehtqjxaysba4u:DateRangeComponent
-      layout_properties: {grid_position: 'RTJAZP,IKMUDE'}
-    - name: termino_label
+    - layout_properties: {grid_position: 'MPTEDM,CHPLNU'}
+      name: termino_label
       properties: {role: input-prompt, text: 'Término:'}
       type: Label
-      layout_properties: {grid_position: 'MPTEDM,CHPLNU'}
-    - name: termino_date_range_component
+    - layout_properties: {grid_position: 'MPTEDM,CYOSKU'}
+      name: termino_date_range_component
       properties: {}
       type: form:dep_oehtqjxaysba4u:DateRangeComponent
-      layout_properties: {grid_position: 'MPTEDM,CYOSKU'}
-  - name: result_data_grid
+    layout_properties: {grid_position: 'MUWCWN,MHJZJS'}
+    name: filter_panel
+    properties:
+      col_widths: '{"VLBYKQ":15,"JNWHMH":45,"LSOEOF":15,"IKMUDE":45,"FPRSOV":45,"CHPLNU":15,"CYOSKU":45}'
+      role: [elevated-card, tonal-card]
+    type: ColumnPanel
+  - components:
+    - layout_properties: {}
+      name: no_result_label
+      properties: {align: center, italic: true, text: Nenhum Registro Encontrado.}
+      type: Label
+    - layout_properties: {}
+      name: result_data_panel
+      properties: {item_template: Views.Release.ReleaseBusca.ReleaseRowTemplate}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'SBBFTQ,LUTCQZ'}
+    name: result_data_grid
     properties:
       columns:
-      - {id: KFJZFT, data_key: '', title: '', width: '50'}
-      - {id: XHAQVE, data_key: Sequence, title: Release, expand: false}
-      - {id: LPAJGF, data_key: Inicio, title: Inicio}
-      - {id: TLOBRY, data_key: Termino, title: Termino}
+      - {data_key: '', id: KFJZFT, title: '', width: '50'}
+      - {data_key: Sequence, expand: false, id: XHAQVE, title: Release}
+      - {data_key: Inicio, id: LPAJGF, title: Inicio}
+      - {data_key: Termino, id: TLOBRY, title: Termino}
       role: tonal-data-grid
       visible: false
     type: DataGrid
-    components:
-    - name: no_result_label
-      properties: {align: center, text: Nenhum Registro Encontrado., italic: true}
-      type: Label
-      layout_properties: {}
-    - name: result_data_panel
-      properties: {item_template: Views.Release.ReleaseBusca.ReleaseRowTemplate}
-      type: RepeatingPanel
-      layout_properties: {}
-    layout_properties: {grid_position: 'SBBFTQ,LUTCQZ'}
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  properties: {html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true

@@ -1,155 +1,109 @@
-properties:
-- {name: auto_header, type: boolean, default_value: false, default_binding_prop: true,
-  description: Whether to show or not the result grid auto_header, group: Results,
-  important: false}
-- {name: max_results, type: number, default_value: 20, description: Maximum number of results to show (0 to show all).,
-  group: Results, important: false}
-- {name: result_attributes, type: object, group: Results, description: 'A list of
-    dicts, each representing a column to override the default template. Each dict
-    can have:
-
-    id: required string
-
-    data_key: required string
-
-    title: required string
-
-    width: optional number
-
-    expand: boolean'}
-- {name: min_length, type: number, default_value: 5, description: Required number of characters before initial search,
-  group: Search, important: false}
-- {name: use_entity_class, type: object, description: The type of entity class to wrap results of the search. None if you don't want to use wrappers or 'default' if want to use the base Entity class.,
-  group: Search}
-- {name: main_attribute, type: string, default_value: name, description: 'Main attribute
-    of the search, usually the name of the object.'}
-- {name: show_clear_button, type: boolean, default_value: false, description: Whether to show or not the clear button}
-- {name: show_continue_button, type: boolean, default_value: true, description: Whether to show or not the continue button when an option is selected. It'll still show the create button when not selected (if allowed).}
-- {name: show_create_button, type: boolean, default_value: true, description: Whether to show or not the create button when nothing is selected. It'll still show the continue button when something is selected (if allowed).}
-- {name: filter_object, type: object, description: Filter VO to be used to search values. It must have an attribute of same name as the main_attribute. It will only be used if filter_method is defined.}
-- {name: filter_method, type: string, default_value: '', description: 'Name of the
-    method to be used to filter values. If filter_object is defined, it will use that
-    as the parameter, otherwise it will send a named_parameter the same way as the
-    search.'}
-is_package: true
-events:
-- name: selected_value_change
-  default_event: true
-  description: Event triggered when the selected value was changed.
-  parameters:
-  - {name: selected_value, description: The selected value}
-- name: new_button_clicked
-  description: When the new button was clicked.
-  parameters:
-  - {name: text, description: The text typed in the component before clicking new.}
-- name: continue_button_clicked
-  description: When the continue button was clicked.
-  parameters:
-  - {name: selected_value, description: The value currently selected inside the autocomplete.}
-toolbox_item: {}
-custom_component: true
 components:
-- type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
-    background: ''}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - type: FlowPanel
-    properties: {role: null, spacing: none, align: left, tooltip: '', border: '',
-      foreground: '', visible: true, spacing_above: small, spacing_below: none, background: ''}
-    name: input_panel
-    layout_properties: {grid_position: 'PJPFGG,PYLMGA'}
-    components:
-    - type: TextBox
-      properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
-        border: '', enabled: true, foreground: '', visible: true, text: '', font_size: null,
-        font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
-        background: '', bold: false, underline: false}
-      name: input_box
+- components:
+  - components:
+    - event_bindings: {change: input_box_change, focus: focus_change, lost_focus: focus_change}
       layout_properties: {expand: true, width: null}
-      event_bindings: {change: input_box_change, lost_focus: focus_change, focus: focus_change}
-    - type: Image
-      properties: {role: null, vertical_align: center, height: '0', tooltip: '', border: '',
-        foreground: '', visible: false, display_mode: shrink_to_fit, spacing_above: none,
-        source: _/theme/NewSpinner.gif, spacing_below: none, background: var(--surface-variant),
-        horizontal_align: center}
+      name: input_box
+      properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: false, italic: false, placeholder: '', role: null, spacing_above: none, spacing_below: none, text: '', tooltip: '', type: text, underline: false, visible: true}
+      type: TextBox
+    - layout_properties: {expand: false, width: 0}
       name: spinner_image
-      layout_properties: {width: 0, expand: false}
-    - type: Button
-      properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
-        foreground: var(--on-surface-variant), visible: true, text: '', font_size: null,
-        font: '', spacing_above: none, icon_align: left, spacing_below: none, italic: false,
-        background: var(--surface-variant), bold: false, underline: false, icon: 'fa:times-circle'}
-      name: clear_button
-      layout_properties: {}
-      data_bindings:
-      - {property: visible, code: self.show_clear_button and self._selected_value is not None}
+      properties: {background: var(--surface-variant), border: '', display_mode: shrink_to_fit, foreground: '', height: '0', horizontal_align: center, role: null, source: _/theme/NewSpinner.gif, spacing_above: none, spacing_below: none, tooltip: '', vertical_align: center, visible: false}
+      type: Image
+    - data_bindings:
+      - {code: self.show_clear_button and self._selected_value is not None, property: visible}
       event_bindings: {click: clear_button_click}
-    - type: Button
-      properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
-        foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: none,
-        icon_align: left, spacing_below: none, italic: false, background: Green, bold: false,
-        underline: false, icon: 'fa:plus'}
-      name: create_or_next_button
       layout_properties: {}
+      name: clear_button
+      properties: {align: center, background: var(--surface-variant), bold: false, border: '', enabled: true, font: '', font_size: null, foreground: var(--on-surface-variant), icon: 'fa:times-circle', icon_align: left, italic: false, role: filled-button, spacing_above: none, spacing_below: none, text: '', tooltip: '', underline: false, visible: true}
+      type: Button
+    - data_bindings:
+      - {code: (self.show_continue_button and self._selected_value) or (self.show_create_button and not self._selected_value), property: visible}
       event_bindings: {click: create_or_next_button_click}
-      data_bindings:
-      - {property: visible, code: (self.show_continue_button and self._selected_value) or (self.show_create_button and not self._selected_value)}
-  - type: DataGrid
+      layout_properties: {}
+      name: create_or_next_button
+      properties: {align: center, background: Green, bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: 'fa:plus', icon_align: left, italic: false, role: filled-button, spacing_above: none, spacing_below: none, text: '', tooltip: '', underline: false, visible: true}
+      type: Button
+    layout_properties: {grid_position: 'PJPFGG,PYLMGA'}
+    name: input_panel
+    properties: {align: left, background: '', border: '', foreground: '', role: null, spacing: none, spacing_above: small, spacing_below: none, tooltip: '', visible: true}
+    type: FlowPanel
+  - components:
+    - layout_properties: {}
+      name: result_grid_data
+      properties: {background: '', border: '', foreground: '', item_template: Components.AutocompleteComponent.DefaultResultsRowTemplate, items: null, role: null, spacing_above: none, spacing_below: none, tooltip: '', visible: true}
+      type: RepeatingPanel
+    data_bindings:
+    - {code: self.auto_header, property: auto_header}
+    - {code: self.max_results, property: rows_per_page}
+    - {code: self.result_attributes, property: columns}
+    layout_properties: {grid_position: 'IVBKNI,LBWOUI'}
+    name: result_grid
     properties:
-      role: null
-      columns:
-      - {id: WNZXNF, title: Resultados, data_key: result, $$hashKey: 'object:38531'}
       auto_header: false
-      tooltip: ''
+      background: ''
       border: ''
+      columns:
+      - {$$hashKey: 'object:38531', data_key: result, id: WNZXNF, title: Resultados}
       foreground: ''
+      role: null
       rows_per_page: 20
-      visible: true
-      wrap_on: never
       show_page_controls: false
       spacing_above: none
       spacing_below: small
-      background: ''
-    name: result_grid
-    layout_properties: {grid_position: 'IVBKNI,LBWOUI'}
-    components:
-    - type: RepeatingPanel
-      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
-        visible: true, spacing_above: none, spacing_below: none, item_template: Components.AutocompleteComponent.DefaultResultsRowTemplate,
-        background: ''}
-      name: result_grid_data
-      layout_properties: {}
-    data_bindings:
-    - {property: auto_header, code: self.auto_header}
-    - {property: rows_per_page, code: self.max_results}
-    - {property: columns, code: self.result_attributes}
+      tooltip: ''
+      visible: true
+      wrap_on: never
+    type: DataGrid
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: null, spacing_above: none, spacing_below: none, tooltip: '', visible: true, wrap_on: mobile}
+  type: ColumnPanel
 container:
+  properties:
+    background: ''
+    border: ''
+    foreground: ''
+    html: "<style>\n  .anvil-role-autocomplete-component {\n    \n    & .anvil-role-autocomplete-input > .btn {\n      /* Diminui o padding horizontal e coloca 0.5 de padding-bottom para alinhar com o text-box*/\n      padding: 10px 10px 9.5px 10px;\n      width: 40px;\n    }\n    & input.anvil-role-autocomplete-input {\n      border-top-right-radius: 0px;\n      margin-bottom: 0px !important;\n    }\n  \n    & *:last-child > .anvil-role-squared-button > .btn {\n      border-top-right-radius: 5px;\n    }\n  \n    & .anvil-role-clear-button > .btn,\n    & .anvil-image {\n      border-bottom: 1px solid var(--outline);\n      padding-bottom: 10px;\n      max-height: 41px;\n    }\n  \n    & .flow-panel.anvil-role-autocomplete-input:hover \n    .anvil-role-clear-button > .btn,\n    & .flow-panel.anvil-role-autocomplete-input:hover \n    .anvil-image,\n    & .flow-panel.anvil-role-autocomplete-input:focus \n    .anvil-role-clear-button > .btn,\n    & .flow-panel.anvil-role-autocomplete-input:focus \n    .anvil-image{\n      border-bottom: 2px solid var(--primary);\n      padding-bottom: 9px;\n      box-shadow: none;\n    }\n  \n    /*  Data Grid  */\n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n    a.anvil-role-outlined-link {\n      border-radius: 5px;\n      background-color: var(--primary-container);\n      color: var(--on-primary-container)\n    }\n  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n    a.anvil-role-outlined-link:hover {\n    background-color: var(--light-overlay-1);\n    }\n  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n    a.anvil-role-outlined-link:focus, a.anvil-role-outlined-link:active{\n      background-color: var(--light-overlay-2);\n      color: var(--primary);\n    }\n    \n    & .anvil-role-autocomplete-result.anvil-data-grid .data-grid-footer-panel {\n      display: none;\n    }\n  }\n</style>"
+    role: null
+    tooltip: ''
+    visible: true
   type: HtmlTemplate
-  properties: {tooltip: '', background: '', foreground: '', border: '', visible: true,
-    role: null, html: "<style>\n  .anvil-role-autocomplete-component {\n    \n   \
-      \ & .anvil-role-autocomplete-input > .btn {\n      /* Diminui o padding horizontal\
-      \ e coloca 0.5 de padding-bottom para alinhar com o text-box*/\n      padding:\
-      \ 10px 10px 9.5px 10px;\n      width: 40px;\n    }\n    & input.anvil-role-autocomplete-input\
-      \ {\n      border-top-right-radius: 0px;\n      margin-bottom: 0px !important;\n\
-      \    }\n  \n    & *:last-child > .anvil-role-squared-button > .btn {\n     \
-      \ border-top-right-radius: 5px;\n    }\n  \n    & .anvil-role-clear-button >\
-      \ .btn,\n    & .anvil-image {\n      border-bottom: 1px solid var(--outline);\n\
-      \      padding-bottom: 10px;\n      max-height: 41px;\n    }\n  \n    & .flow-panel.anvil-role-autocomplete-input:hover\
-      \ \n    .anvil-role-clear-button > .btn,\n    & .flow-panel.anvil-role-autocomplete-input:hover\
-      \ \n    .anvil-image,\n    & .flow-panel.anvil-role-autocomplete-input:focus\
-      \ \n    .anvil-role-clear-button > .btn,\n    & .flow-panel.anvil-role-autocomplete-input:focus\
-      \ \n    .anvil-image{\n      border-bottom: 2px solid var(--primary);\n    \
-      \  padding-bottom: 9px;\n      box-shadow: none;\n    }\n  \n    /*  Data Grid\
-      \  */\n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
-      \    a.anvil-role-outlined-link {\n      border-radius: 5px;\n      background-color:\
-      \ var(--primary-container);\n      color: var(--on-primary-container)\n    }\n\
-      \  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
-      \    a.anvil-role-outlined-link:hover {\n    background-color: var(--light-overlay-1);\n\
-      \    }\n  \n    & .anvil-role-autocomplete-result.anvil-data-grid \n    .anvil-data-row-panel.anvil-role-autocomplete-result\n\
-      \    a.anvil-role-outlined-link:focus, a.anvil-role-outlined-link:active{\n\
-      \      background-color: var(--light-overlay-2);\n      color: var(--primary);\n\
-      \    }\n    \n    & .anvil-role-autocomplete-result.anvil-data-grid .data-grid-footer-panel\
-      \ {\n      display: none;\n    }\n  }\n</style>"}
+custom_component: true
+events:
+- default_event: true
+  description: Event triggered when the selected value was changed.
+  name: selected_value_change
+  parameters:
+  - {description: The selected value, name: selected_value}
+- description: When the new button was clicked.
+  name: new_button_clicked
+  parameters:
+  - {description: The text typed in the component before clicking new., name: text}
+- description: When the continue button was clicked.
+  name: continue_button_clicked
+  parameters:
+  - {description: The value currently selected inside the autocomplete., name: selected_value}
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: false, description: Whether to show or not the result grid auto_header, group: Results, important: false, name: auto_header, type: boolean}
+- {default_value: 20, description: Maximum number of results to show (0 to show all)., group: Results, important: false, name: max_results, type: number}
+- description: |-
+    A list of dicts, each representing a column to override the default template. Each dict can have:
+    id: required string
+    data_key: required string
+    title: required string
+    width: optional number
+    expand: boolean
+  group: Results
+  name: result_attributes
+  type: object
+- {default_value: 5, description: Required number of characters before initial search, group: Search, important: false, name: min_length, type: number}
+- {description: The type of entity class to wrap results of the search. None if you don't want to use wrappers or 'default' if want to use the base Entity class., group: Search, name: use_entity_class, type: object}
+- {default_value: name, description: 'Main attribute of the search, usually the name of the object.', name: main_attribute, type: string}
+- {default_value: false, description: Whether to show or not the clear button, name: show_clear_button, type: boolean}
+- {default_value: true, description: Whether to show or not the continue button when an option is selected. It'll still show the create button when not selected (if allowed)., name: show_continue_button, type: boolean}
+- {default_value: true, description: Whether to show or not the create button when nothing is selected. It'll still show the continue button when something is selected (if allowed)., name: show_create_button, type: boolean}
+- {description: Filter VO to be used to search values. It must have an attribute of same name as the main_attribute. It will only be used if filter_method is defined., name: filter_object, type: object}
+- {default_value: '', description: 'Name of the method to be used to filter values. If filter_object is defined, it will use that as the parameter, otherwise it will send a named_parameter the same way as the search.', name: filter_method, type: string}
+toolbox_item: {}

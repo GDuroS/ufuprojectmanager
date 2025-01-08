@@ -1,59 +1,40 @@
-container:
-  type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
-  event_bindings: {show: form_show}
 components:
-- name: content_panel
-  properties: {}
-  type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: for_printing_column_panel
+- components:
+  - layout_properties: {grid_position: 'QGRRGU,UGOIJD'}
+    name: for_printing_column_panel
     properties: {visible: false}
     type: ColumnPanel
-    layout_properties: {grid_position: 'QGRRGU,UGOIJD'}
-  - name: page_headline_label
-    properties: {text: Documentação, role: headline}
+  - layout_properties: {grid_position: 'PVCOEX,XSMUIW'}
+    name: page_headline_label
+    properties: {role: headline, text: Documentação}
     type: Label
-    layout_properties: {grid_position: 'PVCOEX,XSMUIW'}
-  - name: details_rich_text
-    properties: {content: '<p>Segue abaixo a documentação de cada funcionalidade do
-        sistema, elencada abaixo através de links para as páginas específicas.</p>
-
-        <p>Cada funcionalidade contém <strong>Cadastro</strong>, <strong>Vizualização</strong>,
-        <strong>Atualização</strong> e <strong>Relatório</strong> da funcionalidade.</p>
-
+  - layout_properties: {grid_position: 'NZJOYM,LRAZTG'}
+    name: details_rich_text
+    properties:
+      content: |-
+        <p>Segue abaixo a documentação de cada funcionalidade do sistema, elencada abaixo através de links para as páginas específicas.</p>
+        <p>Cada funcionalidade contém <strong>Cadastro</strong>, <strong>Vizualização</strong>, <strong>Atualização</strong> e <strong>Relatório</strong> da funcionalidade.</p>
         <br/>
-
         <br/>
-
         <ul>
-
-        <li><a href="https://ufu-esof-designer.anvil.app/#docs/story">Cadastro de
-        User Story</a></li>
-
+        <li><a href="https://ufu-esof-designer.anvil.app/#docs/story">Cadastro de User Story</a></li>
         <li><a href="https://ufu-esof-designer.anvil.app/#docs/task">Cadastro de Tarefas</a></li>
-
-        <li><a href="https://ufu-esof-designer.anvil.app/#docs/release">Cadastro de
-        Release</a></li>
-
-        <li><a href="https://ufu-esof-designer.anvil.app/#docs/sprint">Cadastro de
-        Sprint</a></li>
-
+        <li><a href="https://ufu-esof-designer.anvil.app/#docs/release">Cadastro de Release</a></li>
+        <li><a href="https://ufu-esof-designer.anvil.app/#docs/sprint">Cadastro de Sprint</a></li>
         <li><a href="https://ufu-esof-designer.anvil.app/#docs/board">Scrum Board</a></li>
-
         </ul>
-
         <br/>
-
-        <p><strong>Anvil Clone Link:</strong> <a href="https://anvil.works/build#clone:LI7YQ5UGX6NPI3SV=H72QFZET4IWAUJAKC6H53PGT">Clique
-        aqui</a></p>
-
-        <p><strong>Repositório no GitHub:</strong> <a href="https://github.com/GDuroS/ufuprojectmanager">Clique
-        aqui</a></p>
-
-        <p><strong>Vídeo Demonstrativo:</strong> <a href="https://youtu.be/7vXyfW8u8wg">YouTube</a></p>',
-      format: restricted_html}
+        <p><strong>Anvil Clone Link:</strong> <a href="https://anvil.works/build#clone:LI7YQ5UGX6NPI3SV=H72QFZET4IWAUJAKC6H53PGT">Clique aqui</a></p>
+        <p><strong>Repositório no GitHub:</strong> <a href="https://github.com/GDuroS/ufuprojectmanager">Clique aqui</a></p>
+        <p><strong>Vídeo Demonstrativo:</strong> <a href="https://youtu.be/7vXyfW8u8wg">YouTube</a></p>
+      format: restricted_html
     type: RichText
-    layout_properties: {grid_position: 'NZJOYM,LRAZTG'}
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  properties: {html: <div anvil-slot="default"></div>}
+  type: HtmlTemplate
 is_package: true
